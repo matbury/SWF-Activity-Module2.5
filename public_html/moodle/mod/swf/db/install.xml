@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/swf/db" VERSION="20070124" COMMENT="XMLDB file for Moodle mod/swf"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="swf" COMMENT="Main information about each swf activity" NEXT="swf_sessions">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="course"/>
+        <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="id" NEXT="name"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="course" NEXT="intro"/>
+        <FIELD NAME="intro" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" PREVIOUS="name" NEXT="introformat"/>
+        <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="text format of intro field" PREVIOUS="intro" NEXT="swfurl"/>
+        <FIELD NAME="swfurl" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="flash app" PREVIOUS="introformat" NEXT="plugin"/>
+        <FIELD NAME="plugin" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" COMMENT="flash plugin" PREVIOUS="swfurl" NEXT="xmlurl"/>
+        <FIELD NAME="xmlurl" TYPE="char" LENGTH="255" NOTNULL="false" DEFAULT="false" SEQUENCE="false" COMMENT="xml/smil data" PREVIOUS="swfurl" NEXT="fileurl"/>
+        <FIELD NAME="fileurl" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" DEFAULT="" COMMENT="uploaded files" PREVIOUS="xmlurl" NEXT="version"/>
+	<FIELD NAME="version" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="11.4.0" SEQUENCE="false" COMMENT="version" PREVIOUS="swfurl" NEXT="apikey"/>
+	<FIELD NAME="apikey" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" COMMENT="apikey" PREVIOUS="version" NEXT="scale"/>
+	<FIELD NAME="scale" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="noscale" SEQUENCE="false" COMMENT="scale" PREVIOUS="apikey" NEXT="salign"/>
+	<FIELD NAME="salign" TYPE="char" LENGTH="2" NOTNULL="true" DEFAULT="tl" SEQUENCE="false" COMMENT="salign" PREVIOUS="scale" NEXT="bgcolor"/>
+	<FIELD NAME="pagecolor" TYPE="char" LENGTH="6" NOTNULL="false" DEFAULT="FFFFFF" SEQUENCE="false" COMMENT="pagecolor" PREVIOUS="salign" NEXT="bgcolor"/>
+        <FIELD NAME="bgcolor" TYPE="char" LENGTH="6" NOTNULL="false" DEFAULT="FFFFFF" SEQUENCE="false" COMMENT="bgcolor" PREVIOUS="pagecolor" NEXT="seamlesstabbing"/>
+        <FIELD NAME="seamlesstabbing" TYPE="char" LENGTH="5" NOTNULL="true" DEFAULT="true" SEQUENCE="false" COMMENT="seamlesstabbing" PREVIOUS="bgcolor" NEXT="allowfullscreen"/>
+	<FIELD NAME="allowfullscreen" TYPE="char" LENGTH="40" NOTNULL="true" DEFAULT="false" SEQUENCE="false" COMMENT="allowfullscreen" PREVIOUS="seamlesstabbing" NEXT="allowscriptaccess"/>
+	<FIELD NAME="allowscriptaccess" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="sameDomain" SEQUENCE="false" COMMENT="allowscriptaccess" PREVIOUS="allowfullscreen" NEXT="allownetworking"/>
+	<FIELD NAME="allownetworking" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="all" SEQUENCE="false" COMMENT="allownetworking" PREVIOUS="allowscriptaccess" NEXT="name1"/>
+	<FIELD NAME="name1" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" COMMENT="name1" PREVIOUS="allownetworking" NEXT="value1"/>
+	<FIELD NAME="value1" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" COMMENT="value1" PREVIOUS="name1" NEXT="name2"/>
+	<FIELD NAME="name2" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" COMMENT="name2" PREVIOUS="value1" NEXT="value2"/>
+	<FIELD NAME="value2" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" COMMENT="value2" PREVIOUS="name2" NEXT="name3"/>
+	<FIELD NAME="name3" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" COMMENT="name3" PREVIOUS="value2" NEXT="value3"/>
+	<FIELD NAME="value3" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" COMMENT="value3" PREVIOUS="name3" NEXT="configxml"/>
+	<FIELD NAME="configxml" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" COMMENT="configxml" PREVIOUS="value3" NEXT="width"/>
+        <FIELD NAME="width" TYPE="char" LENGTH="5" NOTNULL="false" DEFAULT="900" SEQUENCE="false" PREVIOUS="configxml" NEXT="height"/>
+        <FIELD NAME="height" TYPE="char" LENGTH="5" NOTNULL="false" DEFAULT="700" SEQUENCE="false" PREVIOUS="width" NEXT="maxgrade"/>
+        <FIELD NAME="maxgrade" TYPE="char" LENGTH="15" NOTNULL="false" SEQUENCE="false" PREVIOUS="height" NEXT="grade"/>
+        <FIELD NAME="grade" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="maxgrade" NEXT="lang"/>
+        <FIELD NAME="exiturl" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="grade" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="exiturl" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated" NEXT="usermodified"/>
+        <FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timemodified"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for swf"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>

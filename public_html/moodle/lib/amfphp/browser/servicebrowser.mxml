@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application frameRate="60" xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" creationComplete="setEndpoint(); ro.getServices(); init();" paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10">
+	<mx:states>
+		<mx:State name="testService">
+			<mx:SetProperty target="{rightPanel}" name="visible" value="true"/>
+			<mx:SetStyle target="{form1}" name="paddingBottom" value="10"/>
+			<mx:SetStyle target="{form1}" name="paddingLeft" value="10"/>
+			<mx:SetStyle target="{form1}" name="paddingRight" value="10"/>
+			<mx:SetStyle target="{form1}" name="paddingTop" value="10"/>
+		</mx:State>
+		<mx:State name="testMethod" basedOn="testService">
+			<mx:SetProperty target="{output}" name="visible" value="true"/>
+			<mx:SetProperty target="{output}" name="height" value="200"/>
+
+		</mx:State>
+		
+	</mx:states>
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.controls.dataGridClasses.DataGridBase;
+			import mx.collections.ArrayCollection;
+			import mx.utils.ObjectUtil;
+			import com.adobe.serialization.json.JSON;
+			import mx.controls.List;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+		
+			[Bindable]
+			public var methods:Object;
+			[Bindable]
+			public var currentService:Object;
+			[Bindable]
+			public var currentMethod:Object;
+			[Bindable]
+			public var currentMethodName:String;
+			
+			var sro:RemoteObject;
+			
+			var time:Number;
+			
+			function setEndpoint()
+			{
+				var url:String = Application.application.url;
+				if(url.indexOf('http') != -1)
+				{
+					ro.endpoint = url.substr(0, url.lastIndexOf('/')) +  "gateway.php";
+				}
+			}
+			
+			function init():void
+			{
+				sro = new RemoteObject("amfphp");
+				sro.addEventListener(ResultEvent.RESULT, onResult);
+				sro.addEventListener(FaultEvent.FAULT, onFault);
+			}
+			
+			function describeService(data:Object):void
+			{
+				methods = data;
+				var links:Array = new Array();
+				for(var i in data)
+				{
+					links.push({label:i, data:i});
+				}
+				links = links.sortOn("label");
+				if(links.length > 0)
+				{
+					methodLinks.dataProvider = links;
+					methodLinks.selectedIndex = 0;
+					currentMethod = methods[links[0].data];
+					currentMethodName = links[0].data;
+					currentState = "testService";
+				}
+			}
+			
+			function sendRequest()
+			{
+				time = getTimer();
+				currentMethodName = methodLinks.dataProvider[methodLinks.selectedIndex].data;
+				sro.source = currentService.data.split('/').join('.').split('\\').join('.') + currentService.label;
+				sro[currentMethodName].send.apply(null, getArgs());	
+			}
+			
+			function getArgs()
+			{
+				var parsedArgs:Array = new Array();
+				if(arg is Array)
+				{
+					for(var i:int = 0; i < arg.length; i++)
+					{
+						try
+						{
+							var text = arg[i].text;
+							if(text.indexOf('{') == -1 && 
+							   text.indexOf('[') == -1 &&
+							   text.indexOf('"') == -1 &&
+							   text.indexOf("'") == -1)
+							{
+								var val = parseInt(text);
+								if(isNaN(val))
+								{
+									text = '"' + text + '"';
+								}
+							}
+							parsedArgs.push(JSON.decode(text));
+						}
+						catch(e:*)
+						{
+							
+						}
+					}
+				}
+				return parsedArgs;
+			}
+			
+			function onResult(event)
+			{
+				currentState = "testMethod";
+				resultsText.text = ObjectUtil.toString(event.result);
+				infoText.text = "Query took: " + (getTimer() - time) + " ms";
+				
+				if((event.result is Array && event.result[0] is Object) ||
+				   (event.result is ArrayCollection && event.result.getItemAt(0) is Object))
+				{
+					var keys = new Array();
+					for(var i in event.result[0])
+					{
+						keys.push(new DataGridColumn(i));
+					}
+					resultsDg.columns = keys;
+					resultsDg.dataProvider = event.result;
+				}
+				else
+				{
+					resultsDg.columns = new Array();
+					resultsDg.dataProvider = new Array();
+				}
+				output.selectedIndex = 0;
+			}
+			
+			function onFault(event)
+			{
+				currentState = "testMethod";
+				resultsText.text = ObjectUtil.toString(event.fault);
+				infoText.text = "Query took: " + (getTimer() - time) + " ms";
+				resultsDg.dataProvider = new Array();
+				output.selectedIndex = 0;
+			}
+			
+			function enableLinks()
+			{
+			  for(var i=0; i<methodLinks.numChildren; i++){
+			   var curItem = methodLinks.getChildAt(i);
+			   curItem.enabled = i == methodLinks.selectedIndex ? false : true;
+			  }
+			}
+		]]>
+	</mx:Script>
+	<mx:RemoteObject showBusyCursor="true" destination="amfphp" endpoint="http://flashservices/gateway.php" source="amfphp.DiscoveryService" id="ro">
+		<mx:method name="getServices" result="methodTree.dataProvider = event.result"/>
+		<mx:method name="describeService" result="describeService(event.result)" />
+	</mx:RemoteObject>
+	<mx:HDividedBox width="100%" height="100%">
+		<mx:VBox height="100%">
+			<mx:HBox width="100%" verticalAlign="middle">
+				<mx:Label fontSize="10" fontWeight="bold" text="Service Browser"/>
+				<mx:Spacer width="100%"/>
+				<mx:Button label="Settings" visible="false"/>
+				<mx:Button label="Refresh" click="ro.getServices();"/>
+				
+			</mx:HBox>
+			<mx:Tree width="100%" 
+					 height="100%" 
+					 id="methodTree" 
+					 openDuration="0"
+					 change="if((methodTree.selectedItem.children is Array)){return;} currentService = methodTree.selectedItem; ro.describeService(methodTree.selectedItem)"
+					 />
+		</mx:VBox>
+		<mx:Panel id="rightPanel" visible="false" title="{'Exploring ' + currentService.label}" height="100%" borderThickness="3" paddingLeft="5" paddingRight="5" paddingBottom="5" paddingTop="5" borderThicknessBottom="3" borderThicknessLeft="3" borderThicknessRight="3" borderThicknessTop="3">
+			<mx:VDividedBox label="Test" width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+				<mx:TabNavigator width="100%" height="100%" historyManagementEnabled="false">
+					
+					<mx:VBox width="100%" label="Test">
+						<mx:LinkBar id="methodLinks" itemClick="currentMethod = methods[event.item.data]; currentMethodName = event.item.label; enableLinks();" fontWeight="normal" horizontalGap="0"/>
+						<mx:VBox width="100%">
+							<mx:Form width="100%"  id="form1">
+								<mx:Text fontWeight="bold" htmlText="{'Method: ' + currentMethodName}" width="100%"/>
+								<mx:Text htmlText="{currentMethod.description}" width="100%"/>
+								<mx:Repeater width="100%" recycleChildren="false" id="args" dataProvider="{currentMethod.arguments}">
+									<mx:FormItem width="100%" label="{args.currentItem != null ? args.currentItem : ''}">
+										<mx:TextInput id="arg" width="100%"/>
+									</mx:FormItem>
+								</mx:Repeater>
+								<mx:Button label="Call" click="sendRequest();"/>
+							</mx:Form>
+						</mx:VBox>
+					</mx:VBox>
+					<mx:VBox label="Code generator">
+						<mx:Text text="Not yet implemented." />
+					</mx:VBox>
+				
+				</mx:TabNavigator>
+				<mx:TabNavigator creationPolicy="all" id="output" width="100%" paddingTop="0" historyManagementEnabled="false" height="0" visible="false">
+					<mx:VBox label="Results" height="100%">
+						<mx:TextArea editable="false" focusEnabled="false" height="100%" width="100%" id="resultsText" borderThickness="0"  borderStyle="none"/>
+					</mx:VBox>
+					<mx:VBox label="RecordSet view" width="100%" height="100%" borderThickness="0">
+						<mx:DataGrid width="100%" height="100%" borderStyle="none" id="resultsDg"></mx:DataGrid>
+					</mx:VBox>
+					<mx:VBox label="Trace" width="100%" height="100%">
+						<mx:TextArea editable="false" focusEnabled="false" x="305" y="220" width="100%" height="100%" text="Not yet implemented." borderThickness="0" borderStyle="none"/>
+					</mx:VBox>
+					<mx:VBox label="Info" width="100%" height="100%">
+						<mx:Text text="Text" id="infoText"/>
+					</mx:VBox>
+					
+				</mx:TabNavigator>
+			</mx:VDividedBox>
+		</mx:Panel>
+	</mx:HDividedBox>
+	
+</mx:Application>

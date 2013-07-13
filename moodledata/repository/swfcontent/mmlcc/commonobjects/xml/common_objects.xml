@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8"?>
+<smil xmlns="http://www.w3.org/2005/SMIL21/Language" version="2.1">
+	
+	<head>
+		<!-- Metadata about the SMIL presentation -->
+		<meta id="meta-smil1.0-a" name="Creator" content="Matt Bury" />
+		<meta id="meta-smil1.0-b" name="Creator URL" content="http://matbury.com/" />
+		<meta id="meta-smil1.0-c" name="Creator email" content="matbury@gmail.com" />
+		<meta id="meta-smil1.0-d" name="Publisher" content="matbury.com" />
+		<meta id="meta-smil1.0-e" name="Publisher URL" content="http://matbury.com/" />
+		<meta id="meta-smil1.0-f" name="Date" content="2011-10-13" />
+		<meta id="meta-smil1.0-g" name="Rights" content="Copyright © 2011 Matt Bury" />
+		<meta id="meta-smil1.0-h" name="License" content="Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)" />
+		<meta id="meta-smil1.0-i" name="License URL" content="http://creativecommons.org/licenses/by-sa/3.0/" />
+		<!-- Metadata about the SMIL presentation content -->
+		<meta id="meta-smil1.0-j" name="Title" content="Common objects" />
+		<meta id="meta-smil1.0-k" name="Intro" content="Every day objects that people carry and use." />
+		<meta id="meta-smil1.0-l" name="Level" content="CEFRL A1" />
+		<meta id="meta-smil1.0-m" name="Language" content="en" />
+		<layout>
+			<!-- Published for MILAs. No layout data necessary. -->
+		</layout>
+	</head>
+	
+	<body>
+	
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsənəˈdresbək/" src="mmlcc/commonobjects/mp3/addressbook_its_an.mp3" />
+				<audio id="stretched" pron="/ɪtsənəˈdresbək/" src="mmlcc/commonobjects/mp3/addressbook_its_an_str.mp3" />
+				<text>It's an address book.</text>
+				<img alt="address book" src="mmlcc/commonobjects/pix/addressbook1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's an</text>
+				<text id="end">address book.</text>
+			</par>
+			<par id="keyword">
+				<text>an address book</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈbʊk/" src="mmlcc/commonobjects/mp3/book_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈbʊk/" src="mmlcc/commonobjects/mp3/book_its_a_str.mp3" />
+				<text>It's a book.</text>
+				<img alt="book" src="mmlcc/commonobjects/pix/book1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">book.</text>
+			</par>
+			<par id="keyword">
+				<text>a book</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they.mp3" />
+				<audio id="stretched" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they_str.mp3" />
+				<text>What are they?</text>
+				<img src="mmlcc/commonobjects/pix/what_are_they.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ðeəsɪgəˈrets/" src="mmlcc/commonobjects/mp3/cigarettes_theyre.mp3" />
+				<audio id="stretched" pron="/ðeəsɪgəˈrets/" src="mmlcc/commonobjects/mp3/cigarettes_theyre_str.mp3" />
+				<text>They're cigarettes.</text>
+				<img alt="cigarettes" src="mmlcc/commonobjects/pix/cigarettes3.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">They're</text>
+				<text id="end">cigarettes.</text>
+			</par>
+			<par id="keyword">
+				<text>cigarettes</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they.mp3" />
+				<audio id="stretched" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they_str.mp3" />
+				<text>What are they?</text>
+				<img src="mmlcc/commonobjects/pix/what_are_they.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ðeəˈkɔɪnz/" src="mmlcc/commonobjects/mp3/coins_theyre.mp3" />
+				<audio id="stretched" pron="/ðeəˈkɔɪnz/" src="mmlcc/commonobjects/mp3/coins_theyre_str.mp3" />
+				<text>They're coins.</text>
+				<img alt="coins" src="mmlcc/commonobjects/pix/coins1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">They're</text>
+				<text id="end">coins.</text>
+			</par>
+			<par id="keyword">
+				<text>coins</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈkəʊm/" src="mmlcc/commonobjects/mp3/comb_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈkəʊm/" src="mmlcc/commonobjects/mp3/comb_its_a_str.mp3" />
+				<text>It's a comb.</text>
+				<img alt="comb" src="mmlcc/commonobjects/pix/comb1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">comb.</text>
+			</par>
+			<par id="keyword">
+				<text>a comb</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈkredɪtkɑ:d/" src="mmlcc/commonobjects/mp3/credit_card_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈkredɪtkɑ:d/" src="mmlcc/commonobjects/mp3/credit_card_its_a_str.mp3" />
+				<text>It's a credit card.</text>
+				<img alt="credit card" src="mmlcc/commonobjects/pix/credit_card4.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">credit card.</text>
+			</par>
+			<par id="keyword">
+				<text>a credit card</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈdaɪəri/" src="mmlcc/commonobjects/mp3/diary_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈdaɪəri/" src="mmlcc/commonobjects/mp3/diary_its_a_str.mp3" />
+				<text>It's a diary.</text>
+				<img alt="diary" src="mmlcc/commonobjects/pix/diary1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">diary.</text>
+			</par>
+			<par id="keyword">
+				<text>a diary</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈdɪkʃənri/" src="mmlcc/commonobjects/mp3/dictionary_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈdɪkʃənri/" src="mmlcc/commonobjects/mp3/dictionary_its_a_str.mp3" />
+				<text>It's a dictionary.</text>
+				<img alt="dictionary" src="mmlcc/commonobjects/pix/dictionary1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">dictionary.</text>
+			</par>
+			<par id="keyword">
+				<text>a dictionary</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈfaɪl/" src="mmlcc/commonobjects/mp3/file_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈfaɪl/" src="mmlcc/commonobjects/mp3/file_its_a_str.mp3" />
+				<text>It's a file.</text>
+				<img src="mmlcc/commonobjects/pix/file1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">file.</text>
+			</par>
+			<par id="keyword">
+				<text>a file</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they.mp3" />
+				<audio id="stretched" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they_str.mp3" />
+				<text>What are they?</text>
+				<img src="mmlcc/commonobjects/pix/what_are_they.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ðeəˈglɑ:sɪz/" src="mmlcc/commonobjects/mp3/glasses_theyre.mp3" />
+				<audio id="stretched" pron="/ðeəˈglɑ:sɪz/" src="mmlcc/commonobjects/mp3/glasses_theyre_str.mp3" />
+				<text>They're glasses.</text>
+				<img src="mmlcc/commonobjects/pix/glasses1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">They're</text>
+				<text id="end">glasses.</text>
+			</par>
+			<par id="keyword">
+				<text>glasses</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsənaɪˈdi:kɑ:d/" src="mmlcc/commonobjects/mp3/id_card_its_an.mp3" />
+				<audio id="stretched" pron="/ɪtsənaɪˈdi:kɑ:d/" src="mmlcc/commonobjects/mp3/id_card_its_an_str.mp3" />
+				<text>It's an ID card.</text>
+				<img src="mmlcc/commonobjects/pix/id_card1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's an</text>
+				<text id="end">ID card.</text>
+			</par>
+			<par id="keyword">
+				<text>an ID card</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they.mp3" />
+				<audio id="stretched" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they_str.mp3" />
+				<text>What are they?</text>
+				<img src="mmlcc/commonobjects/pix/what_are_they.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ðeəˈki:z/" src="mmlcc/commonobjects/mp3/keys_theyre.mp3" />
+				<audio id="stretched" pron="/ðeəˈki:z/" src="mmlcc/commonobjects/mp3/keys_theyre_str.mp3" />
+				<text>They're keys.</text>
+				<img src="mmlcc/commonobjects/pix/keys1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">They're</text>
+				<text id="end">keys.</text>
+			</par>
+			<par id="keyword">
+				<text>keys</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈlaɪtə/" src="mmlcc/commonobjects/mp3/lighter_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈlaɪtə/" src="mmlcc/commonobjects/mp3/lighter_its_a_str.mp3" />
+				<text>It's a lighter.</text>
+				<img src="mmlcc/commonobjects/pix/lighter2.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">lighter.</text>
+			</par>
+			<par id="keyword">
+				<text>a lighter</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈlɪpstɪk/" src="mmlcc/commonobjects/mp3/lipstick_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈlɪpstɪk/" src="mmlcc/commonobjects/mp3/lipstick_its_a_str.mp3" />
+				<text>It's a lipstick.</text>
+				<img src="mmlcc/commonobjects/pix/lipstick1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">lipstick.</text>
+			</par>
+			<par id="keyword">
+				<text>a lipstick</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəmægəˈzi:n/" src="mmlcc/commonobjects/mp3/magazine_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəmægəˈzi:n/" src="mmlcc/commonobjects/mp3/magazine_its_a_str.mp3" />
+				<text>It's a magazine.</text>
+				<img src="mmlcc/commonobjects/pix/magazine1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">magazine.</text>
+			</par>
+			<par id="keyword">
+				<text>a magazine</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they.mp3" />
+				<audio id="stretched" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they_str.mp3" />
+				<text>What are they?</text>
+				<img src="mmlcc/commonobjects/pix/what_are_they.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ðeəˈmæʧɪz/" src="mmlcc/commonobjects/mp3/matches_theyre.mp3" />
+				<audio id="stretched" pron="/ðeəˈmæʧɪz/" src="mmlcc/commonobjects/mp3/matches_theyre_str.mp3" />
+				<text>They're matches.</text>
+				<img src="mmlcc/commonobjects/pix/matches2.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">They're</text>
+				<text id="end">matches.</text>
+			</par>
+			<par id="keyword">
+				<text>matches</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈməʊbaɪl/" src="mmlcc/commonobjects/mp3/mobile_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈməʊbaɪl/" src="mmlcc/commonobjects/mp3/mobile_its_a_str.mp3" />
+				<text>It's a mobile.</text>
+				<img src="mmlcc/commonobjects/pix/mobile2.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">mobile.</text>
+			</par>
+			<par id="keyword">
+				<text>a mobile</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈnju:zpeɪpə/" src="mmlcc/commonobjects/mp3/newspaper_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈnju:zpeɪpə/" src="mmlcc/commonobjects/mp3/newspaper_its_a_str.mp3" />
+				<text>It's a newspaper.</text>
+				<img src="mmlcc/commonobjects/pix/newspaper1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">newspaper.</text>
+			</par>
+			<par id="keyword">
+				<text>a newspaper</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈpen/" src="mmlcc/commonobjects/mp3/pen_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈpen/" src="mmlcc/commonobjects/mp3/pen_its_a_str.mp3" />
+				<text>It's a pen.</text>
+				<img src="mmlcc/commonobjects/pix/pen2.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">pen.</text>
+			</par>
+			<par id="keyword">
+				<text>a pen</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈpensəl/" src="mmlcc/commonobjects/mp3/pencil_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈpensəl/" src="mmlcc/commonobjects/mp3/pencil_its_a_str.mp3" />
+				<text>It's a pencil.</text>
+				<img src="mmlcc/commonobjects/pix/pencil1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">pencil.</text>
+			</par>
+			<par id="keyword">
+				<text>a pencil</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈfəʊtəʊ/" src="mmlcc/commonobjects/mp3/photo_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈfəʊtəʊ/" src="mmlcc/commonobjects/mp3/photo_its_a_str.mp3" />
+				<text>It's a photo.</text>
+				<img src="mmlcc/commonobjects/pix/photo1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">photo.</text>
+			</par>
+			<par id="keyword">
+				<text>a photo</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they.mp3" />
+				<audio id="stretched" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they_str.mp3" />
+				<text>What are they?</text>
+				<img src="mmlcc/commonobjects/pix/what_are_they.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ðeəˈfəʊtəʊz/" src="mmlcc/commonobjects/mp3/photos_theyre.mp3" />
+				<audio id="stretched" pron="/ðeəˈfəʊtəʊz/" src="mmlcc/commonobjects/mp3/photos_theyre_str.mp3" />
+				<text>They're photos.</text>
+				<img src="mmlcc/commonobjects/pix/photos1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">They're</text>
+				<text id="end">photos.</text>
+			</par>
+			<par id="keyword">
+				<text>photos</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈpɜ:s/" src="mmlcc/commonobjects/mp3/purse_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈpɜ:s/" src="mmlcc/commonobjects/mp3/purse_its_a_str.mp3" />
+				<text>It's a purse.</text>
+				<img src="mmlcc/commonobjects/pix/purse1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">purse.</text>
+			</par>
+			<par id="keyword">
+				<text>a purse</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈstæmp/" src="mmlcc/commonobjects/mp3/stamp_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈstæmp/" src="mmlcc/commonobjects/mp3/stamp_its_a_str.mp3" />
+				<text>It's a stamp.</text>
+				<img src="mmlcc/commonobjects/pix/stamp1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">stamp.</text>
+			</par>
+			<par id="keyword">
+				<text>a stamp</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they.mp3" />
+				<audio id="stretched" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they_str.mp3" />
+				<text>What are they?</text>
+				<img src="mmlcc/commonobjects/pix/what_are_they.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ðeəˈstæmps/" src="mmlcc/commonobjects/mp3/stamps_theyre.mp3" />
+				<audio id="stretched" pron="/ðeəˈstæmps/" src="mmlcc/commonobjects/mp3/stamps_theyre_str.mp3" />
+				<text>They're stamps.</text>
+				<img src="mmlcc/commonobjects/pix/stamps1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">They're</text>
+				<text id="end">stamps.</text>
+			</par>
+			<par id="keyword">
+				<text>stamps</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they.mp3" />
+				<audio id="stretched" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they_str.mp3" />
+				<text>What are they?</text>
+				<img src="mmlcc/commonobjects/pix/what_are_they.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ðeəˈsʌnglɑ:sɪz/" src="mmlcc/commonobjects/mp3/sunglasses_theyre.mp3" />
+				<audio id="stretched" pron="/ðeəˈsʌnglɑ:sɪz/" src="mmlcc/commonobjects/mp3/sunglasses_theyre_str.mp3" />
+				<text>They're sunglasses.</text>
+				<img src="mmlcc/commonobjects/pix/sunglasses3.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">They're</text>
+				<text id="end">sunglasses.</text>
+			</par>
+			<par id="keyword">
+				<text>sunglasses</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they.mp3" />
+				<audio id="stretched" pron="/wɒtəˈðeɪ/" src="mmlcc/commonobjects/mp3/what_are_they_str.mp3" />
+				<text>What are they?</text>
+				<img src="mmlcc/commonobjects/pix/what_are_they.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ðeəˈtɪʃu:z/" src="mmlcc/commonobjects/mp3/tissues_theyre.mp3" />
+				<audio id="stretched" pron="/ðeəˈtɪʃu:z/" src="mmlcc/commonobjects/mp3/tissues_theyre_str.mp3" />
+				<text>They're tissues.</text>
+				<img src="mmlcc/commonobjects/pix/tissues1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">They're</text>
+				<text id="end">tissues.</text>
+			</par>
+			<par id="keyword">
+				<text>tissues</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsənʌmˈbrelə/" src="mmlcc/commonobjects/mp3/umbrella_its_an.mp3" />
+				<audio id="stretched" pron="/ɪtsənʌmˈbrelə/" src="mmlcc/commonobjects/mp3/umbrella_its_an_str.mp3" />
+				<text>It's an umbrella.</text>
+				<img src="mmlcc/commonobjects/pix/umbrella1.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's an</text>
+				<text id="end">umbrella.</text>
+			</par>
+			<par id="keyword">
+				<text>an umbrella</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈwɒlət/" src="mmlcc/commonobjects/mp3/wallet_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈwɒlət/" src="mmlcc/commonobjects/mp3/wallet_its_a_str.mp3" />
+				<text>It's a wallet.</text>
+				<img src="mmlcc/commonobjects/pix/wallet2.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end"></text>
+			</par>
+			<par id="keyword">
+				<text>a wallet</text>
+			</par>
+		</seq>
+		
+		<seq>
+			<par id="question">
+				<audio id="normal" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it.mp3" />
+				<audio id="stretched" pron="/wɒtˈɪzɪt/" src="mmlcc/commonobjects/mp3/what_is_it_str.mp3" />
+				<text>What is it?</text>
+				<img src="mmlcc/commonobjects/pix/what_is_it.gif" />
+			</par>
+			<par id="answer">
+				<audio id="normal" pron="/ɪtsəˈwɒʧ/" src="mmlcc/commonobjects/mp3/watch_its_a.mp3" />
+				<audio id="stretched" pron="/ɪtsəˈwɒʧ/" src="mmlcc/commonobjects/mp3/watch_its_a_str.mp3" />
+				<text>It's a watch.</text>
+				<img src="mmlcc/commonobjects/pix/watch3.jpg" />
+			</par>
+			<par id="gapfill">
+				<text id="beg"></text>
+				<text id="mid">It's a</text>
+				<text id="end">watch.</text>
+			</par>
+			<par id="keyword">
+				<text>a watch</text>
+			</par>
+		</seq>
+		
+	</body>
+</smil>
