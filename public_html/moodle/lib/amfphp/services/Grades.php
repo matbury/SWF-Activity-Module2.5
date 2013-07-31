@@ -88,8 +88,7 @@ class Grades
 			return $capabilities->error;
 		}
 		// Make sure they have permission to call this function
-		if ($capabilities->is_logged_in && $capabilities->view_own_grades)
-		{
+		if ($capabilities->is_logged_in && $capabilities->view_own_grades) {
 			global $CFG;
 			global $DB;
 			global $USER;
@@ -102,8 +101,7 @@ class Grades
 			// Set upper time limit of 8 hours
                         // if it's more then it's probably been sent as raw milliseconds
                         $swf_elapsed_seconds = (int)$obj['feedbackformat'];
-			if($swf_elapsed_seconds > 28800)
-			{
+			if($swf_elapsed_seconds > 28800) {
 				$obj['feedbackformat'] = round($swf_elapsed_seconds / 1000);
 			}
                         
@@ -123,11 +121,10 @@ class Grades
 			// The following lines will trigger a BadCallVersion error if Moodle debugging is on
                         //get_record($table, array $conditions, $fields='*', $strictness=IGNORE_MISSING)
                         $conditions = array(iteminstance=>$grade->swfid, 'itemtype' => 'mod');
-			if(!$record = $DB->get_records('grade_items',$conditions))
-			{
+			if(!$record = $DB->get_records('grade_items',$conditions)) {
 				// Send error string back to Flash client
 				$swf_return->result = 'NO_GRADE_ITEM';
-				$swf_return->message = 'Grade item '.$grade->swfid.' does not exist.';
+				$swf_return->message = get_string('grade_no_item','swf');
 				return $swf_return;
 			}
 			// Set grade min and max values
@@ -136,14 +133,14 @@ class Grades
 			
 			
 			// Insert grade
-                        // M 2.4 = grade_update($source, $courseid, $itemtype, $itemmodule, $iteminstance, $itemnumber, $grades=NULL, $itemdetails=NULL)
+                        // grade_update($source, $courseid, $itemtype, $itemmodule, $iteminstance, $itemnumber, $grades=NULL, $itemdetails=NULL)
 			grade_update('mod/swf', $capabilities->course, 'mod', 'swf', $grade->swfid, 0, $grade, NULL);
                         $swf_return->result = 'SUCCESS';
-                        $swf_return->message = 'Your grade has been sent to the grade book.';
+                        $swf_return->message = get_string('grade_saved','swf');
                         return $swf_return;
 		}
 		$swf_return->result = 'NO_PERMISSION';
-		$swf_return->message = 'You do not have permission to save grades.';
+		$swf_return->message = get_string('grade_no_permission','swf');
 		return $swf_return;
 	}
 	
@@ -165,13 +162,11 @@ class Grades
 		// Get current user's capabilities
 		$capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
 		// If there was a problem with authentication, return the error message
-		if(!empty($capabilities->error))
-		{
+		if(!empty($capabilities->error)) {
 			return $capabilities->error;
 		}
 		// Make sure they have permission to call this function
-		if ($capabilities->is_logged_in && $capabilities->view_own_grades)
-		{
+		if ($capabilities->is_logged_in && $capabilities->view_own_grades) {
 			global $CFG;
 			global $USER;
 			
@@ -181,30 +176,27 @@ class Grades
 			add_to_log($capabilities->course, 'swf', 'amfphp grade_get_grades', "view.php?id=$capabilities->cmid", "$capabilities->swfname"); 
 			
 			// Only users with capabilties can view other users' grades
-			if($capabilities->view_all_grades)
-			{
+			if($capabilities->view_all_grades) {
 				$userid = $obj['userid'];
 			} else {
 				$userid = $USER->id;
 			}
 			
 			//
-			try
-			{
+			try {
 				$result = grade_get_grades($capabilities->course, 'mod', 'swf', $obj['swfid'], $userid);
 				$swf_return->grade = $result->items[0]->grades[$grade->userid];
 				$swf_return->result = 'SUCCESS';
-				$swf_return->message = 'Grade(s) successfully accessed.';
+				$swf_return->message = get_string('grade_accessed','swf');
 				return $swf_return;
 				return $result;
-			} catch (Exception $e)
-			{
+			} catch (Exception $e) {
 				// probably a PHP 5.3+ deprecation warning
 				return $e->getMessage();
 			}
 		}
 		$swf_return->result = 'NO_PERMISSION';
-		$swf_return->message = 'You do not have permission to get grades.';
+		$swf_return->message = get_string('grade_no_permission','swf');
 		return $swf_return;
 	}
 	
@@ -226,13 +218,11 @@ class Grades
 		// Get current user's capabilities
 		$capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
 		// If there was a problem with authentication, return the error message
-		if(!empty($capabilities->error))
-		{
+		if(!empty($capabilities->error)) {
 			return $capabilities->error;
 		}
 		// Make sure they have permission to call this function
-		if ($capabilities->is_logged_in && $capabilities->view_own_grades)
-		{
+		if ($capabilities->is_logged_in && $capabilities->view_own_grades) 		{
 			global $CFG;
 			global $USER;
 			
@@ -242,8 +232,7 @@ class Grades
 			add_to_log($capabilities->course, 'swf', 'amfphp grade_get_all_swf_grades', "view.php?id=$capabilities->cmid", "$capabilities->swfname");
 			
 			// Only users with capabilties can view other users' grades
-			if($capabilities->view_all_grades)
-			{
+			if($capabilities->view_all_grades) {
 				if($obj['userid']) {
 					$userid = $obj['userid'];
 				} else {
@@ -254,23 +243,21 @@ class Grades
 			}
 			
 			// Get all instances of SWFs for current course
-			if ($swf_instances = get_all_instances_in_course('swf', $capabilities->courseobject))
-			{
+			if ($swf_instances = get_all_instances_in_course('swf', $capabilities->courseobject)) {
 				$swf_instances_grades = array();
-				foreach($swf_instances as $swf_instance)
-				{
+				foreach($swf_instances as $swf_instance) {
 					// grade_get_grades($courseid, $itemtype, $itemmodule, $iteminstance, $userid_or_ids=null)
 					$swf_grade = grade_get_grades($capabilities->course, 'mod', 'swf', $swf_instance->id, $userid);
 					array_push($swf_instances_grades,$swf_grade->items[0]->grades[$userid]);
 				}
 				$swf_return->records = $swf_instances_grades;
 				$swf_return->result = 'SUCCESS';
-				$swf_return->message = 'Grades successfully accessed.';
+				$swf_return->message = get_string('grade_accessed','swf');
 				return $swf_return;
 			}
 		}
 		$swf_return->result = 'NO_PERMISSION';
-		$swf_return->message = 'You do not have permission to get grades.';
+		$swf_return->message = get_string('grade_no_permission','swf');
 		return $swf_return;
 	}
 	
@@ -293,13 +280,11 @@ class Grades
 		// Get current user's capabilities
 		$capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
 		// If there was a problem with authentication, return the error message
-		if(!empty($capabilities->error))
-		{
+		if(!empty($capabilities->error)) {
 			return $capabilities->error;
 		}
 		// Make sure they have permission to call this function
-		if ($capabilities->is_logged_in && $capabilities->view_own_grades)
-		{
+		if ($capabilities->is_logged_in && $capabilities->view_own_grades) {
 			global $CFG;
 			global $USER;
 			
@@ -309,8 +294,7 @@ class Grades
 			add_to_log($capabilities->course, 'swf', 'amfphp amf_grade_get_course_grade', "view.php?id=$capabilities->cmid", "$capabilities->swfname");
 			
 			// Only users with capabilties can view other users' grades
-			if($capabilities->view_all_grades)
-			{
+			if($capabilities->view_all_grades) {
 				if($obj['userid']) {
 					$userid = $obj['userid'];
 				} else {
@@ -325,20 +309,19 @@ class Grades
 				
 				$swf_instances_grades = array();
 				
-				foreach($swf_instances as $swf_instance)
-				{
+				foreach($swf_instances as $swf_instance) {
 					// grade_get_grades($courseid, $itemtype, $itemmodule, $iteminstance, $userid_or_ids=null)
 					$swf_grade = grade_get_grades($capabilities->course, 'mod', 'swf', $swf_instance->id, $userid);
 					array_push($swf_instances_grades,$swf_grade->items[0]->grades[$userid]);
 				}
 				$swf_return->records = $swf_instances_grades;
 				$swf_return->result = 'SUCCESS';
-				$swf_return->message = 'Grades successfully accessed.';
+				$swf_return->message = get_string('grade_accessed','swf');
 				return $swf_return;
 			}
 		}
 		$swf_return->result = 'NO_PERMISSION';
-		$swf_return->message = 'You do not have permission to get grades.';
+		$swf_return->message = get_string('grade_no_permission','swf');
 		return $swf_return;
 	}
 	

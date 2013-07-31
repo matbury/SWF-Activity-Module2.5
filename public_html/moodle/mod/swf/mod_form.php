@@ -95,11 +95,11 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->setType('version', PARAM_TEXT);
         $mform->setDefault('version', '11.4.0');
         $mform->addElement('select', 'allowfullscreen', get_string('allowfullscreen', 'swf'), swf_get_fullscreen_options());
-        $mform->setDefault('allowfullscreen', 'allowFullscreenInteractive');
+        $mform->setDefault('allowfullscreen', 'allowFullScreenInteractive');
         $mform->addElement('select', 'scale', get_string('scale', 'swf'), swf_get_scale());
         $mform->setDefault('scale', 'noScale');
         $mform->addElement('select', 'salign', get_string('salign', 'swf'), swf_get_salign());
-        $mform->setDefault('salign', 'T');
+        $mform->setDefault('salign', 'TL');
         $mform->addElement('text', 'pagecolor', get_string('pagecolor', 'swf'), array('size'=>'6'));
         $mform->setType('pagecolor', PARAM_TEXT);
         $mform->setDefault('pagecolor', 'FFFFFF');
@@ -118,7 +118,7 @@ class mod_swf_mod_form extends moodleform_mod {
         */
         $mform->addElement('header', 'header_swf', get_string('header_swf', 'swf'));
         // Search dataroot for XML and SMIL files
-        // xmlurl to moodledata/repository/swfcontent/[acitivitydataname]/xml/[filename].xml and .smil
+        // xmlurl to moodledata/repository/swfcontent/*/*/xml/[filename].xml and .smil
         $mform->addElement('select', 'xmlurl', get_string('xmlurl', 'swf'), swf_get_xmlurls());
         $mform->setType('xmlurl', PARAM_TEXT);
         $mform->addHelpButton('xmlurl', 'xmlurl', 'swf');
@@ -147,6 +147,11 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->setType('name3', PARAM_TEXT);
         $mform->addElement('textarea', 'value3', get_string("valuepair", "swf"), $swf_value_settings);
         $mform->setType('value3', PARAM_TEXT);
+        // configxml 
+        $mform->addElement('select', 'configxml', get_string('configxml', 'swf'), swf_get_configxmlurls());
+        $mform->setType('configxml', PARAM_TEXT);
+        $mform->addHelpButton('configxml', 'configxml', 'swf');
+        $mform->setDefault('configxml', '');
 
         //-------------------------------------------------------------------------------
         $this->standard_grading_coursemodule_elements();
@@ -170,6 +175,9 @@ class mod_swf_mod_form extends moodleform_mod {
     
     /**
      * Overrides method from moodleform_mod (moodleform_mod.php)
+     * 
+     * TODO - If filemanager is empty, don't push anything to DB
+     * 
      * @param type $default_values
      */
     function data_preprocessing(&$default_values) {
@@ -177,7 +185,7 @@ class mod_swf_mod_form extends moodleform_mod {
             $draftitemid = file_get_submitted_draft_itemid('fileurl');
             file_prepare_draft_area($draftitemid, $this->context->id, 'mod_swf', 'content', 0, swf_get_filemanager_options()); 
             $default_values['fileurl'] = $draftitemid;
-        } 
+        }
     }
     
     /**
@@ -189,8 +197,9 @@ class mod_swf_mod_form extends moodleform_mod {
      */
     public function validation($data, $files) {
         global $USER;
+        //print_object($data); // Everything the form has sent
         $errors = parent::validation($data, $files);
-        if ($data['xmlurl'] === 'true') {
+        if($data['xmlurl'] === 'true') {
             $usercontext = get_context_instance(CONTEXT_USER, $USER->id);
             $fs = get_file_storage();
             if (!$files = $fs->get_area_files($usercontext->id, 'user', 'draft', $data['fileurl'], 'sortorder, id', false)) {
@@ -198,6 +207,7 @@ class mod_swf_mod_form extends moodleform_mod {
                 return $errors;
             }
             if (count($files) == 1) {
+                //print_object($files); // Everything about the file
                 // no need to select main file if only one picked
                 return $errors;
             } else if(count($files) > 1) {

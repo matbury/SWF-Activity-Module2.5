@@ -37,13 +37,16 @@ function swf_get_namevaluepairs($swf) {
     // Don't print empty FlashVars name=value pairs
     $swf_namevaluepairs = '';
     if($swf->name1 != '' && $swf->value1 != '') {
-        $swf_namevaluepairs .= 'flashvars.'.$swf->name1.' = "'.urlencode($swf->value1).'";';
+        $swf_namevaluepairs .= '
+                flashvars.'.$swf->name1.' = "'.urlencode($swf->value1).'";';
     }
     if($swf->name2 != '' && $swf->value2 != '') {
-        $swf_namevaluepairs .= 'flashvars.'.$swf->name2.' = "'.urlencode($swf->value2).'";';
+        $swf_namevaluepairs .= '
+                flashvars.'.$swf->name2.' = "'.urlencode($swf->value2).'";';
     }
     if($swf->name3 != '' && $swf->value3 != '') {
-        $swf_namevaluepairs .= 'flashvars.'.$swf->name3.' = "'.urlencode($swf->value3).'";';
+        $swf_namevaluepairs .= '
+                flashvars.'.$swf->name3.' = "'.urlencode($swf->value3).'";';
     }
     return $swf_namevaluepairs;
 }

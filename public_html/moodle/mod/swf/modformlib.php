@@ -53,32 +53,6 @@ function swf_get_plugins() {
 }
 
 /**
- * List XML and SMIL files in swfcontent repository
- * Directories searched by /[subdir]/[subdir]/xml/[filename].xml and .smil
- * @global object $CFG
- * @return array
- */
-function swf_get_xmlurls() {
-    global $CFG;
-    // default = /moodledata/repository/swfcontent/[subdir]/[subdir]/xml/'
-    // e.g. /moodledata/repository/swfcontent/mmlcc/cats/xml/cats.smil'
-    $swf_xml_urls = array('false' => get_string('nofile', 'swf'), 'true' => get_string('uploadedfile', 'swf'));
-    $swf_xml_content = $CFG->dataroot.$CFG->swf_content_dir.'/*/*/xml/*.xml'; 
-    foreach (glob($swf_xml_content) as $swf_xml_filename) {
-        $swf_xml_path_parts = pathinfo($swf_xml_filename);
-        $swf_xml_path = str_replace($CFG->dataroot.$CFG->swf_content_dir,'',$swf_xml_filename);
-        $swf_xml_urls[$swf_xml_path] = $swf_xml_path_parts['basename'];
-    }
-    //Also search for SMIL files
-    $swf_smil_content = $CFG->dataroot.$CFG->swf_content_dir.'/*/*/xml/*.smil';
-    foreach (glob($swf_smil_content) as $swf_smil_filename) {
-        $swf_smil_path_parts = pathinfo($swf_smil_filename);
-        $swf_smil_path = str_replace($CFG->dataroot.$CFG->swf_content_dir,'',$swf_smil_filename);
-        $swf_xml_urls[$swf_smil_path] = $swf_smil_path_parts['basename'];
-    }
-    return $swf_xml_urls;
-}
-/**
 * Get an array with Flash Params stage scale mode options
 *
 * @return array
@@ -150,18 +124,55 @@ function swf_get_fullscreen_options(){
 }
 
 /**
- * File manager options for mod/swf/mod_form.php
+ * List SMIL, XML, etc. files in swfcontent repository directories
+ * searched by /[subdir]/[subdir]/xml/[filename].smil, .xml, etc.
+ * @global object $CFG
+ * @return array - list of all files in /xml/ directories
+ */
+function swf_get_xmlurls() {
+    global $CFG;
+    $swf_xml_urls = array('false' => get_string('nofile', 'swf'), 'true' => get_string('uploadedfile', 'swf'));
+    $swf_xml_content = $CFG->dataroot.$CFG->swf_content_dir.'/*/*/xml/*.*'; 
+    foreach (glob($swf_xml_content) as $swf_xml_filename) {
+        $swf_xml_path_parts = pathinfo($swf_xml_filename);
+        $swf_xml_path = str_replace($CFG->dataroot.$CFG->swf_content_dir,'',$swf_xml_filename);
+        $swf_xml_urls[$swf_xml_path] = $swf_xml_path;
+    }
+    return $swf_xml_urls;
+}
+
+/**
+ * List SMIL, XML, etc. files in swfcontent repository directories
+ * searched by /[subdir]/[subdir]/xml/[filename].smil, .xml, etc.
+ * @global object $CFG
+ * @return array - list of all files in /xml/ directories
+ */
+function swf_get_configxmlurls() {
+    global $CFG;
+    $swf_xml_urls = array('false' => get_string('nofile', 'swf'));
+    $swf_xml_content = $CFG->dataroot.$CFG->swf_content_dir.'/config/*/*/*.*'; 
+    foreach (glob($swf_xml_content) as $swf_xml_filename) {
+        $swf_xml_path_parts = pathinfo($swf_xml_filename);
+        $swf_xml_path = str_replace($CFG->dataroot.$CFG->swf_content_dir,'',$swf_xml_filename);
+        $swf_xml_urls[$swf_xml_path] = $swf_xml_path;
+    }
+    return $swf_xml_urls;
+}
+
+/**
+ * File manager options fileurl
+ * Only allow one file to be uploaded/selected. Multiple files must be
+ * referenced by single SMIL, XML, etc. files
  * @return array
  */
 function swf_get_filemanager_options(){
-    $filemanager_options = array(
+    return array(
         //'accepted_types'=> array('audio','video','.xml','.smil','.swf','.txt'), // default is '*'
         'maxbytes'=>0,
         'maxfiles'=>1,
         'return_types'=>3,
         'subdirs'=>0
     );
-    return $filemanager_options;
 }
 
 /**

@@ -82,7 +82,8 @@ global $CFG, $USER, $COURSE;
 $swf_namevaluepairs = swf_get_namevaluepairs($swf);
 
 // Build xmlurl
-if($swf->xmlurl === 'false') {// nothing to load
+if($swf->xmlurl === 'false')
+{// nothing to load
     $swf_alternative_content = swf_get_alternative_content($swf);
     $swf_xmlurl = '';
 } else if($swf->xmlurl === 'true') {// Build fileurl through Moodle file API
@@ -104,7 +105,7 @@ if($swf->xmlurl === 'false') {// nothing to load
 } else {
     // Not null and not file API so build link to repository proxy script
     $swf_alternative_content = swf_get_alternative_content($swf);
-    $swf_xmlurl = 'flashvars.xmlurl = "'.$CFG->wwwroot.'/mod/swf/content.php'.$swf->xmlurl.'";';
+    $swf_xmlurl = 'flashvars.xmlurl = "'.$CFG->wwwroot.'/mod/swf/content.php'.$swf->xmlurl.'?nocache='.time().'";'; // Don't cache
 }
 
 //Plugins
@@ -129,6 +130,7 @@ echo '<!DOCTYPE html>
         <script type="text/javascript">
                 var flashvars = {};
                 flashvars.apikey = "'.$swf->apikey.'";
+                flashvars.configxml = "'.$swf->configxml.'";
                 flashvars.exiturl = "'.$swf->exiturl.'";
                 flashvars.gateway = "'.$CFG->wwwroot.'/lib/amfphp/gateway.php";
                 flashvars.gradebook = "'.$CFG->wwwroot.'/grade/report/user/index.php?id='.$COURSE->id.'";
@@ -141,8 +143,8 @@ echo '<!DOCTYPE html>
                 flashvars.swfversion = "'.$swf->version.'";
                 flashvars.servertime = "'.time().'";
                 flashvars.userid = "'.$USER->id.'";
-                '.$swf_xmlurl.'
                 flashvars.wwwroot = "'.$CFG->wwwroot.'/";
+                '.$swf_xmlurl.'
                 '.$swf_namevaluepairs.'
                 var params = {};
                 '.$swf_allowfullscreen.'

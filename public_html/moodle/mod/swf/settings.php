@@ -28,9 +28,11 @@ defined('MOODLE_INTERNAL') || die;
 if ($ADMIN->fulltree) {
     require_once($CFG->dirroot.'/mod/swf/lib.php');
     
-    $settings->add(new admin_setting_configtext('swf_installed_apps_dir', get_string('installed_apps_dir', 'swf'), get_string('installed_apps_dir_explain', 'swf'), $CFG->dirroot.'/mod/swf/swfs', PARAM_RAW, 60));
+    $settings->add(new admin_setting_configtext('swf_installed_apps_dir', get_string('installed_apps_dir', 'swf'), get_string('installed_apps_dir_explain', 'swf'), $CFG->dirroot.'/mod/swf/swfs', PARAM_RAW, 80));
     
-    $settings->add(new admin_setting_configtext('swf_content_dir', get_string('content_dir', 'swf'), get_string('content_dir_explain', 'swf'), '/repository/swfcontent', PARAM_RAW, 60));
+    $settings->add(new admin_setting_configtext('swf_content_dir', get_string('content_dir', 'swf'), get_string('content_dir_explain', 'swf'), '/repository/swfcontent', PARAM_RAW, 80));
+    
+    $settings->add(new admin_setting_configtext('swf_saved_files_dir', get_string('saved_files_dir', 'swf'), get_string('saved_files_dir_explain', 'swf'), '/userfiles', PARAM_RAW, 80));
     
 }
 
