@@ -77,6 +77,7 @@ class mod_swf_mod_form extends moodleform_mod {
         // Flash app
         $mform->addElement('select', 'swfurl', get_string('swffile', 'swf'), swf_get_swfs(), '');
         $mform->setDefault('swfurl', '');
+        $mform->addRule('swfurl', null, 'required', null, 'client');
         $mform->setType('swfurl', PARAM_TEXT);
         $mform->addHelpButton('swfurl', 'swffile', 'swf');
         // Flash plugins (Strobe and JW Player)
@@ -86,12 +87,15 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->addHelpButton('plugin', 'plugin', 'swf');
         // Flash Player embed parameters
         $mform->addElement('text', 'width', get_string('width', 'swf'), array('size'=>5));
+        $mform->addRule('width', null, 'required', null, 'client');
         $mform->setType('width', PARAM_TEXT);
         $mform->setDefault('width', '100%');
         $mform->addElement('text', 'height', get_string('height', 'swf'), array('size'=>5));
+        $mform->addRule('height', null, 'required', null, 'client');
         $mform->setType('height', PARAM_TEXT);
         $mform->setDefault('height', '95%');
         $mform->addElement('text', 'version', get_string('version', 'swf'), array('size'=>5));
+        $mform->addRule('version', null, 'required', null, 'client');
         $mform->setType('version', PARAM_TEXT);
         $mform->setDefault('version', '11.4.0');
         $mform->addElement('select', 'allowfullscreen', get_string('allowfullscreen', 'swf'), swf_get_fullscreen_options());
