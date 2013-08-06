@@ -145,13 +145,13 @@ function swf_get_plugins($swf) {
  */
 function swf_get_allowfullscreen($swf) {
     if($swf->allowfullscreen === 'false') {
-        $swf_allowfullscreen = 'params.allowFullScreen = "false";';
-    } else if($swf->allowfullscreen === 'allowFullScreen') {
-        $swf_allowfullscreen = 'params.allowFullScreen = "true";';
-    } else { // so it must be allowFullScreenInteractive
-        $swf_allowfullscreen = 'params.allowFullScreenInteractive = "true";';
+        return 'params.allowFullScreen = "false";';
     }
-    return $swf_allowfullscreen;
+    if($swf->allowfullscreen === 'allowFullScreen') {
+        return 'params.allowFullScreen = "true";';
+    }
+    // so it must be allowFullScreenInteractive
+    return 'params.allowFullScreenInteractive = "true";';
 }
 
 /**
@@ -176,7 +176,7 @@ function swf_get_navbar($swf) {
                 <a href="index.php?id='.$COURSE->id.'" title="'.get_string('report','swf').'" >'.get_string('report','swf').'</a> | <a href="http://docs.moodle.org/25/en/SWF_Activity_Module" title="'.get_string('swfhelp_title','swf').'" target="_blank" >'.get_string('swfhelp','swf').'</a>
             </div>';
     }
-    return'<div class="swfnavdiv">
+    return '<div class="swfnavdiv">
                 <a href="'.$CFG->wwwroot.'/" title="'.get_string('home').'" >'.get_string('home').'</a> >> <a href="'.$CFG->wwwroot.'/course/view.php?id='.$COURSE->id.'" title="'.$COURSE->shortname.'" >'.$COURSE->shortname.'</a> >> <strong>'.$swf->name.'</strong> '.$swf_usermodified.'
                 '.$swf_right_links.'
             </div>';

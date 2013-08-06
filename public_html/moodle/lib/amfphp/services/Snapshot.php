@@ -47,7 +47,7 @@ class Snapshot
         $swf_return->service_version = '2012.11.18';
         $swf_return->php_version = phpversion(); // get current server PHP version
         return $swf_return;
-        }
+    }
 
     /**
     * Receives and saves a PNG or JPG image sent from Flash app as a ByteArray
@@ -73,7 +73,7 @@ class Snapshot
             return $capabilities->error;
         }
         // Make sure they have permission to call this function
-        if ($capabilities->is_logged_in && $capabilities->view_own_grades) {
+        if ($capabilities->view_own_grades) {
             global $CFG;
             global $USER;
 

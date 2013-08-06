@@ -20,88 +20,70 @@
 
 class Access
 {
-	// Single function so no class variables
-	
-	public function __contruct()
-	{
-		// Do nothing here
-	}
-	
-	/**
-	* Check login and capabilities of current user as defined in swf/db/access.php
-	* Either parameter can be used
-	* @param int course module ID
-	* @param int swf ID
-	* @return obj
-	*
-	*/
-        public function get_capabilities($id = null, $a = null)
+    // Single function so no class variables
+
+    public function __contruct()
+    {
+        // Do nothing here
+    }
+
+    /**
+    * Check login and capabilities of current user as defined in swf/db/access.php
+    * Either parameter can be used
+    * @param int course module ID
+    * @param int swf ID
+    * @return obj
+    *
+    */
+    public function get_capabilities($id = null, $a = null)
+    {
+        global $DB;
+        // Object to store results
+        $capabilities = new object();
+        
+        $capabilities->is_logged_in = isloggedin();
+        // Check user is logged in
+        if(!$capabilities->is_logged_in)
         {
-            global $DB;
-            // Object to store results
-            $obj = new object();
-
-            // Check user is logged in
-            if(isloggedin())
-            {
-                    $obj->is_logged_in = true;
-            } else {
-                    $obj->is_logged_in = false;
-                    return $obj; // Not logged in so stop here.
-            }
-            
-            if ($p) {
-                if (!$swf = $DB->get_record('swf', array('id'=>$p))) {
-                    print_error('invalidaccessparameter');
-                }
-                $cm = get_coursemodule_from_instance('swf', $swf->id, $swf->course, false, MUST_EXIST);
-
-            } else {
-                if (!$cm = get_coursemodule_from_id('swf', $id)) {
-                    print_error('invalidcoursemodule');
-                }
-                $swf = $DB->get_record('swf', array('id'=>$cm->instance), '*', MUST_EXIST);
-            }
-
-            $course = $DB->get_record('course', array('id'=>$cm->course), '*', MUST_EXIST);
-            $context = context_module::instance($cm->id);
-            
-            // Store module details
-            $obj->course = $cm->course;
-            $obj->swfname = $swf->name;
-            $obj->courseobject = $course;
-            $obj->cmid = $cm->id;
-            //return $obj;
-            
-            // Check if current user can view module (is guest)
-            if (has_capability('mod/swf:view', $context))
-            {
-                    $obj->view_mod = true;
-            } else {
-                    $obj->view_mod = false;
-            }
-            // Check if current user can view own grades (is user)
-            if (has_capability('mod/swf:view', $context))
-            {
-                    $obj->view_own_grades = true;
-            } else {
-                    $obj->view_own_grades = false;
-            }
-            // Check if current user can view all grades (is teacher)
-            if (has_capability('mod/swf:grade', $context))
-            {
-                    $obj->view_all_grades = true;
-            } else {
-                    $obj->view_all_grades = false;
-            }
-            // Add on context object
-            $obj->context = $context;
-            
-            return $obj;
+            $capabilities->result = 'NOT_LOGGED_IN';
+            $capabilities->message = get_string('not_logged_in','swf');
+            return $capabilities;
         }
-	
-	public function __destruct()
-	{
-		// Do nothing here.
-	}
+        
+        if ($a) {
+            if (!$swf = $DB->get_record('swf', array('id'=>$a))) {
+                $capabilities->result = 'INVALID_MODULE';
+                $capabilities->message = get_string('invalid_module','swf');
+                return $capabilities;
+            }
+            $cm = get_coursemodule_from_instance('swf', $swf->id, $swf->course, false, MUST_EXIST);
+        } else {
+            if (!$cm = get_coursemodule_from_id('swf', $id)) {
+                $capabilities->result = 'INVALID_MODULE';
+                $capabilities->message = get_string('invalid_module','swf');
+                return $capabilities;
+            }
+            $swf = $DB->get_record('swf', array('id'=>$cm->instance), '*', MUST_EXIST);
+        }
+
+        $course = $DB->get_record('course', array('id'=>$cm->course), '*', MUST_EXIST);
+        $context = context_module::instance($cm->id);
+
+        // Add course module details and capabilities
+        $capabilities->course = $cm->course;
+        $capabilities->swfname = $swf->name;
+        $capabilities->courseobject = $course;
+        $capabilities->cmid = $cm->id;
+        $capabilities->context = $context;
+        $capabilities->view_mod = has_capability('mod/swf:view', $context); // Is guest
+        $capabilities->view_own_grades = has_capability('mod/swf:submit', $context); // Is student
+        $capabilities->view_all_grades = has_capability('mod/swf:viewall', $context); // Is teacher
+
+        return $capabilities;
+    }
+
+    public function __destruct()
+    {
+        // Do nothing here.
+    }
 }

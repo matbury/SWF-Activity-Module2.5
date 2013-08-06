@@ -150,7 +150,7 @@ function swf_get_xmlurls() {
 function swf_get_configxmlurls() {
     global $CFG;
     $swf_xml_urls = array('false' => get_string('nofile', 'swf'));
-    $swf_xml_content = $CFG->dataroot.$CFG->swf_content_dir.'/config/*/*/*.*'; 
+    $swf_xml_content = $CFG->dataroot.$CFG->swf_content_dir.'/*/config/*/*.*'; 
     foreach (glob($swf_xml_content) as $swf_xml_filename) {
         $swf_xml_path_parts = pathinfo($swf_xml_filename);
         $swf_xml_path = str_replace($CFG->dataroot.$CFG->swf_content_dir,'',$swf_xml_filename);

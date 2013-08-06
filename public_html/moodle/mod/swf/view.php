@@ -100,12 +100,12 @@ if($swf->xmlurl === 'false')
             break;
         default: // default = xmlurl
             $swf_alternative_content = swf_get_alternative_content($swf);
-            $swf_xmlurl = 'flashvars.xmlurl = "'.$swf_xmlurl.'";';
+            $swf_xmlurl = 'flashvars.'.$swf->xmlurlname.' = "'.$swf_xmlurl.'";';
     }
 } else {
     // Not null and not file API so build link to repository proxy script
     $swf_alternative_content = swf_get_alternative_content($swf);
-    $swf_xmlurl = 'flashvars.xmlurl = "'.$CFG->wwwroot.'/mod/swf/content.php'.$swf->xmlurl.'?nocache='.time().'";'; // Don't cache
+    $swf_xmlurl = 'flashvars.'.$swf->xmlurlname.' = "'.$CFG->wwwroot.'/mod/swf/content.php'.$swf->xmlurl.'?nocache='.time().'";'; // Don't cache
 }
 
 //Plugins
@@ -129,9 +129,9 @@ echo '<!DOCTYPE html>
         <script type="text/javascript" src="js/swfobject.js"></script>
         <script type="text/javascript">
                 var flashvars = {};
-                flashvars.apikey = "'.$swf->apikey.'";
+                flashvars.'.$swf->apikeyname.' = "'.$swf->apikey.'";
                 flashvars.configxml = "'.$swf->configxml.'";
-                flashvars.exiturl = "'.$swf->exiturl.'";
+                flashvars.'.$swf->exiturlname.' = "'.$swf->exiturl.'";
                 flashvars.gateway = "'.$CFG->wwwroot.'/lib/amfphp/gateway.php";
                 flashvars.gradebook = "'.$CFG->wwwroot.'/grade/report/user/index.php?id='.$COURSE->id.'";
                 flashvars.instance = "'.$id.'";
@@ -202,14 +202,3 @@ echo '<!DOCTYPE html>
         </div>
     </body>
 </html>';
-
-/*function swf_get_html5_embed($swf_xmlurl) {
-    $swf_path_info = pathinfo($swf_xmlurl);
-    $swf_mime_type = mimeinfo('type', $swf_path_info['basename']);
-    return '<div style="text-align: center;">
-        <div>&nbsp;</div>
-        <video controls>
-            <source src="'.$swf_xmlurl.'" type="'.$swf_mime_type.'"/>
-            '.get_string('nohtml5','swf').'
-        </video><div><a href="'.$swf_xmlurl.'" title="'.get_string('downloadrightclick','swf').'">'.get_string('download','swf').'</div></div>';
-}*/

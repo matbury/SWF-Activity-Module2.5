@@ -57,7 +57,7 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->addElement('header', 'general', get_string('general', 'form'));
         
         // Adding the standard "name" field
-        $mform->addElement('text', 'name', get_string('name'), array('size'=>'64'));
+        $mform->addElement('text', 'name', get_string('name'), array('size'=>64));
         if (!empty($CFG->formatstringstriptags)) {
             $mform->setType('name', PARAM_TEXT);
         } else {
@@ -85,13 +85,13 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->setType('plugin', PARAM_TEXT);
         $mform->addHelpButton('plugin', 'plugin', 'swf');
         // Flash Player embed parameters
-        $mform->addElement('text', 'width', get_string('width', 'swf'), array('size'=>'5'));
+        $mform->addElement('text', 'width', get_string('width', 'swf'), array('size'=>5));
         $mform->setType('width', PARAM_TEXT);
         $mform->setDefault('width', '100%');
-        $mform->addElement('text', 'height', get_string('height', 'swf'), array('size'=>'5'));
+        $mform->addElement('text', 'height', get_string('height', 'swf'), array('size'=>5));
         $mform->setType('height', PARAM_TEXT);
         $mform->setDefault('height', '95%');
-        $mform->addElement('text', 'version', get_string('version', 'swf'), array('size'=>'5'));
+        $mform->addElement('text', 'version', get_string('version', 'swf'), array('size'=>5));
         $mform->setType('version', PARAM_TEXT);
         $mform->setDefault('version', '11.4.0');
         $mform->addElement('select', 'allowfullscreen', get_string('allowfullscreen', 'swf'), swf_get_fullscreen_options());
@@ -100,10 +100,10 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->setDefault('scale', 'noScale');
         $mform->addElement('select', 'salign', get_string('salign', 'swf'), swf_get_salign());
         $mform->setDefault('salign', 'TL');
-        $mform->addElement('text', 'pagecolor', get_string('pagecolor', 'swf'), array('size'=>'6'));
+        $mform->addElement('text', 'pagecolor', get_string('pagecolor', 'swf'), array('size'=>6));
         $mform->setType('pagecolor', PARAM_TEXT);
         $mform->setDefault('pagecolor', 'FFFFFF');
-        $mform->addElement('text', 'bgcolor', get_string('bgcolor', 'swf'), array('size'=>'6'));
+        $mform->addElement('text', 'bgcolor', get_string('bgcolor', 'swf'), array('size'=>6));
         $mform->setType('bgcolor', PARAM_TEXT);
         $mform->setDefault('bgcolor', 'FFFFFF');
         $mform->addElement('select', 'seamlesstabbing', get_string('seamlesstabbing', 'swf'), swf_get_truefalse());
@@ -123,6 +123,12 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->setType('xmlurl', PARAM_TEXT);
         $mform->addHelpButton('xmlurl', 'xmlurl', 'swf');
         $mform->setDefault('xmlurl', '');
+        // xmlurlname FlashVar name for xmlurl
+        $mform->addElement('text', 'xmlurlname', get_string('xmlurlname', 'swf'), array('size'=>12));
+        $mform->setType('xmlurlname', PARAM_TEXT);
+        $mform->addRule('xmlurlname', null, 'required', null, 'client');
+        $mform->addHelpButton('xmlurlname', 'xmlurlname', 'swf');
+        $mform->setDefault('xmlurlname', 'xmlurl');
         // Uploaded SMIL, XML or Flash file
         $mform->addElement('filemanager', 'fileurl', get_string('fileurl', 'swf'), array('optional'=>true), swf_get_filemanager_options());   
         $mform->addHelpButton('fileurl', 'fileurl', 'swf');
@@ -131,6 +137,12 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->setType('exiturl', PARAM_RAW_TRIMMED); // remove whitespace
         $mform->addHelpButton('exiturl', 'exiturl', 'swf');
         $mform->setDefault('exiturl', '');
+        // Exit URL FlashVar name for exiturl
+        $mform->addElement('text', 'exiturlname', get_string('exiturlname', 'swf'), array('size'=>12));
+        $mform->setType('exiturlname', PARAM_TEXT);
+        $mform->addRule('exiturlname', null, 'required', null, 'client');
+        $mform->addHelpButton('exiturlname', 'exiturlname', 'swf');
+        $mform->setDefault('exiturlname', 'exiturl');
         // Name value pairs
         $swf_name_settings = array('size'=>20);
         $swf_value_settings = 'wrap="virtual" rows="3" cols="72"';
@@ -147,11 +159,28 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->setType('name3', PARAM_TEXT);
         $mform->addElement('textarea', 'value3', get_string("valuepair", "swf"), $swf_value_settings);
         $mform->setType('value3', PARAM_TEXT);
-        // configxml 
+        // API Key
+        $mform->addElement('textarea', 'apikey', get_string('apikey', 'swf'), $swf_value_settings);
+        $mform->setType('apikey', PARAM_TEXT);
+        $mform->addHelpButton('apikey', 'apikey', 'swf');
+        $mform->setDefault('apikey', '');
+        // API Key FlashVar name for apikey
+        $mform->addElement('text', 'apikeyname', get_string('apikeyname', 'swf'), array('size'=>12));
+        $mform->setType('apikeyname', PARAM_TEXT);
+        $mform->addRule('apikeyname', null, 'required', null, 'client');
+        $mform->addHelpButton('apikeyname', 'apikeyname', 'swf');
+        $mform->setDefault('apikeyname', 'apikey');
+        // Config XML 
         $mform->addElement('select', 'configxml', get_string('configxml', 'swf'), swf_get_configxmlurls());
         $mform->setType('configxml', PARAM_TEXT);
         $mform->addHelpButton('configxml', 'configxml', 'swf');
         $mform->setDefault('configxml', '');
+        // Config URL FlashVar name for configxml
+        $mform->addElement('text', 'configxmlname', get_string('configxmlname', 'swf'), array('size'=>12));
+        $mform->setType('configxmlname', PARAM_TEXT);
+        $mform->addRule('configxmlname', null, 'required', null, 'client');
+        $mform->addHelpButton('configxmlname', 'configxmlname', 'swf');
+        $mform->setDefault('configxmlname', 'configxml');
 
         //-------------------------------------------------------------------------------
         $this->standard_grading_coursemodule_elements();
