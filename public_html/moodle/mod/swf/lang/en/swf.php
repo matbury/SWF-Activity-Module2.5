@@ -16,8 +16,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    mod
- * @subpackage swf
+ * @package    mod_swf
  * @copyright  2013 Matt Bury
  * @author     Matt Bury <matt@matbury.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -193,12 +192,10 @@ $string['download'] = 'Download video/audio';
 $string['downloadrightclick'] = 'Right click to download video/audio';
 
 /*   mod/swf/index.php   */
-$string['viewreport'] = 'View activity report for';
-$string['sortedby'] = 'Sorted by';
+$string['viewreport'] = 'View report for';
 $string['sortby'] = 'Sort by';
 $string['noswfs'] = 'There are no SWF activities';
 $string['finalgrade'] = 'Final Grade';
-$string['durationhistory'] = 'Duration History';
 $string['gradehistory'] = 'Grade History';
 $string['disablegradehistory'] = 'Notice: Grade history has been disabled. Only final grades will be updated from now on.';
 $string['feedback'] = 'Feedback';
@@ -217,7 +214,8 @@ $string['passed'] = 'Passed';
 $string['notpassed'] = 'Not Passed';
 $string['duration'] = 'Duration';
 $string['total'] = 'Total';
-$string['average'] = 'Average';
+$string['averagegrade'] = 'Average grade';
+$string['averageduration'] = 'Average duration';
 $string['attempts'] = 'Attempts';
 
 /*   mod/swf/settings.php   */
@@ -240,7 +238,7 @@ $string['urledit'] = 'SWF Content File';
 
 /*   mod/swf/index.php and mod/swf/view.php    */
 $string['timecreated'] = 'Created';
-$string['usermodified'] = 'Modified by';
+$string['usermodified'] = 'Modified';
 
 /*  mod/swf/content.php */
 $string['404_error'] = '404 Error: File not found. SWF settings and/or path to file is/are not set correctly.';

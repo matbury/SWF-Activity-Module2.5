@@ -16,8 +16,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package     mod
- * @package     swf
+ * @package     mod_swf
  * @copyright   2013 Matt Bury
  * @author      Matt Bury <matt@matbury.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,10 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-//$module->version   = 0;             // If version == 0 then module will not be installed
-$module->version   = 2013073100;      // The current module version (Date: YYYYMMDDXX)
+$module->version   = 2013080700;      // The current module version (Date: YYYYMMDDXX)
 $module->requires  = 2013051400;      // Requires this Moodle version (2.5) (20130514)
 $module->cron      = 0;               // Period for cron to check this module (secs)
 $module->component = 'mod_swf';       // To check on upgrade, that module sits in correct place
-$module->release   = 'v0.1.0';        // Human-readable version name
+$module->release   = 'v0.2.1';        // Human-readable version name
 $module->maturity = MATURITY_BETA;      // How stable the plugin is MATURITY_ALPHA, MATURITY_BETA, MATURITY_RC, MATURITY_STABLE

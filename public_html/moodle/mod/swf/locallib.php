@@ -16,8 +16,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package     mod
- * @package     swf
+ * @package     mod_swf
  * @copyright   2013 Matt Bury
  * @author      Matt Bury <matt@matbury.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
