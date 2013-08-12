@@ -71,6 +71,106 @@ function swf_print_enrolled_users($context, $courseid, $userid, $sortby)
 
 /**
  * 
+ * @param string $course_format
+ * @return \html_table
+ */
+function swf_init_main_table($course_format)
+{
+    // Build headers for HTML table of instances, grades, and grade histories
+    $swf_main_table = new html_table();
+    if ($course_format == 'weeks')
+    {
+        $swf_main_table->head  = array (' ', get_string('name'));
+    } else if ($course_format == 'topics')
+    {
+        $swf_main_table->head  = array ('#', get_string('name'));
+    } else {
+        $swf_main_table->head  = array (' ', get_string('name'));
+    }
+    $swf_main_table->align = array ('center', '', 'center', 'center', 'center', '');
+    array_push($swf_main_table->head, get_string('finalgrade', 'swf'));
+    $swf_main_table->size[2] = '104px'; // Set Final Grade column width
+    array_push($swf_main_table->head, ''); // Passed / Not passed
+    $swf_grade_history_key = '<br/><img src="pix/green.gif" width="8" height="8"/>|<img src="pix/black.gif" width="8" height="8"/> = grade|duration';
+    array_push($swf_main_table->head, get_string('gradehistory', 'swf').$swf_grade_history_key);
+    array_push($swf_main_table->head, get_string('feedback', 'swf'));
+    $swf_main_table->size[6] = '35%'; // Limit Feedback column width
+    return $swf_main_table;
+}
+
+function swf_print_name_column($swf_instance, $context)
+{
+    global $USER, $DB;
+    if (!$swf_instance->visible)
+    {
+        //Show dimmed if the mod is hidden
+        $swf_name_column = '<a class="dimmed" href="view.php?id='
+                .$swf_instance->coursemodule.'" title="'
+                .format_string($swf_instance->name).'">'
+                .format_string($swf_instance->name).'</a>';
+    } else {
+        //Show normal if the mod is visible
+        $swf_name_column = '<a href="view.php?id='
+                .$swf_instance->coursemodule.'" title="'
+                .format_string($swf_instance->name).'">'
+                .format_string($swf_instance->name).'</a>';
+    }
+    
+    // Show last time and user modified to admins and teachers
+    if(has_capability('mod/swf:addinstance', $context, $USER->id, false))
+    {
+        $swf_name_column .= '<br/>('.get_string('usermodified', 'swf').': ';
+        if($swf_user_modified = $DB->get_record('user', array('id' => $swf_instance->usermodified)))
+        {
+            $swf_name_column .= '<a href="../../user/profile.php?id='
+                    .$swf_user_modified->id.'" title="'
+                    .get_string('viewprofile').'">'
+                    .$swf_user_modified->firstname.' '
+                    .$swf_user_modified->lastname.'</a> ';
+        }
+        $swf_name_column .= date('Y-m-d H:i', usertime($swf_instance->timemodified)).')';
+    }
+    return $swf_name_column;
+}
+
+/**
+ * 
+ * @param object $swf_grade_record
+ * @param int $userid
+ * @return string
+ */
+function swf_print_final_grade_column($swf_grade_record, $userid)
+{
+    $swf_grade = round($swf_grade_record->items[0]->grades[$userid]->grade); // int
+    $swf_grade_bar = '<img src="pix/green.gif" width="'.$swf_grade.'" height="6"  alt="'
+            .get_string('grade', 'swf').': '.$swf_grade.'%" title="'
+            .get_string('grade', 'swf').': '.$swf_grade.'%"/><img src="pix/red.gif" width="'
+            .(100 - $swf_grade).'" height="6" alt="'
+            .get_string('grade', 'swf').': '.$swf_grade.'%" title="'
+            .get_string('grade', 'swf').': '.$swf_grade.'%"/>';
+    $swf_grade_date_time = '<br/>'.round($swf_grade_record->items[0]->grades[$userid]->grade).'%<br/>'
+            .date('Y-m-d', usertime($swf_grade_record->items[0]->grades[$userid]->dategraded)).'<br/>'
+            .date('H:i:s', usertime($swf_grade_record->items[0]->grades[$userid]->dategraded));
+    return $swf_grade_bar.$swf_grade_date_time;
+}
+
+function swf_print_passed_column($swf_grade, $swf_grade_pass)
+{
+    if($swf_grade >= $swf_grade_pass)
+    {
+        $swf_grade_passed = '<img src="pix/tick.png" alt="'
+                .get_string('passed', 'swf').'" title="'
+                .get_string('passed', 'swf').'"/>';
+    } else {
+        $swf_grade_passed = '<img src="pix/cross.png" alt="'
+                .get_string('notpassed', 'swf').'" title="'
+                .get_string('notpassed', 'swf').'"/>';
+    }
+    return $swf_grade_passed.'<br/>'.$swf_grade_pass.'%';
+}
+
+/**
+ * 
  * @global object $DB
  * @param array $params
  * @param int $userid
@@ -115,7 +215,7 @@ function swf_print_grade_history_graph($params, $userid) {
 }
 
 /**
- * 
+ * A utility function that converts seconds into a formatted string
  * @param int $seconds
  * @return string - seconds in h:mm:ss format
  */
@@ -188,7 +288,7 @@ function swf_init_heatmap_weekdays_history()
 }
 
 /**
- * 
+ * Pushes number of attempts into heatmap array according to day of week and time
  * @param array $swf_heatmap_weekdays_history
  * @param int $userid
  * @param int $swf_itemid
