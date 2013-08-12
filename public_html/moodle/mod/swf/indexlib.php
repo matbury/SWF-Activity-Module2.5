@@ -76,7 +76,7 @@ function swf_print_enrolled_users($context, $courseid, $userid, $sortby)
  * @param int $userid
  * @return string
  */
-function swf_print_history($params, $userid) {
+function swf_print_grade_history_graph($params, $userid) {
     global $DB;
     $swf_grade_items = $DB->get_records('grade_items', $params);
     foreach($swf_grade_items as $swf_grade_item)
@@ -139,15 +139,11 @@ function swf_seconds_to_time($seconds)
 }
 
 /**
- * Create an array of number of attempts for each cell of a 24 x 7 grid
- * @global object $DB
- * @param int $userid
- * @param int $swf_itemid
+ * Create a 8 x 25 table for heatmap
  * @return \html_table
  */
-function swf_print_heatmap_table($userid, $swf_itemid)
+function swf_init_heatmap_table()
 {
-    global $DB;
     $swf_heatmap_table = new html_table();
     $swf_heatmap_table->head  = array(get_string('time', 'swf'));
     $swf_heatmap_table->align  = array('center');
@@ -162,6 +158,16 @@ function swf_print_heatmap_table($userid, $swf_itemid)
         array_push($swf_heatmap_table->head, $h); // Column headers (hours)
         array_push($swf_heatmap_table->align, 'center'); // Align columns
     }
+    
+    return $swf_heatmap_table;
+}
+
+/**
+ * Create a 7 days x 24 hours array to populate with grade history attempts
+ * @return array $swf_heatmap_weekdays_history
+ */
+function swf_init_heatmap_weekdays_history()
+{
     $swf_weekdays = array(  get_string('sunday', 'swf'),
                             get_string('monday', 'swf'),
                             get_string('tuesday', 'swf'),
@@ -172,39 +178,63 @@ function swf_print_heatmap_table($userid, $swf_itemid)
     // Create 2D array of 7 days x 24 hours
     for($i = 1; $i < 8; $i++)
     {
-        $swf_weekdays_history[$i] = array($swf_weekdays[$i - 1]);
+        $swf_heatmap_weekdays_history[$i] = array($swf_weekdays[$i - 1]);
         for($j = 1; $j < 25; $j++)
         {
-            $swf_weekdays_history[$i][$j] = 0;
+            $swf_heatmap_weekdays_history[$i][$j] = 0;
         }
     }
-    // Build bar graphs for Duration history and Grade history
+    return $swf_heatmap_weekdays_history;
+}
+
+/**
+ * 
+ * @param array $swf_heatmap_weekdays_history
+ * @param int $userid
+ * @param int $swf_itemid
+ * @return array $swf_heatmap_weekdays_history
+ */
+function swf_weekdays_history_push_item_grades($swf_heatmap_weekdays_history, $userid, $swf_itemid)
+{
+    global $DB;
     $swf_grade_history_records = $DB->get_records('grade_grades_history', array('itemid'=>$swf_itemid, 'userid'=>$userid));
     foreach($swf_grade_history_records as $swf_grade_history_record)
     {
         $day = date('w', usertime($swf_grade_history_record->timemodified)); // Set the day to user's time zone
         $hour = date('G', usertime($swf_grade_history_record->timemodified)); // Set the time to user's time zone
-        $swf_weekdays_history[$day + 1][$hour + 1] += 1; // Increment attempts count for each cell
+        $swf_heatmap_weekdays_history[$day + 1][$hour + 1] += 1; // Increment attempts count for each cell
     }
+    return $swf_heatmap_weekdays_history;
+}
+
+/**
+ * Create an array of number of attempts for each cell of a 24 x 7 grid
+ * @global object $DB
+ * @param \html_table $swf_heatmap_table
+ * @return \html_table $swf_heatmap_table
+ */
+function swf_print_heatmap_table($swf_heatmap_table, $swf_heatmap_weekdays_history)
+{
+    global $DB;
     // Creat table rows (24 x 7 grid)
     for($k = 1; $k < 8; $k++) // 7 days (rows)
     { 
         for($l = 1; $l < 25; $l++) // 24 hours (columns)
         { 
-            if($swf_weekdays_history[$k][$l] === 0)
+            if($swf_heatmap_weekdays_history[$k][$l] === 0)
             {
-                $swf_weekdays_history[$k][$l] = ''; // Leave table cell blank
+                $swf_heatmap_weekdays_history[$k][$l] = ''; // Leave table cell blank
             } else {
                 // Resize graphic according to number of attempts for cell
-                $attempts = $swf_weekdays_history[$k][$l];
+                $attempts = $swf_heatmap_weekdays_history[$k][$l];
                 $swf_block_size = $attempts + 4; // minimum size = 5 x 5px
-                $swf_weekdays_history[$k][$l] = '<img src="pix/red.gif" width="'
+                $swf_heatmap_weekdays_history[$k][$l] = '<img src="pix/red.gif" width="'
                         .$swf_block_size.'" height="'
                         .$swf_block_size.'" title="x '
                         .$attempts.'"/>';
             }
         }
-        $swf_heatmap_table->data[] = $swf_weekdays_history[$k];// Push table row
+        $swf_heatmap_table->data[] = $swf_heatmap_weekdays_history[$k];// Push table row
     }
     return $swf_heatmap_table;
 }

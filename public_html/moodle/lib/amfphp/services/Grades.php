@@ -69,14 +69,14 @@ class Grades
     public function amf_grade_update($obj = null)
     {
         // pass in empty object {} to test
-        /* */
+        /* 
         $obj['userid'] = 2;
         $obj['instance'] = 111; // Course module ID, e.g. mod/swf/view.php?id=3
         $obj['swfid'] = 1; // SWF Activity Module ID
         $obj['feedback'] = 'This is some sample feedback and here\'s a link: http://blog.matbury.com/';
         $obj['feedbackformat'] = rand(29,3800); // time elapsed
         $obj['rawgrade'] = rand(0,100);
-        
+        */
         // Get current user's capabilities
         $capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
         // If there was a problem with authentication, return the error message

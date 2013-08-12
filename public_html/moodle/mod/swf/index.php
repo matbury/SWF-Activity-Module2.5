@@ -87,6 +87,8 @@ array_push($table->head, get_string('feedback', 'swf'));
 $table->size[6] = '35%'; // Limit Feedback column width
 
 $swf_itemid = 0; // Initialise this in case there are no grades
+$swf_heatmap_table = swf_init_heatmap_table();
+$swf_heatmap_weekdays_history = swf_init_heatmap_weekdays_history(); // Stores attempts for heatmap table
 
 // Iterate through all instances in course and print out info
 foreach($swfs as $swf_instance)
@@ -112,7 +114,11 @@ foreach($swfs as $swf_instance)
         $link .= '<br/>('.get_string('usermodified', 'swf').': ';
         if($swf_user_modified = $DB->get_record('user', array('id' => $swf_instance->usermodified)))
         {
-            $link .= '<a href="../../user/profile.php?id='.$swf_user_modified->id.'" title="'.get_string('viewprofile').'">'.$swf_user_modified->firstname.' '.$swf_user_modified->lastname.'</a> ';
+            $link .= '<a href="../../user/profile.php?id='
+                    .$swf_user_modified->id.'" title="'
+                    .get_string('viewprofile').'">'
+                    .$swf_user_modified->firstname.' '
+                    .$swf_user_modified->lastname.'</a> ';
         }
         $link .= date('Y-m-d H:i', usertime($swf_instance->timemodified)).')';
     }
@@ -124,30 +130,11 @@ foreach($swfs as $swf_instance)
     } else {
         $swf_table_row = array ('', $link);
     }
+    
     // Final grade ---------------------------------------------------------- //
     $swf_grade_record = grade_get_grades($course->id, 'mod', 'swf', $swf_instance->id, $userid);
-    
     if($swf_grade_record->items[0]->grades[$userid]->grade)
-    { // Only print table row if grade has been pushed by user
-        $swf_grade = round($swf_grade_record->items[0]->grades[$userid]->grade); // int
-        $swf_grade_pass = round($swf_grade_record->items[0]->gradepass); // int
-        $swf_grade_feedback = explode('|||',$swf_grade_record->items[0]->grades[$userid]->feedback); // array
-        $swf_grade_bar = '<img src="pix/green.gif" width="'.$swf_grade.'" height="6"  alt="'
-                .get_string('grade', 'swf').': '.$swf_grade.'%" title="'
-                .get_string('grade', 'swf').': '.$swf_grade.'%"/><img src="pix/red.gif" width="'
-                .(100 - $swf_grade).'" height="6" alt="'
-                .get_string('grade', 'swf').': '.$swf_grade.'%" title="'
-                .get_string('grade', 'swf').': '.$swf_grade.'%"/>';
-        if($swf_grade >= $swf_grade_pass)
-        { // Is the final grade a pass?
-            $swf_grade_passed = '<img src="pix/tick.png" alt="'
-                    .get_string('passed', 'swf').'" title="'
-                    .get_string('passed', 'swf').'"/>';
-        } else {
-            $swf_grade_passed = '<img src="pix/cross.png" alt="'
-                    .get_string('notpassed', 'swf').'" title="'
-                    .get_string('notpassed', 'swf').'"/>';
-        }
+    {
         // Grade history ---------------------------------------------------- //
         // Get grade item for itemid
         $params = array('courseid'=>$COURSE->id,
@@ -160,6 +147,25 @@ foreach($swfs as $swf_instance)
             $swf_itemid = $swf_grade_item->id; // Should only be one item
         }
         
+        $swf_grade = round($swf_grade_record->items[0]->grades[$userid]->grade); // int
+        $swf_grade_pass = round($swf_grade_record->items[0]->gradepass); // int
+        $swf_grade_feedback = explode('|||',$swf_grade_record->items[0]->grades[$userid]->feedback); // array
+        $swf_grade_bar = '<img src="pix/green.gif" width="'.$swf_grade.'" height="6"  alt="'
+                .get_string('grade', 'swf').': '.$swf_grade.'%" title="'
+                .get_string('grade', 'swf').': '.$swf_grade.'%"/><img src="pix/red.gif" width="'
+                .(100 - $swf_grade).'" height="6" alt="'
+                .get_string('grade', 'swf').': '.$swf_grade.'%" title="'
+                .get_string('grade', 'swf').': '.$swf_grade.'%"/>';
+        if($swf_grade >= $swf_grade_pass)
+        {
+            $swf_grade_passed = '<img src="pix/tick.png" alt="'
+                    .get_string('passed', 'swf').'" title="'
+                    .get_string('passed', 'swf').'"/>';
+        } else {
+            $swf_grade_passed = '<img src="pix/cross.png" alt="'
+                    .get_string('notpassed', 'swf').'" title="'
+                    .get_string('notpassed', 'swf').'"/>';
+        }
         // Final grade column
         array_push($swf_table_row, $swf_grade_bar.'<br/>
             '.round($swf_grade_record->items[0]->grades[$userid]->grade).'%<br/>
@@ -168,10 +174,14 @@ foreach($swfs as $swf_instance)
         // Passed / Not Passed column
         array_push($swf_table_row, $swf_grade_passed.'<br/>'.$swf_grade_pass.'%');
         // Grade history graph column
-        $swf_grade_history_graph = swf_print_history($params, $userid);
-        array_push($swf_table_row,$swf_grade_history_graph);
+        $swf_grade_history_graph = swf_print_grade_history_graph($params, $userid);
+        array_push($swf_table_row, $swf_grade_history_graph);
         // Feedback column
-        array_push($swf_table_row,$swf_grade_feedback[1]);
+        array_push($swf_table_row, $swf_grade_feedback[1]);
+        
+        // Push grade history attempts into heatmap table array
+        $swf_heatmap_weekdays_history = swf_weekdays_history_push_item_grades($swf_heatmap_weekdays_history, $userid, $swf_itemid);
+        
     } else {
         // No grade so leave table row blank
         array_push($swf_table_row, get_string('nograde', 'swf'));
@@ -192,8 +202,9 @@ if($CFG->disablegradehistory == 1)
 }
 echo html_writer::table($table);
 
+// Print out user's activity heatmap
 echo $OUTPUT->heading(get_string('heatmap', 'swf'), 3);
-$swf_heatmap_table = swf_print_heatmap_table($userid, $swf_itemid);
+$swf_heatmap_table = swf_print_heatmap_table($swf_heatmap_table, $swf_heatmap_weekdays_history);
 echo html_writer::table($swf_heatmap_table);
 
 // Finish the page
