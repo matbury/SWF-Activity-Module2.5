@@ -126,7 +126,9 @@ echo '<!DOCTYPE html>
                 var flashvars = {};
                 flashvars.'.$swf->apikeyname.' = "'.$swf->apikey.'";
                 flashvars.configxml = "'.$swf->configxml.'";
+                flashvars.coursepage = "'.$CFG->wwwroot.'/course/view.php?id='.$COURSE->id.'";
                 flashvars.'.$swf->exiturlname.' = "'.$swf->exiturl.'";
+                flashvars.fullscreen = "'.$swf->allowfullscreen.'";
                 flashvars.gateway = "'.$CFG->wwwroot.'/lib/amfphp/gateway.php";
                 flashvars.gradebook = "'.$CFG->wwwroot.'/grade/report/user/index.php?id='.$COURSE->id.'";
                 flashvars.instance = "'.$id.'";

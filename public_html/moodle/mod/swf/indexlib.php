@@ -25,7 +25,14 @@
 defined('MOODLE_INTERNAL') || die();
 
 // Contains specific functions for moodle/mod/swf/index.php
-
+/**
+ * 
+ * @param object $context
+ * @param int $courseid
+ * @param int $userid
+ * @param string $sortby
+ * @return object $swf_current_user
+ */
 function swf_print_enrolled_users($context, $courseid, $userid, $sortby)
 {
     // Create a list of users in course index.php?id=$courseid&userid=$userid&sortby=lastname
@@ -98,6 +105,14 @@ function swf_init_main_table($course_format)
     return $swf_main_table;
 }
 
+/**
+ * 
+ * @global object $USER
+ * @global object $DB
+ * @param object $swf_instance
+ * @param object $context
+ * @return string
+ */
 function swf_print_name_column($swf_instance, $context)
 {
     global $USER, $DB;
@@ -154,6 +169,12 @@ function swf_print_final_grade_column($swf_grade_record, $userid)
     return $swf_grade_bar.$swf_grade_date_time;
 }
 
+/**
+ * 
+ * @param object $swf_grade
+ * @param int $swf_grade_pass
+ * @return string 
+ */
 function swf_print_passed_column($swf_grade, $swf_grade_pass)
 {
     if($swf_grade >= $swf_grade_pass)

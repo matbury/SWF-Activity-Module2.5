@@ -37,11 +37,11 @@ $CFG->swf_content_dir = rtrim($CFG->swf_content_dir, '/');
 $swf_relative_path = get_file_argument();
 if (empty($CFG->swf_content_dir) || !$swf_relative_path) {
     header('HTTP/1.0 404 Not Found');
-    exit(get_string('404_error','swf'));
+    exit(get_string('content_error','swf'));
 } else if ($swf_relative_path{0} != '/') {
     // Relative path must start with '/'.
     header('HTTP/1.0 404 Not Found');
-    exit(get_string('404_error','swf'));
+    exit(get_string('content_error','swf'));
 }
 
 $swf_data_path = realpath($CFG->dataroot . $CFG->swf_content_dir . $swf_relative_path);
@@ -52,5 +52,5 @@ if (strpos($swf_data_path, realpath($CFG->dataroot . $CFG->swf_content_dir)) ===
     send_file($swf_data_path, $swf_data_info['basename'], 'default', 0, false, false, $swf_mime_type, false);
 } else {
     header('HTTP/1.0 404 Not Found');
-    exit(get_string('404_error','swf'));
+    exit(get_string('content_error','swf'));
 }

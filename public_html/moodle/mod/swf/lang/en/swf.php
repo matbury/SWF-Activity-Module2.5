@@ -241,7 +241,7 @@ $string['timecreated'] = 'Created';
 $string['usermodified'] = 'Modified';
 
 /*  mod/swf/content.php */
-$string['404_error'] = '404 Error: File not found. SWF settings and/or path to file is/are not set correctly.';
+$string['content_error'] = '404 Error: File not found. SWF settings and/or path to file not set correctly.';
 
 /*  lib/amfphp/services/Access.php      */
 $string['not_logged_in'] = 'You are not logged in.';
