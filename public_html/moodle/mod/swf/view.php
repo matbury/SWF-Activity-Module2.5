@@ -125,7 +125,7 @@ echo '<!DOCTYPE html>
         <script type="text/javascript">
                 var flashvars = {};
                 flashvars.'.$swf->apikeyname.' = "'.$swf->apikey.'";
-                flashvars.configxml = "'.$swf->configxml.'";
+                flashvars.'.$swf->configxmlname.' = "'.$swf->configxml.'";
                 flashvars.coursepage = "'.$CFG->wwwroot.'/course/view.php?id='.$COURSE->id.'";
                 flashvars.'.$swf->exiturlname.' = "'.$swf->exiturl.'";
                 flashvars.fullscreen = "'.$swf->allowfullscreen.'";
