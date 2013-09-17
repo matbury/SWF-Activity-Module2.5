@@ -3,6 +3,13 @@ SWF-Activity-Module2.5
 
 SWF Activity Module for Moodle 2.5+
 
+Requirements
+
+    Moodle 2.5 or later
+    PHP 5.3
+    
+Please note that the AMFPHP API doesn't work with PHP 5.4. A new version for PHP 5.4 and later is currently under development.
+
 Installation
 
 There are 3 main stages to installing the SWF Activity Module:
@@ -23,12 +30,16 @@ There are 3 main stages to installing the SWF Activity Module:
 
 A creative commons licensed multimedia learning content cartridge is supplied for testing and as an example to get you started. To install it:
 
-    Via FTP, upload the /commonobjects/ directory and all its contents to /moodledata/repository/swfcontent/mmlcc/ so that the path is /moodledata/repository/swfcontent/mmlcc/commonobjects/
+    Via FTP, upload the /commonobjects/ directory and all its contents to
+    /moodledata/repository/swfcontent/mmlcc/ so that the path is /moodledata/repository/swfcontent/mmlcc/commonobjects/
 
 For further details about file system repositories see: File system repository - MoodleDocs
+
 2. Install the AMFPHP interface and services
 
-    Via FTP, upload the /amfphp/ directory and all its contents to /moodle/lib/ so that the path is /moodle/lib/amfphp/
+    Via FTP, upload the /amfphp/ directory and all its contents to
+    /moodle/lib/ so that the path is /moodle/lib/amfphp/
+
     That's it!
 
 3. Install the SWF Activity Module
