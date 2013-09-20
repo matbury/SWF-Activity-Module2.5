@@ -2,8 +2,8 @@
 /** This service handles messages for SWF Activity Module
 * 
 *
-* @author Matt Bury - matbury@gmail.com
-* @version $Id: Snapshot.php,v 1.0 2012/10/21 matbury Exp $
+* @author Matt Bury - matt@matbury.com
+* @version $Id: Snapshot.php,v 1.0 2013/08/22 matbury Exp $
 * @licence http://www.gnu.org/copyleft/gpl.html GNU Public Licence
 * Copyright (C) 2011  Matt Bury
 *
@@ -44,7 +44,7 @@ class Snapshot
     {
         $swf_return->result = 'SUCCESS';
         $swf_return->message = 'Snapshot.amf_ping successfully called.';
-        $swf_return->service_version = '2012.11.18';
+        $swf_return->service_version = '2013.08.22';
         $swf_return->php_version = phpversion(); // get current server PHP version
         return $swf_return;
     }
@@ -58,7 +58,7 @@ class Snapshot
     * 
     * @return (string) - either URL to saved image or error message
     */
-    public function amf_save_snapshot($obj)
+    public function amf_save_snapshot($obj = null)
     {
         /* 
         // To authenticate the AMFPHP browser app in Moodle, take at least one of
@@ -66,6 +66,12 @@ class Snapshot
         $obj['instance'] = 0;
         $obj['swfid'] = 0;
         */
+        if(!$obj)
+        {
+            $swf_return->result = 'INVALID_OBJECT';
+            $swf_return->message = get_string('invalid_object','swf');
+            return $swf_return;
+        }
         // Get current user's capabilities
         $capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
         // If there was a problem with authentication, return the error message
@@ -161,7 +167,7 @@ class Snapshot
     * 
     * @return (string) - either URL to saved image or error message
     */
-    public function amf_save_avatar($obj)
+    public function amf_save_avatar($obj = null)
     {
         /* 
         // To authenticate the AMFPHP browser app in Moodle, take at least one of
@@ -169,129 +175,135 @@ class Snapshot
         $obj['instance'] = 244;
         $obj['swfid'] = 53;
         */
+        if(!$obj)
+        {
+            $swf_return->result = 'INVALID_OBJECT';
+            $swf_return->message = get_string('invalid_object','swf');
+            return $swf_return;
+        }
         // Get current user's capabilities
         $capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
         // If there was a problem with authentication, return the error message
         if(!empty($capabilities->error))
         {
-        return $capabilities->error;
+            return $capabilities->error;
         }
         // Make sure they have permission to call this function
         if ($capabilities->is_logged_in && $capabilities->view_own_grades)
         {
-        global $CFG;
-        global $USER;
+            global $CFG;
+            global $USER;
 
-        // Add view to Moodle log
-        add_to_log($capabilities->course, 'swf', 'amfphp amf_save_avatar', "view.php?id=$capabilities->cmid", "$capabilities->swfname"); 
+            // Add view to Moodle log
+            add_to_log($capabilities->course, 'swf', 'amfphp amf_save_avatar', "view.php?id=$capabilities->cmid", "$capabilities->swfname"); 
 
-        //if($CFG->dataroot == $CFG->swf_dataroot)
-        //{
-        // Build path to user's avatar files directory
-        $dataroot_path = $CFG->dataroot.'/user/0/'.$USER->id.'/';
-        $user_path = $CFG->wwwroot.'/user/pix.php/'.$USER->id.'/';
-        //} else
-        //{
-        // Build alternative path to user's avatar files directory
-        //$dataroot_path = $CFG->swf_dataroot.'/user/0/'.$USER->id.'/';
-        //$user_path = $CFG->swf_wwwroot.'/user/'.$USER->id.'/';
-        //}
+            //if($CFG->dataroot == $CFG->swf_dataroot)
+            //{
+            // Build path to user's avatar files directory
+            $dataroot_path = $CFG->dataroot.'/user/0/'.$USER->id.'/';
+            $user_path = $CFG->wwwroot.'/user/pix.php/'.$USER->id.'/';
+            //} else
+            //{
+            // Build alternative path to user's avatar files directory
+            //$dataroot_path = $CFG->swf_dataroot.'/user/0/'.$USER->id.'/';
+            //$user_path = $CFG->swf_wwwroot.'/user/'.$USER->id.'/';
+            //}
 
-        // If necessary, create directory with SWF Activity Module instance name,
-        // e.g. /home/sites/example.com/moodledata/99/snapshots/Concept_map_activity/
-        try {
-        if(!file_exists($dataroot_path))
+            // If necessary, create directory with SWF Activity Module instance name,
+            // e.g. /home/sites/example.com/moodledata/99/snapshots/Concept_map_activity/
+            try {
+                if(!file_exists($dataroot_path))
+                {
+                    mkdir($dataroot_path, 0777, true);
+                }
+            } catch(Exception $e)
+            {
+                $swf_return->result = 'FILE_NOT_WRITTEN';
+                $swf_return->imageurl = $dataroot_path;
+                $swf_return->message = ''.$e->getMessage();
+                return $swf_return;
+            }
+
+            // If previous file by user exists, delete it - Does not affect files with date + time in file name
+            if(file_exists($dataroot_path.'f1.jpg'))
+            {
+                if(!unlink($dataroot_path.'f1.jpg'))
+                {
+                    $swf_return->result = 'FILE_NOT_WRITTEN';
+                    $swf_return->message = $dataroot_path.' user files directory is not writeable.';
+                    return $swf_return;
+                }
+            }
+
+            // If previous file by user exists, delete it - Does not affect files with date + time in file name
+            if(file_exists($dataroot_path.'f2.jpg'))
+            {
+                if(!unlink($dataroot_path.'f2.jpg'))
+                {
+                    $swf_return->result = 'FILE_NOT_WRITTEN';
+                    $swf_return->message = $dataroot_path.' user files directory is not writeable.';
+                    return $swf_return;
+                }
+            }
+
+            // Write the files to moodledata user directory
+            $result = file_put_contents($dataroot_path.'f1.jpg', $obj['avatar']->data);
+            $result = file_put_contents($dataroot_path.'f2.jpg', $obj['thumb']->data);
+
+            // Tell Moodle that this user's avatar is active
+            $data = new stdClass();
+            $data->id = $USER->id;
+            $data->picture = 1;
+            if(!update_record('user',$data))
+            {
+                // This is unlikely but just in case there's some kind of sitewide setting...
+                $swf_return->result = 'SUCCESS';
+                $swf_return->message = 'Your avatar has been saved but your user account will not let you use it!';
+                return $swf_return;
+            }
+
+            if($result)
+            {
+                $moodledata_path_filename_avatar_time = $user_path.'f1.jpg'.'?'.time();
+                $moodledata_path_filename_thumb_time = $user_path.'f2.jpg'.'?'.time();
+                $obj['feedback'] = '<a href="'.$moodledata_path_filename_avatar_time.'" target="_blank"><img src="'.$moodledata_path_filename_avatar_time.'" alt="saved image" width="100" height="100" border="0" /></a><a href="'.$moodledata_path_filename_thumb_time.'" target="_blank"><img src="'.$moodledata_path_filename_thumb_time.'" alt="saved image" width="35" height="35" border="0" /></a><br/>';
+                // Push grade into Moodle grade book
+                if($obj['feedbackformat'] < 10)
+                {
+                    $obj['feedbackformat'] = 10; // Set a minimum 10 seconds so as not to trigger Wiki-like format errors.
+                }
+
+                if($obj['pushgrade']) {
+                    $swf_return->grade = $this->grades->amf_grade_update($obj);
+                }
+                $swf_return->result = 'SUCCESS';
+                $swf_return->avatarurl = $moodledata_path_filename_avatar_time;
+                $swf_return->thumburl = $moodledata_path_filename_thumb_time;
+                $swf_return->message = 'Your avatar has been saved.';
+                return $swf_return;
+            } else {
+                    $swf_return->result = 'FILE_NOT_WRITTEN';
+                    $swf_return->avatarurl = $moodledata_path_filename_avatar_time;
+                    $swf_return->thumburl = $moodledata_path_filename_thumb_time;
+                    $swf_return->message = 'There was a problem. Your avatar has not been saved.';
+                    return $swf_return;
+                }
+            }
+            $swf_return->result = 'NO_PERMISSION';
+            $swf_return->avatarurl = 'You do not have permission to save avatars.'; // To be deprecated - Don't send messages on this parameter
+            $swf_return->message = 'You do not have permission to save avatars.';
+            return $swf_return;
+        }
+
+        // -----------------------------------------------------------------------------------------------------------
+
+        /**
+        * Clean up objects and variables for garbage collector
+        *
+        */
+        public function __destruct()
         {
-        mkdir($dataroot_path, 0777, true);
+            unset($access);
+            unset($users);
         }
-        } catch(Exception $e)
-        {
-        $swf_return->result = 'FILE_NOT_WRITTEN';
-        $swf_return->imageurl = $dataroot_path;
-        $swf_return->message = ''.$e->getMessage();
-        return $swf_return;
-        }
-
-        // If previous file by user exists, delete it - Does not affect files with date + time in file name
-        if(file_exists($dataroot_path.'f1.jpg'))
-        {
-        if(!unlink($dataroot_path.'f1.jpg'))
-        {
-        $swf_return->result = 'FILE_NOT_WRITTEN';
-        $swf_return->message = $dataroot_path.' user files directory is not writeable.';
-        return $swf_return;
-        }
-        }
-
-        // If previous file by user exists, delete it - Does not affect files with date + time in file name
-        if(file_exists($dataroot_path.'f2.jpg'))
-        {
-        if(!unlink($dataroot_path.'f2.jpg'))
-        {
-        $swf_return->result = 'FILE_NOT_WRITTEN';
-        $swf_return->message = $dataroot_path.' user files directory is not writeable.';
-        return $swf_return;
-        }
-        }
-
-        // Write the files to moodledata user directory
-        $result = file_put_contents($dataroot_path.'f1.jpg', $obj['avatar']->data);
-        $result = file_put_contents($dataroot_path.'f2.jpg', $obj['thumb']->data);
-
-        // Tell Moodle that this user's avatar is active
-        $data = new stdClass();
-        $data->id = $USER->id;
-        $data->picture = 1;
-        if(!update_record('user',$data))
-        {
-        // This is unlikely but just in case there's some kind of sitewide setting...
-        $swf_return->result = 'SUCCESS';
-        $swf_return->message = 'Your avatar has been saved but your user account will not let you use it!';
-        return $swf_return;
-        }
-
-        if($result)
-        {
-        $moodledata_path_filename_avatar_time = $user_path.'f1.jpg'.'?'.time();
-        $moodledata_path_filename_thumb_time = $user_path.'f2.jpg'.'?'.time();
-        $obj['feedback'] = '<a href="'.$moodledata_path_filename_avatar_time.'" target="_blank"><img src="'.$moodledata_path_filename_avatar_time.'" alt="saved image" width="100" height="100" border="0" /></a><a href="'.$moodledata_path_filename_thumb_time.'" target="_blank"><img src="'.$moodledata_path_filename_thumb_time.'" alt="saved image" width="35" height="35" border="0" /></a><br/>';
-        // Push grade into Moodle grade book
-        if($obj['feedbackformat'] < 10)
-        {
-        $obj['feedbackformat'] = 10; // Set a minimum 10 seconds so as not to trigger Wiki-like format errors.
-        }
-        if($obj['pushgrade']) {
-        $swf_return->grade = $this->grades->amf_grade_update($obj);
-        }
-        $swf_return->result = 'SUCCESS';
-        $swf_return->avatarurl = $moodledata_path_filename_avatar_time;
-        $swf_return->thumburl = $moodledata_path_filename_thumb_time;
-        $swf_return->message = 'Your avatar has been saved.';
-        return $swf_return;
-        } else {
-        $swf_return->result = 'FILE_NOT_WRITTEN';
-        $swf_return->avatarurl = $moodledata_path_filename_avatar_time;
-        $swf_return->thumburl = $moodledata_path_filename_thumb_time;
-        $swf_return->message = 'There was a problem. Your avatar has not been saved.';
-        return $swf_return;
-        }
-        }
-        $swf_return->result = 'NO_PERMISSION';
-        $swf_return->avatarurl = 'You do not have permission to save avatars.'; // To be deprecated - Don't send messages on this parameter
-        $swf_return->message = 'You do not have permission to save avatars.';
-        return $swf_return;
-        }
-
-    // -----------------------------------------------------------------------------------------------------------
-
-    /**
-    * Clean up objects and variables for garbage collector
-    *
-    */
-    public function __destruct()
-    {
-        unset($access);
-        unset($users);
     }
-    }
-// No, I haven't forgotten the closing PHP tag. It's not necessary here.

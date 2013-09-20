@@ -3,7 +3,7 @@
 * 
 *
 * @author Matt Bury - matbury@gmail.com
-* @version $Id: Grades.php,v 0.2 2010/02/01 matbury Exp $
+* @version $Id: Grades.php,v 1.0 2013/08/22 matbury Exp $
 * @licence http://www.gnu.org/copyleft/gpl.html GNU Public Licence
 * Copyright (C) 2010  Matt Bury
 *
@@ -51,7 +51,7 @@ class Grades
     {
         $swf_return->result = 'SUCCESS';
         $swf_return->message = 'Grades.amf_ping successfully called.';
-        $swf_return->service_version = '2013.05.14';
+        $swf_return->service_version = '2013.08.22';
         $swf_return->php_version = phpversion(); // get current server PHP version
         return $swf_return;
     }
@@ -65,10 +65,9 @@ class Grades
     * @param obj->rawgrade int grade before calculation as a percentage, scale, etc.
     * @return array of grade information objects (scaleid, name, grade and locked status, etc.) indexed with itemnumbers
     */
-    //public function amf_grade_update() // For testing in service browser
     public function amf_grade_update($obj = null)
     {
-        // pass in empty object {} to test
+        // For testing in service browser
         /* 
         $obj['userid'] = 2;
         $obj['instance'] = 111; // Course module ID, e.g. mod/swf/view.php?id=3
@@ -77,6 +76,12 @@ class Grades
         $obj['feedbackformat'] = rand(29,3800); // time elapsed
         $obj['rawgrade'] = rand(0,100);
         */
+        if(!$obj)
+        {
+            $swf_return->result = 'INVALID_OBJECT';
+            $swf_return->message = get_string('invalid_object','swf');
+            return $swf_return;
+        }
         // Get current user's capabilities
         $capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
         // If there was a problem with authentication, return the error message
@@ -145,7 +150,7 @@ class Grades
     * @param obj->userid int (optional) specify ID of user if teacher or admin
     * @return array of grade information objects (scaleid, name, grade and locked status, etc.) indexed with itemnumbers
     */
-    public function amf_grade_get_grades($obj)
+    public function amf_grade_get_grades($obj = null)
     {
         // Dummy values for testing in service browser
         /* 
@@ -153,6 +158,12 @@ class Grades
         $obj['swfid'] = 1;
         $obj['userid'] = 4;
         */
+        if(!$obj)
+        {
+            $swf_return->result = 'INVALID_OBJECT';
+            $swf_return->message = get_string('invalid_object','swf');
+            return $swf_return;
+        }
         // Get current user's capabilities
         $capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
         // If there was a problem with authentication, return the error message
@@ -201,7 +212,7 @@ class Grades
     * @param obj->userid int (optional) specify ID of user if teacher or admin
     * @return array of grade information objects (scaleid, name, grade and locked status, etc.) indexed with itemnumbers
     */
-    public function amf_grade_get_all_swf_grades($obj)
+    public function amf_grade_get_all_swf_grades($obj = null)
     {
         // Dummy values for testing in service browser
         /* 
@@ -209,6 +220,12 @@ class Grades
         $obj['swfid'] = 1;
         $obj['userid'] = 5;
         */
+        if(!$obj)
+        {
+            $swf_return->result = 'INVALID_OBJECT';
+            $swf_return->message = get_string('invalid_object','swf');
+            return $swf_return;
+        }
         // Get current user's capabilities
         $capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
         // If there was a problem with authentication, return the error message
@@ -263,7 +280,7 @@ class Grades
     * @param obj->userid int (optional) specify ID of user if teacher or admin
     * @return array of grade information objects (scaleid, name, grade and locked status, etc.) indexed with itemnumbers
     */
-    public function amf_grade_get_course_grade($obj)
+    public function amf_grade_get_course_grade($obj = null)
     {
         // Dummy values for testing in service browser
         /* 
@@ -271,6 +288,12 @@ class Grades
         $obj['swfid'] = 1;
         $obj['userid'] = 5;
         */
+        if(!$obj)
+        {
+            $swf_return->result = 'INVALID_OBJECT';
+            $swf_return->message = get_string('invalid_object','swf');
+            return $swf_return;
+        }
         // Get current user's capabilities
         $capabilities = $this->access->get_capabilities($obj['instance'],$obj['swfid']);
         // If there was a problem with authentication, return the error message
