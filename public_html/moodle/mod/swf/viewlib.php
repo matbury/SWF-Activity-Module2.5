@@ -161,8 +161,11 @@ function swf_get_allowfullscreen($swf) {
  * @return type
  */
 function swf_get_navbar($swf) {
+    if($swf->shownavbar == 'true')
+    {
     global $CFG, $COURSE, $USER;
     $swf_usermodified = '';
+    
     if(has_capability('mod/swf:addinstance',$swf->context,$USER->id,false)) {
         $swf_usermodified = '('.get_string('usermodified','swf').' '.$USER->firstname.' '.$USER->lastname.' '.date('H:i Y-m-d',usertime($swf->timemodified)).')';
     }
@@ -179,4 +182,6 @@ function swf_get_navbar($swf) {
                 <a href="'.$CFG->wwwroot.'/" title="'.get_string('home').'" >'.get_string('home').'</a> >> <a href="'.$CFG->wwwroot.'/course/view.php?id='.$COURSE->id.'" title="'.$COURSE->shortname.'" >'.$COURSE->shortname.'</a> >> <strong>'.$swf->name.'</strong> '.$swf_usermodified.'
                 '.$swf_right_links.'
             </div>';
+    }
+    return ''; // no nav bar
 }

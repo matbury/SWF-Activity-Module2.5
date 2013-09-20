@@ -84,6 +84,8 @@ $string['scale']='Stage Scale Mode';
 $string['salign']='Stage Align';
 $string['pagecolor']='Page Background Color';
 $string['bgcolor']='Flash Background Color';
+$string['shownavbar']='Show navigation bar';
+$string['shownavbar_help']='Show/Hide navigation bar at top of screen. If the navigation bar is hidden, it makes embedding SWF Activity Module instances in other Moodle pages and activities (with iframes) easier. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank">Mozilla docs iframe reference</a>';
 $string['seamlesstabbing']='Seamless Tabbing';
 $string['allowscriptaccess']='Allow Script Access';
 $string['allownetworking']='Allow Networking';
@@ -248,6 +250,7 @@ $string['not_logged_in'] = 'You are not logged in.';
 $string['invalid_module'] = 'You must specify a course_module ID or an instance ID.';
 
 /*  lib/amfphp/services/Grades.php      */
+$string['invalid_object'] = 'Module or app incorrectly configured. No valid object was sent.';
 $string['grade_no_permission'] = 'You do not have permission to access grades.';
 $string['grade_no_item'] = 'Grade item does not exist.';
 $string['grade_saved'] = 'Your grade has been sent to the grade book.';

@@ -25,7 +25,6 @@
 require_once('../../config.php');
 require_once('viewlib.php');
 
-
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $n  = optional_param('n', 0, PARAM_INT);  // swf instance ID - it should be named as the first character of the module
 
@@ -109,11 +108,19 @@ $swf_plugin = swf_get_plugins($swf);
 // Allow full screen mode
 $swf_allowfullscreen = swf_get_allowfullscreen($swf);
 
-// Show Moodle grade book link on top nav bar?
+// Show custom SWF navigation bar at top of screen
 $swf_navbar = swf_get_navbar($swf);
+$swf_fullbrowser = 'false';
+if($swf->shownavbar == 'false')
+{
+    $swf_fullbrowser = 'true';
+}
+
+// For PHP 5.3: flashvars.gateway = "'.$CFG->wwwroot.'/lib/amfphp/gateway.php"; // Uses AmfPHP 1.9
+// For PHP 5.3 and 5.4+: flashvars.gateway = "'.$CFG->wwwroot.'/lib/Amfphp/index.php"; // Uses AmfPHP 2.1 (Not yet working!)
 
 // Print HTML page
-echo '<!DOCTYPE html>
+$swf_html = '<!DOCTYPE html>
 <html>
     <head>
         <title>'.$swf->name.'</title>
@@ -126,8 +133,10 @@ echo '<!DOCTYPE html>
                 var flashvars = {};
                 flashvars.'.$swf->apikeyname.' = "'.$swf->apikey.'";
                 flashvars.'.$swf->configxmlname.' = "'.$swf->configxml.'";
+                flashvars.courseid = "'.$COURSE->id.'";
                 flashvars.coursepage = "'.$CFG->wwwroot.'/course/view.php?id='.$COURSE->id.'";
                 flashvars.'.$swf->exiturlname.' = "'.$swf->exiturl.'";
+                flashvars.fullbrowser = "'.$swf_fullbrowser.'";
                 flashvars.fullscreen = "'.$swf->allowfullscreen.'";
                 flashvars.gateway = "'.$CFG->wwwroot.'/lib/amfphp/gateway.php";
                 flashvars.gradebook = "'.$CFG->wwwroot.'/grade/report/user/index.php?id='.$COURSE->id.'";
@@ -199,3 +208,5 @@ echo '<!DOCTYPE html>
         </div>
     </body>
 </html>';
+
+echo $swf_html;

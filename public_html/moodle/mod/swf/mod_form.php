@@ -109,6 +109,9 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->addElement('text', 'bgcolor', get_string('bgcolor', 'swf'), array('size'=>6));
         $mform->setType('bgcolor', PARAM_TEXT);
         $mform->setDefault('bgcolor', 'FFFFFF');
+        $mform->addElement('select', 'shownavbar', get_string('shownavbar', 'swf'), swf_get_truefalse());
+        $mform->setDefault('shownavbar', 'true');
+        $mform->addHelpButton('shownavbar', 'shownavbar', 'swf');
         $mform->addElement('select', 'seamlesstabbing', get_string('seamlesstabbing', 'swf'), swf_get_truefalse());
         $mform->setDefault('seamlesstabbing', 'true');
         $mform->addElement('select', 'allowscriptaccess', get_string('allowscriptaccess', 'swf'), swf_get_allowscriptaccess());
