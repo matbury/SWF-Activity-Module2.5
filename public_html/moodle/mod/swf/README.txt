@@ -1,4 +1,13 @@
-Installation
+SWF Activity Module for Moodle 2.5+
+===================================
+
+If you downloaded or installed this module from the Moodle.org repository (https://moodle.org/plugins/view.php?plugin=mod_swf), there are some files missing that you need to get from the main project repository.
+
+Project repository: https://github.com/matbury/SWF-Activity-Module2.5
+
+Project wiki: https://github.com/matbury/SWF-Activity-Module2.5/wiki
+
+===Installation===
 
 There are 3 main stages to installing the SWF Activity Module:
 
