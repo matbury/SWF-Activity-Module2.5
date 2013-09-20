@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <title>SWF TODO</title>
+        <style>
+            body {font-family: "Trebuchet MS"; text-decoration: none;}
+            a {text-decoration: none;}
+            a:link {color: #444444;}
+            a:visited {color: #444444;}
+            a:hover {color: #aaaaaa; font-weight: bold;}
+            a:active {color: #dddddd;}
+            .centred {text-align: center;}
+        </style>
+    </head>
+    <body>
+        <div class="centred">
+            <video controls>
+                <source src="http://localhost/m2/mod/swf/content.php/video/subdir/video.f4v" type="video/mp4"/>
+                Your browser does not support the <code>video</code> element.
+            </video>
+            <p>&nbsp;</p>
+            <iframe src="http://localhost/m2/mod/swf/content.php/video/subdir/video.f4v">iframe</iframe>
+        </div>
+        
+        <h2>SWF TODO List:</h2>
+        
+        <h3>Not done:</h3>
+        
+        <ol>
+            
+            <li><strong>Include webcam capture in debugger app. Also make it movable and add "Take snapshot" button.</strong></li>
+            
+            <li><strong>Error on course participation page; modulemissingcode. Need to complete code in mod/swf/lib.php for reports</strong></li>
+
+            <li><strong>Several functions in mod/swf/lib.php are incomplete.</strong></li>
+
+            <li><strong>Hash file is being pushed into fileurl DB cell - Can you stop it? i.e. leave it blank?</strong></li>
+
+            <li><strong>Large video files, 100MB+ put excessive load on server (PHP memory use). Possible to hand it over to Apache/server to manage?</strong></li>
+
+            <li><strong>Add course completion support. By view and by grade. <a href="http://docs.moodle.org/dev/Activity_completion_API" target="_blank">http://docs.moodle.org/dev/Activity_completion_API</a></strong></li>
+
+            <li><strong>Add available from and to dates support. Simple enough to test for dates and change output. Or use Moodle core? Not implemented yet. Wait until Moodle 2.6+</strong></li>
+
+            <li><strong>Develop captioning plugin for Strobe: <a href="http://sourceforge.net/apps/mediawiki/osmf.adobe/index.php?title=Captions">http://sourceforge.net/apps/mediawiki/osmf.adobe/index.php?title=Captions</a></strong></li>
+
+        </ol>
+        
+        <h3>Done:</h3>
+        
+        <ol>
+            
+            <li>Include source code for concept map</li>
+            
+            <li>Add exit URL button to debugger app</li>
+            
+            <li>Add fullscreen button to debugger app</li>
+            
+            <li>Complete code for configxml parameters in mod_form.php and view.php</li>
+            
+            <li>Fix preloader app - Throwing errors: TypeError: Error #1009: Cannot access a property or method of a null object reference. at engestrom_activity_theory_fla::MainTimeline/frame1()</li>
+
+            <li>Prepend namespace on file names listed from swfcontent so that users can see which source their from and to avoid confusing naming schemas.</li>
+        
+            <li>Add timecreated timemodified and modifiedby DB entries + code. </li>
+            
+            <li>Update Snapshot.php as a generic file saving app to work with new module. Save user files to /swfcontent/userdata/ </li>
+            
+            <li>Develop content cartridge checker as open source app for distribution with module with source code </li>
+        
+            <li>Secure swf/content.php script to prevent snooping outside repository/swfcontent/</li>
+        
+            <li>Split code on moodle/mod/swf/index.php into functions and create an indexlib.php page.  - tidied up but still ugly</li>
+        
+            <li>Check backup and restore. Do they work?  (Didn't restore grades is it supposed to or not?)</li>
+        
+            <li>Add created/modified by [name] to view.php and index.php pages, and mod_form.php? </li>
+        
+            <li>urlencode() name value pair input strings before embedding them. </li>
+            
+            <li>Test if uploaded "file required" works on mod_form.php </li>
+        
+            <li>The way video works now isn't satisfactory. Can we get it to deploy in one go: upload -> save -> view? Option to switch xmlurl= to file= ? </li>
+
+            <li>content.php?file=etc... confuses Strobe and JW Player. Change to slashes? i.e. content.php/path/to/file.jpg </li>
+
+            <li>Managing Moodle grade book grade items: 0% gradepass by default + instructions to edit gradebook </li>
+
+            <li>Add option for teachers to select and view learner's activity report pages. </li>
+
+            <li>Sort participants names by lastname. </li>
+
+            <li>Add links to sort by lastname and firstname. </li>
+
+            <li>Get JW Player to work through file.php  Youtube doesn't work with JW5</li>
+
+            <li>Get a better working version of expressInstall and/or error message. </li>
+
+            <li>Test Flash Params: StageAlign, StageScaleMode, and fullscreen. </li>
+
+            <li>Remove filetype on /moodle/mod/swf/mod_form.php and related functions. Make it work on the xmlurl list options. </li>
+
+            <li>Remove xmlurl vs. xmlfile checking and internal vs. external file checking and constants from /moodle/mod/swf/lib.php and other files. They go into separate table columns; xmlurl and fileurl; and get chosen on /moodle/mod/swf/view.php </li>
+
+            <li>Put all language strings into lang/en/swf.php </li>
+            
+            <li>xmlurl = dropdown list </li>
+            <li>fileurl = file uploader </li>
+            
+            <li>Finish MILAs Content Cartridge Checker: Remove bit about Moodle 1.9 </li>
+            <li>Update /moodle/lib/amfphp/services/Snapshot.php to save files to /moodledata/repository/swfcontent/snapshots/</li>
+            <li>Probably won't work with avatar camera... save to temp file and then to desktop? NOPE</li>
+            <li>Eliminate tables: swf_sessions, swf_activities, swf_settings, swf_groups, and swf_users </li>
+            <li>In $CFG eliminate jar_base and lap </li>
+            <li>index.php page: A summary of user's activities from grade book again? </li>
+            <li>SWF Activity heatmap for users </li>
+            <li>Leave index.php report table row blank if there's no grade book entries. </li>
+        </ol>
+        
+        <p>3 options in dropdown list: </p>
+        <ul>
+            <li>false => None</li>
+            <li>true => Use uploaded file below</li>
+            <li>myfile.xml => myfile.xml</li>
+            <li>mysmil_file.smil => mysmil_file.smil</li>
+            <li>etc.</li>
+        </ul>
+        
+        <p>Get rid of evaluation settings? </p>
+
+        <p>Common module settings: show/hide works! :)</p>
+        
+        <p>Show/hide intro works! :)</p>
+
+        <p>In table swf eliminate: </p>
+        <ul>
+            <li>lang</li>
+            <li>timeavailable</li>
+            <li>timedue</li>
+        </ul>
+        
+        <p>Matteo Scaramuccia's help from: https://moodle.org/mod/forum/discuss.php?d=231099:</p>
+        
+        <ol>
+            <li>Trivial, you coud use '../../config.php' instead of dirname() for performances reasons. If you like to use absolute paths, which is nice as well, you could simplify it with just dirname(__FILE__).'/../../' </li>
+            <li>Trivial, do not use @subpackage but @package mod_swf </li>
+            <li>Fix, instead of using isset(_GET($content), use required_param('content', PARAM_PATH): it will do what you've coded in just one single line. Now the path will be valid if it will start with '/' which is fine, just a bit of refactoring in your work to consider '/' the root of your subfolder when creating $swf_file</li>
+            <li>Enh, MIME type extraction. Get benefits from the Moodle Files API: include (= require_once()) lib/filelib.php and use $swf_mime = mimeinfo('type', basename($swf_file)) then simplify the switch by including all the case now based on the MIME Type you're supporting, defining a new boolean variable like $found = true NOT </li>
+            <li>Change the conditional branch now based on $found, before being $swf_mime NOT </li>
+            <li>Fix, use lib/filelib.php::send_file() (read the PHPDoc for the parameters) to send the file to the browser and get advantages of Partial Responses (HTTP 206) too which are used - it depends on the client - to serve parts of the file to simulate streaming especially when playing with the slider of a media viewer. Besides you'll stick with the Moodle Files API providing files the same way as Moodle does with the objects under its control: you'll share the same bugs (rare, really stable) but also the benefits wink NOT </li>
+            <li>Enh, sending HTTP 404 could be implemented with lib/filelip.php::send_header_404() NOT </li>
+            <li>Trivial, be kind and send an HTTP 404 when someone is trying to hack your content parameter with absolute system paths or whatever you find to be a nonexistent file within $CFG->dataroot.$CFG->swf_content_dir </li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services-config>
+    <services>
+        <service id="sabreamf-flashremoting-service"
+                 class="flex.messaging.services.RemotingService"
+                 messageTypes="flex.messaging.messages.RemotingMessage">
+            <destination id="amfphp">
+                <channels>
+                    <channel ref="my-amfphp"/>
+                </channels>
+                <properties>
+                    <source>*</source>
+                </properties>
+            </destination>
+        </service>
+    </services>
+
+    <channels>
+        <channel-definition id="my-amfphp" class="mx.messaging.channels.AMFChannel">
+            <endpoint uri="http://flashservices/gateway.php" class="flex.messaging.endpoints.AMFEndpoint"/>
+        </channel-definition>
+    </channels>
+</services-config>
