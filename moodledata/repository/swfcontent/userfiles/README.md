@@ -15,13 +15,13 @@ here to test if your server and Moodle configuration are compatible.
 
 You can change which directory the SWF Activity Module saves files to. Here's an example where for each new academic year, the userfiles directory is changed:
 
-    Create new directory /moodledata/repository/swfcontent/userfiles.2013.09.01/
+    1. Create new directory /moodledata/repository/swfcontent/userfiles.2013.09.01/
 
-    Site administration > Plugins > Activity modules > SWF
+    2. Site administration > Plugins > Activity modules > SWF
 
-    Change name of "Saved Files Directory" to /userfiles.2013.09.01
+    3. Change name of "Saved Files Directory" to /userfiles.2013.09.01
 
-    Save
+    4. Save
 
 Now all new files will be saved to
 

@@ -11,13 +11,13 @@ This directory is where libraries of multimedia, XML, and SMIL files are stored 
 
 You can change which directory the SWF Activity Module uses as its Multimedia Content Directory like this:
 
-    Create new directory /moodledata/repository/new_swfcontent
+    1. Create new directory /moodledata/repository/new_swfcontent
 
-    Site administration > Plugins > Activity modules > SWF
+    2. Site administration > Plugins > Activity modules > SWF
 
-    Change name of "Multimedia Content Directory" to /moodledata/repository/new_swfcontent
+    3. Change name of "Multimedia Content Directory" to /moodledata/repository/new_swfcontent
 
-    Save
+    4. Save
 
 Now the SWF Activity Module will direct apps to this new directory to load learning content from:
 
