@@ -1,6 +1,8 @@
 SWF-Activity-Module2.5
 ======================
 
+Project Wiki: https://github.com/matbury/SWF-Activity-Module2.5/wiki
+
 ===Multimedia Content Directory===
 
 The default Multimedia Content Directory is /moodledata/repository/swfcontent

@@ -3,6 +3,8 @@ SWF-Activity-Module2.5
 
 SWF Activity Module for Moodle 2.5+
 
+Project Wiki: https://github.com/matbury/SWF-Activity-Module2.5/wiki
+
 Requirements
 
     Moodle 2.5 or later

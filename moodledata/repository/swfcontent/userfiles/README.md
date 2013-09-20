@@ -1,6 +1,8 @@
 SWF-Activity-Module2.5
 ======================
 
+Project Wiki: https://github.com/matbury/SWF-Activity-Module2.5/wiki
+
 ===Saved Files Directory===
 
 The default Saved Files Directory is /userfiles
