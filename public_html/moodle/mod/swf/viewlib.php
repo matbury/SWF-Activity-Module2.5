@@ -78,25 +78,24 @@ function swf_get_fileurl($swf, $context){
  * @return type
  */
 function swf_get_alternative_content($swf) {
-    return '<div style="text-align: center; font-size: large; font-weight: bold;">
-            <div>&nbsp;</div>
-            <div>'.get_string('broken1','swf').'</div>
-            <div>&nbsp;</div>
-            <div>
-                <div>'.get_string('broken2','swf').'</div>
-                <div>'.get_string('broken3','swf').$swf->version.get_string('broken31','swf').'</div>
-                <div>'.get_string('broken4','swf').'</div>
-                <div>'.get_string('broken5','swf').'</div>
-            </div>
-            <div>&nbsp;</div>
-            <div>'.get_string('broken6','swf').'</div>
-            <div>'.get_string('broken7','swf').'</div>
-            <div>&nbsp;</div>
-            <div><a href="http://helpx.adobe.com/flash-player.html" target="_blank" alt="'.get_string('broken8','swf').'" title="'.get_string('broken8','swf').'"><img src="pix/fp_logo.png" alt="Flash Player logo"/></a></div>
-            <div>&nbsp;</div>
-            <div><a href="http://matbury.com/" target="_blank" title="Matt Bury | matbury.com">© 2013 Matt Bury | matbury.com</a></div>
-            <div>&nbsp;</div>
-            <div><a href="http://www.gnu.org/licenses/gpl.html" target="_blank" title="GNU GPL v3 licensed">GNU GPL v3 licensed</a></div></div>';
+    return '<div class="swfalternativecontent">
+            <p>&nbsp;</p>
+            <p>'.get_string('broken1','swf').'</p>
+            <p>&nbsp;</p>
+                <p>'.get_string('broken2','swf').'</p>
+                <p>'.get_string('broken3','swf').$swf->version.get_string('broken31','swf').'</p>
+                <p>'.get_string('broken4','swf').'</p>
+                <p>'.get_string('broken5','swf').'</p>
+            <p>&nbsp;</p>
+            <p>'.get_string('broken6','swf').'</p>
+            <p>'.get_string('broken7','swf').'</p>
+            <p>&nbsp;</p>
+            <p><a href="http://helpx.adobe.com/flash-player.html" target="_blank" alt="'.get_string('broken8','swf').'" title="'.get_string('broken8','swf').'"><img src="pix/fp_logo.png" alt="Flash Player logo"/></a></p>
+            <p>&nbsp;</p>
+            <p><a href="http://matbury.com/" target="_blank" title="Matt Bury | matbury.com">© 2013 Matt Bury | matbury.com</a></p>
+            <p>&nbsp;</p>
+            <p><a href="http://www.gnu.org/licenses/gpl.html" target="_blank" title="GNU GPL v3 licensed">GNU GPL v3 licensed</a></p>
+            </div>';
 }
 
 /**
@@ -108,11 +107,12 @@ function swf_get_html5_embed($swf_xmlurl) {
     $swf_path_info = pathinfo($swf_xmlurl);
     $swf_mime_type = mimeinfo('type', $swf_path_info['basename']);
     return '<div style="text-align: center;">
-        <div>&nbsp;</div>
         <video controls>
             <source src="'.$swf_xmlurl.'" type="'.$swf_mime_type.'"/>
-            '.get_string('nohtml5','swf').'
-        </video><div><a href="'.$swf_xmlurl.'" title="'.get_string('downloadrightclick','swf').'">'.get_string('download','swf').'</div></div>';
+            <p>'.get_string('nohtml5','swf').'</p>
+        </video>
+            <p><a href="'.$swf_xmlurl.'" title="'.get_string('downloadrightclick','swf').'">'.get_string('download','swf').'</a></p>
+        </div>';
 }
 
 /**
@@ -179,7 +179,7 @@ function swf_get_navbar($swf) {
             </div>';
     }
     return '<div class="swfnavdiv">
-                <a href="'.$CFG->wwwroot.'/" title="'.get_string('home').'" >'.get_string('home').'</a> >> <a href="'.$CFG->wwwroot.'/course/view.php?id='.$COURSE->id.'" title="'.$COURSE->shortname.'" >'.$COURSE->shortname.'</a> >> <strong>'.$swf->name.'</strong> '.$swf_usermodified.'
+                <a href="'.$CFG->wwwroot.'/" title="'.get_string('home').'" >'.get_string('home').'</a> &gt;&gt; <a href="'.$CFG->wwwroot.'/course/view.php?id='.$COURSE->id.'" title="'.$COURSE->shortname.'" >'.$COURSE->shortname.'</a> &gt;&gt; <strong>'.$swf->name.'</strong> '.$swf_usermodified.'
                 '.$swf_right_links.'
             </div>';
     }

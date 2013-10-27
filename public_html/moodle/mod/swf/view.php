@@ -139,6 +139,7 @@ $swf_html = '<!DOCTYPE html>
                 flashvars.fullbrowser = "'.$swf_fullbrowser.'";
                 flashvars.fullscreen = "'.$swf->allowfullscreen.'";
                 flashvars.gateway = "'.$CFG->wwwroot.'/lib/amfphp/gateway.php";
+                flashvars.gradeupdate = "'.$CFG->wwwroot.'/mod/swf/scripts/gradeupdate.php";
                 flashvars.gradebook = "'.$CFG->wwwroot.'/grade/report/user/index.php?id='.$COURSE->id.'";
                 flashvars.instance = "'.$id.'";
                 flashvars.moodledata = "'.$CFG->wwwroot.'/mod/swf/content.php/";
@@ -198,6 +199,11 @@ $swf_html = '<!DOCTYPE html>
                 padding-right: 0px;
                 text-align: left;
                 float: left;
+            }
+            .swfalternativecontent {
+                text-align: center;
+                font-size: large;
+                font-weight: bold;
             }
         </style>
     </head>

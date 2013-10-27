@@ -255,6 +255,15 @@ $string['grade_no_permission'] = 'You do not have permission to access grades.';
 $string['grade_no_item'] = 'Grade item does not exist.';
 $string['grade_saved'] = 'Your grade has been sent to the grade book.';
 $string['grade_accessed'] = 'Grade(s) successfully accessed.';
+//
+$string['grade_update_no_id'] = 'No valid coure module or instance ID was received.';
+$string['grade_update_ok'] = 'Your grade has been saved.';
+$string['grade_update_failed'] = 'Your grade failed to be saved.';
+$string['grade_update_multiple'] = 'GRADE_UPDATE_MULTIPLE'; // What does this mean?
+$string['grade_update_item_locked'] = 'Grades for this activity are locked.';
+$string['grade_update_no_item'] = 'Grades are not recorded for this activity.';
+$string['grade_update_no_grade'] = 'No valid grade was submitted.';
+$string['grade_update_no_feedback'] = 'No feedback was submitted.';
 
 /*  lib/amfphp/services/Snapshot.php    */
 $string['img_not_writeable'] = ' directory is not writeable.';
