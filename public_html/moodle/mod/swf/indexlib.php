@@ -157,16 +157,20 @@ function swf_print_name_column($swf_instance, $context)
 function swf_print_final_grade_column($swf_grade_record, $userid)
 {
     $swf_grade = round($swf_grade_record->items[0]->grades[$userid]->grade); // int
+    $swf_grade_feedback = explode('|||', $swf_grade_record->items[0]->grades[$userid]->feedback);
+    $swf_grade_duration = swf_seconds_to_time((int)$swf_grade_feedback[0]);
     $swf_grade_bar = '<img src="pix/green.gif" width="'.$swf_grade.'" height="6"  alt="'
             .get_string('grade', 'swf').': '.$swf_grade.'%" title="'
             .get_string('grade', 'swf').': '.$swf_grade.'%"/><img src="pix/red.gif" width="'
             .(100 - $swf_grade).'" height="6" alt="'
             .get_string('grade', 'swf').': '.$swf_grade.'%" title="'
             .get_string('grade', 'swf').': '.$swf_grade.'%"/>';
-    $swf_grade_date_time = '<br/>'.round($swf_grade_record->items[0]->grades[$userid]->grade).'%<br/>'
-            .date('Y-m-d', usertime($swf_grade_record->items[0]->grades[$userid]->dategraded)).'<br/>'
-            .date('H:i:s', usertime($swf_grade_record->items[0]->grades[$userid]->dategraded));
-    return $swf_grade_bar.$swf_grade_date_time;
+    //
+    $swf_grade_duration_date_time = '<br/>'.get_string('grade', 'swf').': '.$swf_grade.'%'
+            .'<br/>'.get_string('duration', 'swf').': '.$swf_grade_duration
+            .'<br/>-<br/>'.date('Y-m-d', usertime($swf_grade_record->items[0]->grades[$userid]->dategraded))
+            .'<br/>'.date('H:i:s', usertime($swf_grade_record->items[0]->grades[$userid]->dategraded));
+    return $swf_grade_bar.$swf_grade_duration_date_time;
 }
 
 /**

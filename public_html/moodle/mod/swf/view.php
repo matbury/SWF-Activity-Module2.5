@@ -138,7 +138,7 @@ $swf_html = '<!DOCTYPE html>
                 flashvars.'.$swf->exiturlname.' = "'.$swf->exiturl.'";
                 flashvars.fullbrowser = "'.$swf_fullbrowser.'";
                 flashvars.fullscreen = "'.$swf->allowfullscreen.'";
-                flashvars.gateway = "'.$CFG->wwwroot.'/lib/amfphp/gateway.php";
+                flashvars.gateway = "'.$CFG->wwwroot.'/lib/Amfphp/index.php";
                 flashvars.gradeupdate = "'.$CFG->wwwroot.'/mod/swf/scripts/gradeupdate.php";
                 flashvars.gradebook = "'.$CFG->wwwroot.'/grade/report/user/index.php?id='.$COURSE->id.'";
                 flashvars.instance = "'.$id.'";
