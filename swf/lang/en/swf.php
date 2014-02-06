@@ -57,22 +57,9 @@ $string['selectfile'] = 'Select...';
 $string['swffile'] = 'App';
 $string['swffile_help'] = 'Choose a Flash app from the drop down list. Adjust the Flash Player settings to control how the app is displayed. New apps must be installed by a system administrator with server access. Do not install standalone learning applications here. Upload them as learning content files and use the swfs/preloader.swf app to load them.
     
-To play a video:
-
-* Learning App: swfs/StrobeMediaPlayback.swf
-* Name: file
-* Value: http://download.ted.com/talks/PaoloCardini_2012G-480p.mp4
-* You can also use Moodle\'s file manager to select a video.
-
-To display and standalone Flash app:
-
-* Learning App: swfs/preloader.swf
-* Content URL/File: upload, select, or paste a link to the Flash app
-* or name value pair:
-* Name: xmlurl
-* Value: http://example.com/learning/games/mygame.swf'.$swf_docs;
+To play a video select Strobe Media Player or JW Player'.$swf_docs;
 $string['plugin'] = 'Plugin';
-$string['plugin_help'] = 'swfs/StrobeMediaPlayback.swf supports the following plugins...
+$string['plugin_help'] = 'The Strobe Media Player supports the following plugins...
 
 * Strobe SMIL
 * Strobe YouTube';
@@ -89,22 +76,24 @@ $string['shownavbar_help']='Show/Hide navigation bar at top of screen. If the na
 $string['seamlesstabbing']='Seamless Tabbing';
 $string['allowscriptaccess']='Allow Script Access';
 $string['allownetworking']='Allow Networking';
+
+// Video, Flash Content, and Playlists
+$string['videoheader'] = 'Video, Flash Content, and Playlists';
+$string['videoheader_help'] = 'Use this section to select Flash content, videos, or playlists if you\'ve selected the Strobe Media Player or JW Player.';
+$string['contentfile'] = 'Repository File';
+$string['contentfile_help'] = 'Select from a list of Flash content, videos, or playlists from the SWF Content repository. If a Repository File is selected, it overrides the Full URL.';
+$string['videourl'] = 'Full URL';
+$string['videourl_help'] = 'A full URL to a Flash file, video file or playlist.';
+
 //Learning Content Data
 $string['header_swf']='Learning Content';
-$string['xmlurl'] = 'Content';
+$string['xmlurltype'] = 'Content Type';
+$string['xmlurltype_help'] = 'The type of URL/content provided.';
+$string['xmlurl'] = 'XML/SMIL Content';
 $string['xmlurl_help'] = 'This setting enables a URL for the content file to be specified, rather than choosing a file via the Moodle file manager (below). Files are automatically listed from all directories in moodledata/repository/swfcontent/*/*/xml/* (* = wildcard). Files can only be uploaded here with FTP access.';
 $string['xmlurlname'] = 'Content Name';
 $string['xmlurlname_help'] = 'The FlashVars name of the link to the XML or SMIL file to be loaded. Default is xmlurl.  Consult the Flash apps\'s documentation for details.';
-$string['fileurl'] = 'File Manager';
-$string['fileurl_help'] = 'Pass in a file from Moodle\'s file manager.
-
-Please note that if you pass in a file from a File system repository, it will be copied to Moodle\'s main file storage area. Edits to the file in File system must be updated by deleting the copy in the file manager and redeploying it, i.e. 
-
-* Edit file in File system (on your computer, then upload via FTP),
-* Delete copy of file in File manager,
-* Select edited file in File system again.'.$swf_docs;
 $string['nofile'] = 'None';
-$string['uploadedfile'] = 'Use File Manager File';
 $string['exiturl'] = 'Exit URL';
 $string['exiturl_help'] = 'Some Flash apps may use this setting to navigate to a new page when the activity has been completed/finished or to open a new browser page for further information, e.g. a help page.';
 $string['exiturlname'] = 'Exit URL Name';
@@ -115,46 +104,24 @@ $string['namepair_help'] = 'Useful examples of name value pairs...
 
 Provide word lists for Word search MILA:
 
-* Learning App: swfs/smil_word_search.swf
+* App: swfs/smil_word_search.swf
 * Name: words
 * Value: dog,cat,chicken,horse,beaver,platypus,kangaroo,mouse,etc.
 
 Enable learners to input paragraphs into C-Test MILA:
 
-* Learning App: swfs/smil_c_test.swf
+* App: swfs/smil_c_test.swf
 * Name: input
 * Value: true
 
 Set higher difficulty level for Quick typing MILA:
 
-* Learning App: swfs/smil_quick_typing.swf
+* App: swfs/smil_quick_typing.swf
 * Name: difficulty
-* Value: 0.8
-
-For StrobeMediaPlayback:
-
-* Learning App: swfs/StrobeMediaPlayback.swf
-* Name: src
-* Value: http://download.ted.com/talks/PaoloCardini_2012G-480p.mp4
-
-* Learning App: swfs/StrobeMediaPlayback.swf
-* Plugin: Strobe YouTube
-* Name: src
-* Value: https://www.youtube.com/watch?v=ttYapXJRFF4
-
-* Learning App: swfs/StrobeMediaPlayback.swf
-* Plugin: Strobe SMIL
-* Name: src
-* Value: http://mediapm.edgesuite.net/osmf/content/test/smil/elephants_dream.smil
-
-JW Player:
-
-* Learning App: swfs/player.swf
-* Name: file
-* Value: http://download.ted.com/talks/PaoloCardini_2012G-480p.mp4'.$swf_docs;
+* Value: 0.8'.$swf_docs;
 
 $string['configxml'] = 'Config XML File';
-$string['configxml_help'] = 'Some apps can load files to configure their appearance and behaviour. Files are automatically listed from all directories in moodledata/repository/swfcontent/*/config/*/* (* = wildcard). Files can only be uploaded here with FTP access.';
+$string['configxml_help'] = 'Some apps can load files to configure their appearance and behaviour. Files are automatically listed from all directories in moodledata/repository/swf/content/*/config/*/* (* = wildcard). Files can only be uploaded here with FTP access.';
 $string['configxmlname'] = 'Config XML Name';
 $string['configxmlname_help'] = 'The name of the FlashVars that the app loads the config XML file from. Consult the Flash apps\'s documentation for details.';
 $string['apikey'] = 'API Key';
@@ -181,11 +148,11 @@ $string['swfhelp'] = 'Help';
 $string['swfhelp_title'] = 'Moodle docs for this page (Opens new window)';
 // Error message:
 $string['broken1'] = 'There is a problem';
-$string['broken2'] = 'This application has not displayed correctly for one or more of the following reasons:';
-$string['broken3'] = 'The application requires Flash Player '; // $swf->version goes here
+$string['broken2'] = 'This app has not displayed correctly for one or more of the following reasons:';
+$string['broken3'] = 'The app requires Flash Player '; // $swf->version goes here
 $string['broken31'] = ' to be installed in your browser,';
-$string['broken4'] = 'the application requires Javascript to be enabled in your browser,';
-$string['broken5'] = 'or the URL to this application is incorrect.';
+$string['broken4'] = 'the app requires Javascript to be enabled in your browser,';
+$string['broken5'] = 'or the URL to this app is incorrect.';
 $string['broken6'] = 'Which version of Flash do I have installed?';
 $string['broken7'] = 'Click on the Flash Player logo below to check your browser\'s Flash Player version:';
 $string['broken8'] = 'Find my Flash Player version';
@@ -221,19 +188,18 @@ $string['averageduration'] = 'Average duration';
 $string['attempts'] = 'Attempts';
 
 /*   mod/swf/settings.php   */
-$string['installed_apps_dir'] = 'Installed Apps Directory';
-$string['installed_apps_dir_explain'] = 'A standard directory where Flash apps are stored.
-    The SWF Activity Module searches this directory for any Flash files and lists them in swf/mod_form.php.
-    If your Moodle installation is in a subdirectory or a subdomain, you will need to edit this: e.g. for http://example.com/moodle/ (or http://moodle.example.com/ where the subdomain is in /moodle/) change /home/sites/example.com/mod/swf/swfs/ to /home/sites/example.com/moodle/mod/swf/swfs/';
-$string['content_dir'] = 'Multimedia Content Directory';
-$string['content_dir_explain'] = 'A directory that must be set up in Site Administration > Plugins > Repositories > Manage repositories.
-    Enable File system and add a directory, e.g. /moodledata/repository/swfcontent/.
-    This will allow uploading files through Moodle\'s file manager, as well as FTP.
-    These files can then be accessed by Flash apps through /moodle/mod/swf/file.php with the respective paths and filenames passed in through FlashVars, SMIL, and/or XML.
-    This provides native support for XML driven multimedia learning interactions.
-    The SWF Activity Module automatically searches for .xml and .smil files in /moodledata/repository/swfcontent/*/xml/*.xml and *.smil and lists them in swf/mod_form.php.';
-$string['saved_files_dir'] = 'Saved Files Directory';
-$string['saved_files_dir_explain'] = 'A subdirectory of the Multimedia Content Directory where users\' saved files are stored.'.$swf_docs;
+$string['save_settings'] = 'An adminsitrator must save SWF Activity Module settings.';
+// data
+$string['data_dir'] = 'Files Directory';
+$string['data_dir_explain'] = 'A directory where Flash apps, multimedia content libraries, and user files are located.';
+//
+$string['data_dir_exists'] = 'Files Directory is located at: ';
+$string['data_dir_moved'] = 'FIRST INSTALL Files Directory has been successfully moved: ';
+$string['data_dir_error'] = 'Please check: A possible error occured while attempting to move /moodle/mod/swf/swf/ directory and all its contents to: ';
+$string['data_url'] = 'Files URL';
+$string['data_url_explain'] = 'URL where Flash apps, multimedia content libraries, and user files can be accessed.';
+$string['data_structure'] = 'Directory structure';
+$string['data_structure_explain'] = 'The directory structure tells the SWF Activity Module where to find XML and SMIL learning content files. * is a wildcard.';
 
 /*   mod/swf/lib.php   */
 $string['urledit'] = 'SWF Content File';

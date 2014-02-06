@@ -35,6 +35,7 @@ defined('MOODLE_INTERNAL') || die();
  */
 function swf_print_enrolled_users($context, $courseid, $userid, $sortby)
 {
+    global $USER;
     // Create a list of users in course index.php?id=$courseid&userid=$userid&sortby=lastname
     if($swf_enrolled_users = get_enrolled_users($context, '', 0, 'u.*', $sortby))
     { // Sort users by last name
@@ -72,6 +73,8 @@ function swf_print_enrolled_users($context, $courseid, $userid, $sortby)
                     .get_string('lastname').'">'
                     .get_string('lastname').'</a></p>';
         }
+    } else {
+        $swf_current_user = $USER; // Don't return an empty object
     }
     return $swf_current_user;
 }

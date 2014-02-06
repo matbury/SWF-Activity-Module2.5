@@ -28,18 +28,21 @@ defined('MOODLE_INTERNAL') || die();
 // Contains specific functions for moodle/mod/swf/mod_form.php
 
 /**
- * List .swf files in mod/swf/swfs/ directory
+ * List .swf files apps directory
  * @global object $CFG
  * @return array
  */
 function swf_get_swfs() {
     global $CFG;
-    $swf_urls = array('' => get_string('selectfile', 'swf'));
-    $swf_installed_swfs = $CFG->swf_installed_apps_dir.'/*.swf'; // default = $_SERVER['DOCUMENT_ROOT'].'mod/swf/swfs/*.swf';
-    foreach (glob($swf_installed_swfs) as $swf_filename) {
+    $swf_urls = array('' => get_string('selectfile', 'swf'),
+                    'apps/StrobeMediaPlayback.swf' => 'Strobe Media Player',
+                    'apps/player.swf' => 'JW Player',
+                    'apps/preloader.swf' => 'SWF Preloader',
+                    'apps/swf_activity_module_debugger.swf' => 'SWF Debugger');
+    foreach (glob($CFG->swf_data_dir.'apps/*.swf') as $swf_filename) {
         $swf_path_parts = pathinfo($swf_filename);
-        $swf_filename = 'swfs/'.$swf_path_parts['basename'];
-        $swf_urls[$swf_filename] = 'swfs/'.$swf_path_parts['basename'];
+        $swf_filename = 'apps/'.$swf_path_parts['basename'];
+        $swf_urls[$swf_filename] = 'apps/'.$swf_path_parts['basename'];
     }
     return $swf_urls;
 }
@@ -123,18 +126,46 @@ function swf_get_fullscreen_options(){
 }
 
 /**
- * List SMIL, XML, etc. files in swfcontent repository directories
+ * Get an array of where the content is coming from; internal, external, etc.
+ * 
+ * @return array
+ */
+function swf_get_xmlurltypes() {
+    return array('content' => 'Content Library',
+        'fullurl' => 'Full URL http://...',
+        'false' => 'None');
+}
+
+/**
+ * List SMIL, XML, etc. files in swf repository directories
+ * searched by /[subdir]/[subdir]/xml/[filename].smil, .xml, etc.
+ * @global object $CFG
+ * @return array - list of all files in /xml/ directories
+ */
+function swf_get_contentfiles() {
+    global $CFG;
+    $swf_content_files = array('false' => get_string('nofile', 'swf'));
+    // Default structure = */*/xml/*.*
+    foreach (glob($CFG->swf_data_dir.'content/video/*/*.*') as $swf_content_filename) {
+        $swf_content_path = str_replace($CFG->swf_data_dir,'', $swf_content_filename);
+        $swf_content_files[$swf_content_path] = $swf_content_path;
+    }
+    return $swf_content_files;
+}
+
+/**
+ * List SMIL, XML, etc. files in swf repository directories
  * searched by /[subdir]/[subdir]/xml/[filename].smil, .xml, etc.
  * @global object $CFG
  * @return array - list of all files in /xml/ directories
  */
 function swf_get_xmlurls() {
     global $CFG;
-    $swf_xml_urls = array('false' => get_string('nofile', 'swf'), 'true' => get_string('uploadedfile', 'swf'));
-    $swf_xml_content = $CFG->dataroot.$CFG->swf_content_dir.'/*/*/xml/*.*'; 
-    foreach (glob($swf_xml_content) as $swf_xml_filename) {
-        $swf_xml_path_parts = pathinfo($swf_xml_filename);
-        $swf_xml_path = str_replace($CFG->dataroot.$CFG->swf_content_dir,'',$swf_xml_filename);
+    $swf_xml_urls = array('false' => get_string('nofile', 'swf'));
+    // Default structure = */*/xml/*.*
+    foreach (glob($CFG->swf_data_dir.'content/'.$CFG->swf_data_structure) as $swf_xml_filename) {
+        //$swf_xml_path_parts = pathinfo($swf_xml_filename);
+        $swf_xml_path = str_replace($CFG->swf_data_dir,'',$swf_xml_filename);
         $swf_xml_urls[$swf_xml_path] = $swf_xml_path;
     }
     return $swf_xml_urls;
@@ -142,17 +173,17 @@ function swf_get_xmlurls() {
 
 /**
  * List SMIL, XML, etc. files in swfcontent repository directories
- * searched by /[subdir]/[subdir]/xml/[filename].smil, .xml, etc.
+ * searched by /[subdir]/config/[subdir]/[filename].smil, .xml, etc.
  * @global object $CFG
  * @return array - list of all files in /xml/ directories
  */
 function swf_get_configxmlurls() {
     global $CFG;
     $swf_xml_urls = array('false' => get_string('nofile', 'swf'));
-    $swf_xml_content = $CFG->dataroot.$CFG->swf_content_dir.'/*/config/*/*.*'; 
-    foreach (glob($swf_xml_content) as $swf_xml_filename) {
+    // Default structure = */config/*/*.*
+    foreach (glob($CFG->swf_data_dir.'*/config/*/*.*') as $swf_xml_filename) {
         $swf_xml_path_parts = pathinfo($swf_xml_filename);
-        $swf_xml_path = str_replace($CFG->dataroot.$CFG->swf_content_dir,'',$swf_xml_filename);
+        $swf_xml_path = str_replace($CFG->swf_data_dir,'',$swf_xml_filename);
         $swf_xml_urls[$swf_xml_path] = $swf_xml_path;
     }
     return $swf_xml_urls;

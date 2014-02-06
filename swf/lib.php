@@ -389,25 +389,12 @@ function swf_grade_item_delete($swf) {
  */
 function swf_get_user_grades($swf, $userid=0) {
     global $CFG, $DB;
-    //require_once($CFG->dirroot.'/mod/swf/locallib.php');
     require_once('../../lib/gradelib.php'); 
     // sanity check on $swf->id
     if (! isset($swf->id)) {
         return;
     }
     $grades = grade_get_grades($course->id,'mod','swf',$swf_instance->id,$userid);
-    /*$sessions_summary = swf_get_sessions_summary($swf->id, $userid);
-    $grades[$userid]->userid = $userid;
-    $grades[$userid]->attempts = $sessions_summary->attempts;
-    $grades[$userid]->totaltime = $sessions_summary->totaltime;
-    $grades[$userid]->starttime = $sessions_summary->starttime;
-    $grades[$userid]->done = $sessions_summary->done;
-    $grades[$userid]->rawgrade = 0;
-    if ($swf->avaluation=='score'){
-        $grades[$userid]->rawgrade = $sessions_summary->score;				
-    }else{
-        $grades[$userid]->rawgrade = $sessions_summary->solved;
-    }*/
     return $grades;
 }
 
@@ -609,16 +596,6 @@ function swf_reset_userdata($data) {
     $componentstr = get_string('modulenameplural', 'choice');
     $status = array();
     if (!empty($data->reset_swf_deleteallsessions)) {
-        /*$params = array('courseid' => $data->courseid);
-        $select = 'session_id IN'
-            . " (SELECT s.session_id FROM {swf_sessions} s"
-            . " INNER JOIN {swf} j ON s.swfid = j.id"
-            . " WHERE j.course = :courseid)";
-        $DB->delete_records_select('swf_activities', $select, $params);
-        $select = 'swfid IN'
-            . " (SELECT j.id FROM {swf} j"
-            . " WHERE j.course = :courseid)";
-        $DB->delete_records_select('swf_sessions', $select, $params);*/
         // remove all grades from gradebook
         if (empty($data->reset_gradebook_grades)) {
             swf_reset_gradebook($data->courseid);
@@ -643,4 +620,21 @@ function swf_reset_course_form_definition(&$mform) {
  */
 function swf_reset_course_form_defaults($course) {
     return array('reset_swf_deleteallsessions' => 1);
+}
+
+/**
+ * On install move the files directory from /moodle/mod/swf/swf/ to /moodledata/repository/swf/
+ * @global object $CFG
+ * @return string
+ */
+function swf_rename_swfdir() {
+    global $CFG;
+    if(file_exists($CFG->swf_data_dir))
+    {
+        return get_string('data_dir_exists', 'swf').$CFG->swf_data_dir;
+    }
+    if(rename($CFG->dirroot.'/mod/swf/swf', $CFG->swf_data_dir)) {
+        return get_string('data_dir_moved', 'swf').$CFG->dirroot.'/mod/swf/swf'.' - '.$CFG->swf_data_dir; // This never gets shown!
+    }
+    return get_string('data_dir_error', 'swf').$CFG->dirroot.'/mod/swf/swf'.' - '.$CFG->swf_data_dir;
 }

@@ -53,59 +53,68 @@ add_to_log($course->id, 'swf', 'view', "view.php?id={$cm->id}", $swf->name, $cm-
 //$swf->instance = $id;
 $swf->context = $context;
 
-// Print the page header
-/*$PAGE->set_url('/mod/swf/view.php', array('id' => $cm->id));
-$PAGE->set_title(format_string($swf->name));
-$PAGE->set_heading(format_string($course->fullname));
-$PAGE->set_context($context);
-
-// Mark viewed if required
-$completion = new completion_info($course);
-$completion->set_module_viewed($cm);
-
-//has_capability('mod/swf:grade', $context, $USER->id, false)*/
-
-/*
- * Please note, this page does not use Moodle's $PAGE renderer.
- * $PAGE prevents useful and desirable JS libraries such as SWFObject and
- * SWFAddress from working correctly.
- */
-
 global $CFG, $USER, $COURSE;
 
 $swf_namevaluepairs = swf_get_namevaluepairs($swf);
 
-// Build xmlurl
-if($swf->xmlurl === 'false')
-{// nothing to load
-    $swf_alternative_content = swf_get_alternative_content($swf);
-    $swf_xmlurl = '';
-} else if($swf->xmlurl === 'true') {// Build fileurl through Moodle file API
-    $swf_xmlurl = swf_get_fileurl($swf, $context);
-    // Which FlashVar does media player use?
-    switch($swf->swfurl) {
-        case 'swfs/StrobeMediaPlayback.swf': // Strobe = src
-            $swf_alternative_content = swf_get_html5_embed($swf_xmlurl);
-            $swf_xmlurl = 'flashvars.src = "'.$swf_xmlurl.'";';
-            break;
-        case 'swfs/player.swf': // JW Player = file
-            $swf_alternative_content = swf_get_html5_embed($swf_xmlurl);
-            $swf_xmlurl = 'flashvars.file = "'.$swf_xmlurl.'";';
-            break;
-        default: // default = xmlurl
-            $swf_alternative_content = swf_get_alternative_content($swf);
-            $swf_xmlurl = 'flashvars.'.$swf->xmlurlname.' = "'.$swf_xmlurl.'";';
-    }
-} else {
-    // Not null and not file API so build link to repository proxy script
-    $swf_alternative_content = swf_get_alternative_content($swf);
-    $swf_xmlurl = 'flashvars.'.$swf->xmlurlname.' = "'.$CFG->wwwroot.'/mod/swf/content.php'.$swf->xmlurl.'?nocache='.time().'";'; // Don't cache
+swf_check_customised_flashvars_names($swf);
+
+// What's the content FlashVars name and where's the FlashVars source (value)?
+switch($swf->xmlurltype) {
+    case 'false':
+        // Nothing
+        $swf_xmlurl = '';
+        break;
+    /*case 'fmanager':
+        // Use Moodle File manager file
+        $swf_xmlurl = swf_get_fileurl($swf, $context);
+        break;*/
+    case 'fullurl':
+        // Use URL as is
+        $swf_xmlurl = $swf->xmlurl;
+        break;
+    case 'content':
+        // Use content.php proxy
+        $swf_xmlurl = $CFG->swf_data_url.$swf->xmlurl;
+        break;
+    default:
+        // Use content.php proxy
+        $swf_xmlurl = $CFG->swf_data_url.$swf->xmlurl;
 }
 
-//Plugins
+$swf_contenturl = $swf->videourl; // Use this if content file is false
+if($swf->contentfile != 'false') {
+    $swf_contenturl = $CFG->swf_data_url.$swf->contentfile; // files in /moodledata/repository/swf/content/video/*/*.*
+}
+// Check for default apps in /moodle/mod/apps/
+$swf_videourlname = 'src'; // default
+switch($swf->swfurl) {
+    case 'apps/StrobeMediaPlayback.swf': // Strobe Media Playback source name = src
+        $swf_alternative_content = swf_get_html5_embed($swf_contenturl);
+        $swf_url = $swf->swfurl;
+        break;
+    case 'apps/player.swf': // JW Player source name = file
+        $swf_videourlname = 'file';
+        $swf_alternative_content = swf_get_html5_embed($swf_contenturl);
+        $swf_url = $swf->swfurl;
+        break;
+    case 'apps/preloader.swf': // Preloader source name = xmlurl
+        $swf_alternative_content = swf_get_alternative_content($swf);
+        $swf_url = $swf->swfurl;
+        break;
+    case 'apps/swf_activity_module_debugger.swf': // SWF Debugger source name = xmlurl
+        $swf_alternative_content = swf_get_alternative_content($swf);
+        $swf_url = $swf->swfurl;
+        break;
+    default:
+        $swf_alternative_content = swf_get_alternative_content($swf);
+        $swf_url = $CFG->swf_data_url.$swf->swfurl;
+}
+
+// Plugins
 $swf_plugin = swf_get_plugins($swf);
 
-// Allow full screen mode
+// Allow/Disallow full screen mode
 $swf_allowfullscreen = swf_get_allowfullscreen($swf);
 
 // Show custom SWF navigation bar at top of screen
@@ -142,16 +151,17 @@ $swf_html = '<!DOCTYPE html>
                 flashvars.gradeupdate = "'.$CFG->wwwroot.'/mod/swf/scripts/gradeupdate.php";
                 flashvars.gradebook = "'.$CFG->wwwroot.'/grade/report/user/index.php?id='.$COURSE->id.'";
                 flashvars.instance = "'.$id.'";
-                flashvars.moodledata = "'.$CFG->wwwroot.'/mod/swf/content.php/";
+                flashvars.moodledata = "'.$CFG->swf_data_url.'";
                 flashvars.name = "'.urlencode($swf->name).'";
                 '.$swf_plugin.'
                 flashvars.sessiontimeout = "'.$CFG->sessiontimeout.'";
+                flashvars.'.$swf_videourlname.' = "'.$swf_contenturl.'";
                 flashvars.swfid = "'.$swf->id.'";
                 flashvars.swfversion = "'.$swf->version.'";
                 flashvars.servertime = "'.time().'";
                 flashvars.userid = "'.$USER->id.'";
                 flashvars.wwwroot = "'.$CFG->wwwroot.'/";
-                '.$swf_xmlurl.'
+                flashvars.'.$swf->xmlurlname.' = "'.$swf_xmlurl.'?nocache='.time().'";
                 '.$swf_namevaluepairs.'
                 var params = {};
                 '.$swf_allowfullscreen.'
@@ -164,7 +174,7 @@ $swf_html = '<!DOCTYPE html>
                 params.wmode = "window";
                 var attributes = {};
                 attributes.id = "mySwf";
-                swfobject.embedSWF("'.$swf->swfurl.'", "myAlternativeContent", "'.$swf->width.'", "'.$swf->height.'", "'.$swf->version.'", "js/expressInstall.swf", flashvars, params, attributes);
+                swfobject.embedSWF("'.$swf_url.'", "myAlternativeContent", "'.$swf->width.'", "'.$swf->height.'", "'.$swf->version.'", "js/expressInstall.swf", flashvars, params, attributes);
         </script>
         <style type="text/css">
             /* hide from ie on mac \*/

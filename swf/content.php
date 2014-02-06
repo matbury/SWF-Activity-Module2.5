@@ -28,14 +28,12 @@ require_once('../../lib/filelib.php'); // for mimeinfo() and send_file()
 require_login(); // Users must be logged in to access files
 
 global $CFG;
-    
-// (Optional) Clean the SWF content directory setting.
-$CFG->swf_content_dir = clean_param($CFG->swf_content_dir, PARAM_PATH);
-// Remove trailing slash(es).
-$CFG->swf_content_dir = rtrim($CFG->swf_content_dir, '/');
-// Get the relative path of the requested content.
-$swf_relative_path = get_file_argument();
-if (empty($CFG->swf_content_dir) || !$swf_relative_path) {
+
+//$CFG->swf_data_dir = clean_param($CFG->swf_data_dir, PARAM_PATH); // (Optional) Clean the directory setting.
+$CFG->swf_data_dir = rtrim($CFG->swf_data_dir, '/'); // Remove trailing slash(es).
+$swf_relative_path = get_file_argument(); // Get the relative path of the requested content.
+
+if (empty($CFG->swf_data_dir) || !$swf_relative_path) {
     header('HTTP/1.0 404 Not Found');
     exit(get_string('content_error','swf'));
 } else if ($swf_relative_path{0} != '/') {
@@ -43,10 +41,13 @@ if (empty($CFG->swf_content_dir) || !$swf_relative_path) {
     header('HTTP/1.0 404 Not Found');
     exit(get_string('content_error','swf'));
 }
+$swf_data_path = realpath($CFG->swf_data_dir.$swf_relative_path);
+/*$swf_data_path = $CFG->swf_data_dir.$swf_relative_path;
+echo 'path: '.$swf_data_path;
+exit;*/
 
-$swf_data_path = realpath($CFG->dataroot . $CFG->swf_content_dir . $swf_relative_path);
-// (Paranoid) Content will be served just from the SWF content dir.
-if (strpos($swf_data_path, realpath($CFG->dataroot . $CFG->swf_content_dir)) === 0) {
+// (Paranoid) Content will be served just from the dir.
+if (strpos($swf_data_path, realpath($CFG->swf_data_dir)) === 0) {
     $swf_data_info = pathinfo($swf_data_path);
     $swf_mime_type = mimeinfo('type', $swf_data_info['basename']);
     send_file($swf_data_path, $swf_data_info['basename'], 'default', 0, false, false, $swf_mime_type, false);

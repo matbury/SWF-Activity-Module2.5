@@ -1,0 +1,261 @@
+MILAs learning content cartridge licence agreement
+
+These terms and conditions are to ensure that legitimate course content developers, teachers and learners can enjoy them to the full while protecting Matt Bury's hard work from piracy, copyright theft, etc. Matt has developed these MILAs in the hope that they will enhance the efficacy, engagement and overall learning experience of everyone who uses them on your website. If you put MILAs in publicly accessible directories, they will be vulnerable to copyright theft and piracy. MILA licences are very reasonably priced and Matt would like to receive some reasonable compensation for the work he has put in.
+
+The contents of this directory, except where otherwise indicated, are the sole property of Matt Bury
+MILAs learning content cartridge © Matt Bury 2009.
+
+Summary of the terms and conditions for the use of MILAs learning content cartridge licences
+By using this MILA learning content cartridge you agree to the following terms and conditions:
+
+	* MILA learning content cartridge licences are valid for 30 years with no recurring fees and no hidden extras.
+    * MILA learning content cartridge licences are sold on a per domain basis, which includes sub-domains. For example, http://yoursite.com/ is the same as http://yoursite.com/e-school/, http://e-school.yoursite.com/, etc. but not the same as http://e-school.com/yoursite/. You must provide a comprehensive list of all the protocols, e.g. HTTP and HTTPS, and sub-domains you want the licensed MILAs to be deployed on so that the MILA(s) can operate under all these circumstances.
+    * MILA learning content cartridge licences cover the entire domain name(s) specified in the End User Licence Agreement (EULA) so MILAs and learning content cartridges can be used across multiple courses and multiple LMS' (Learning Management Systems) without the need to purchase more licences.
+    * MILA learning content cartridge licences include standard updates and improvements.
+    * The MILA support forum is free.
+    * MILA learning content cartridge licences do not include premium support. Premium support can be purchased as an extra service. In most cases, this is not necessary and support is best handled on the free support forums for all users' benefit.
+    * Licensed MILA learning content cartridges must not be accessible on the licensed domain without user login authentication. i.e. Users must be required to login to view MILAs. In the case of Moodle, this means in the course files directories (moodledata) outside the server's public directory.
+    * MILA learning content cartridge licences are not exclusive. Matt Bury may license the same MILA learning content cartridges to others.
+
+
+MILAs licence agreement
+
+Summary of the terms and conditions for the use of MILAs Flash application licences
+By using this MILA Flash application you agree to the following terms and conditions:
+
+	* MILA Flash application licences are valid for 30 years with no recurring fees and no hidden extras.
+    * MILA Flash application licences are sold on a per domain basis, which includes sub-domains. For example, http://yoursite.com/ is the same as http://yoursite.com/e-school/, http://e-school.yoursite.com/, etc. but not the same as http://e-school.com/yoursite/. You must provide a comprehensive list of all the protocols, e.g. HTTP and HTTPS, and sub-domains you want the licensed MILAs to be deployed on so that the MILA(s) can operate under all these circumstances.
+	* MILAs can also be used on a localhost testing server, e.g. WampServer or XAMPP, with the web address http://localhost or http://127.0.0.1 for testing and development purposes only. If your testing server has a different configuration, please give this information when you purchase a licence.
+    * Except for where explicitly stated, for example in MILAs that may consume 3rd party web services, MILAs do not send data to or receive data from any domains other than those they are deployed on, i.e. They do not contain any spyware.
+	* MILA Flash application licences cover the entire domain name(s) specified in the End User Licence Agreement (EULA) so MILAs and learning content cartridges can be used across multiple courses and multiple LMS' (Learning Management Systems) without the need to purchase more licences.
+    * MILA Flash application licences include standard updates and improvements.
+    * The MILA support forum is free.
+    * MILA Flash application licences do not include premium support. Premium support can be purchased as an extra service. In most cases, this is not necessary and support is best handled on the free support forums for all users' benefit.
+    * Licensed MILA Flash application must not be accessible on the licensed domain without user login authentication. i.e. Users must be required to login to view MILAs. In the case of Moodle, this means in the course files directories (moodledata) outside the server's public directory.
+    * MILA Flash application licences are not exclusive. Matt Bury may license the same MILA learning content cartridges to others.
+
+
+VERY IMPORTANT!: Important note about MILAs (Flash applications)
+Please verify that MILAs function correctly on your Moodle installation before purchasing licences. Server environments can vary greatly and, although Matt Bury has done his best to ensure stability and reliability in as many cases as possible, he cannot guarantee that MILAs will function correctly on every server environment. To verify whether MILAs can function correctly on your server and that they are compatible with your users' web browsers, try the free MILAs (Word search and Concept map) first, which do not require you to purchase a licence. If you have any problems, please contact Matt Bury and, in some cases, he may be able to resolve the issue.
+
+For localhost testing on Windows, Matt Bury recommends installing a standard Moodle 1.9.x package on WampServer. Please note that some MILAs functions do not function correctly on the Moodle Windows installer package from http://download.moodle.org/windows/.
+
+
+© Matt Bury 2009. All MILAs and MILA resource content cartridges have been created, developed and tested by Matt Bury.
+
+
+SAMPLE SOFTWARE LICENCE FROM: http://www.whichdraft.com/software_agreements_for_vendors/sample_software_license.html
+
+SOFTWARE LICENCE AGREEMENT
+This Software Licence Agreement ("Agreement") is made as of October 07, 2011 (the "Effective Date") between , an individual with an address at 30 Manland Avenue, Harpenden, Hertfordshire, AL5 4RF, United Kingdom ("Matt Bury"), and , a company with an address at , , ("YOURORGANISATION").
+
+This Agreement describes Matt Bury's purchase of Deliverables from [[YOURORGANISATION]].
+
+Matt Bury and [[YOURORGANISATION]] therefore agree as follows:
+
+1. DEFINITIONS.
+
+(a) "Deliverables" means the deliverables Matt Bury provides to [[YOURORGANISATION]] as described in this Agreement.
+
+(b) "Government Authority" means any governmental authority or court, tribunal, agency, department, commission, arbitrator, board, bureau, or instrumentality of the United Kingdom or any other country or territory, or domestic or foreign state, prefecture, province, commonwealth, city, county, municipality, territory, protectorate or possession.
+
+(c) "Law" means all laws, statutes, ordinances, codes, regulations and other pronouncements having the effect of law of any Government Authority.
+
+(d) "Software Deliverables" means the software described in this Agreement.
+
+2. DELIVERABLES.  Including the Software Deliverables described below, Matt Bury agrees to provide the following Deliverables:
+
+Multimedia Interactive Learning Application Software:
+Avatar Camera
+Listen and select
+Look and describe
+Listen and write
+Tell the time
+Phonemic chart
+Quick typing
+C-Test
+Listen and read
+Hangman 
+
+Multimedia Interactive Learning Application Learning Content Cartridges:
+Common Objects
+Numbers 0-100
+Animals 228
+
+
+3. SOFTWARE DELIVERABLES.
+
+(a) Licence Grant.  Matt Bury grants [[YOURORGANISATION]] a 30 year, non-exclusive, worldwide, non-transferable, and non-sublicenseable licence to use the Software Deliverables for [[YOURORGANISATION]]'s internal  purposes. This licence survives the Agreement, but may be terminated in the same way described in the provision entitled "Termination for Breach" in this Agreement.
+
+(b) Licence Type.  All [[YOURORGANISATION]] employees may exercise the Software Deliverables licence. 
+
+(c) Location.  Subject to any licence grant requirements, [[YOURORGANISATION]] may install and use the Software Deliverables on any computer system(s) or central processing unit(s) selected by [[YOURORGANISATION]] from time to time. The Software Deliverables can only be deployed from the following internet domain and sub-domain names:
+http://127.0.0.1
+http://localhost
+http://yourorganisation.com/
+http://elearning.yourorganisation.com/
+https://yourorganisation.com/
+https://elearning.yourorganisation.com/
+etc.
+The location of the Software Deliverables on a web server must be in a directory that is not accessible to the public and is not indexable by internet search engines, i.e. in the “/home/sites/yourorganisation.com/moodledata/” subdirectories and not in the “/home/sites/yourorganisation.com/public_html/” or “/home/sites/yourorganisation.com/www/” subdirectories.
+
+(d) Copies.  [[YOURORGANISATION]] may make one (1) copy of each of the Software Deliverables for testing, backup or archival purposes and not for production use.  In making copies of the Software Deliverables, [[YOURORGANISATION]] may not remove any copyright or other proprietary rights notices contained in or placed upon the Software Deliverables by Matt Bury.
+
+(e) Restrictions.  [[YOURORGANISATION]] may not (except if expressly authorized to do so elsewhere in this Agreement): (a) reproduce, publicly display, publicly perform, distribute, or create derivative works from the Software Deliverables; (b) provide third parties with access to the Software Deliverables under a service bureau, time sharing, or other arrangement; or (c) reverse engineer, decompile, disassemble, or otherwise attempt to derive or access any of the Software Deliverables' source code and/or human readable embodiment.
+
+4. OWNERSHIP, TITLE AND RISK OF LOSS.  Ownership of, title to, and risk of loss for the Deliverables passes to [[YOURORGANISATION]] upon Matt Bury's delivery of the Deliverables to a nationally reputable carrier, fully insured with a nationally reputable insurer (such insurance may be invoiced to [[YOURORGANISATION]] at cost).  However, ownership, title and risk of loss for the Software Deliverables applies to the copy only and does not extend to the intellectual property and other proprietary rights in the Software Deliverables.  Additionally, if any Software Deliverables are downloaded, ownership of, title to, and risk of loss passes to [[YOURORGANISATION]] upon [[YOURORGANISATION]]'s complete download of the Software Deliverables.
+
+5. FEES. Except as expressly stated in this Agreement, there are no additional fees, charges or expenses incurred.  In consideration for Matt Bury performing all obligations under this Agreement, [[YOURORGANISATION]] agrees to pay Matt Bury a flat fee of: [INSERT TEXT]
+
+6. WARRANTIES.
+
+(a) Mutual Warranties.  Each party represents, warrants and covenants to the other that:
+
+(i) General.  It: (a) is a company duly organized and validly existing and in good standing under the Laws of its jurisdiction of organization; (b) is qualified or licensed to do business and in good standing in every jurisdiction where qualification or licensing is required; and (c) has the corporate power and authority to negotiate, execute, deliver and perform its obligations under this Agreement.
+
+(ii) Law Compliance.  It complies with all applicable Laws.
+
+(b) Warranties by Matt Bury.  Matt Bury represents, warrants and covenants to [[YOURORGANISATION]] that:
+
+(i) Warranty Length.  For a period of thirty (30) days after receipt, the Deliverables conform to the requirements of this Agreement, are free from any defect in material and workmanship, and are free of all liens, claims and encumbrances of any kind.
+
+(c) Disclaimer. EXCEPT AS EXPRESSLY STATED IN THIS AGREEMENT, Matt Bury AND [[YOURORGANISATION]] EACH MAKE NO REPRESENTATIONS AND EXTEND NO WARRANTIES OR COVENANTS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+7. LIMITATION OF LIABILITY.  THIS LIMITATION OF LIABILITY PROVISION APPLIES IN THE AGGREGATE AND NOT ON A PER CLAIM BASIS, WHETHER ANY DAMAGES ARE CHARACTERIZED IN TORT, NEGLIGENCE, CONTRACT, OR OTHER THEORY OF LIABILITY, REGARDLESS OF WHETHER A PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF OR COULD HAVE FORESEEN ANY DAMAGES, AND IRRESPECTIVE OF ANY FAILURE OF ESSENTIAL PURPOSE OF A LIMITED REMEDY. THIS LIMITATION OF LIABILITY PROVISION DOES NOT LIMIT A PARTY'S LIABILITY FOR GROSS NEGLIGENCE, INDEMNIFICATION OBLIGATIONS, BREACH OF CONFIDENTIALITY REQUIREMENTS, INTENTIONAL MISCONDUCT, INTENTIONAL TORTS AND INTENTIONAL VIOLATIONS OF LAW. NEITHER PARTY IS LIABLE TO THE OTHER OR ANY THIRD PARTY UNDER THIS AGREEMENT FOR ANY INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RESULTING FROM THIS AGREEMENT.  EACH PARTY'S LIABILITY SHALL NOT EXCEED THE AMOUNTS PAID UNDER THIS AGREEMENT IN THE ONE (1) YEAR PERIOD PRIOR TO THE DATE THE CLAIM AROSE.
+
+8. TERM AND TERMINATION.
+
+(a) Term. The term of this Agreement (together with any renewals, the "Term") begins on the Effective Date and expires 1 year later.  Any renewal term shall be mutually agreed to by the parties in writing.
+
+(b) Survival.  The following captioned sections survive any termination, expiration or non-renewal of this Agreement: "Disclaimer", "Limitation of Liability", "Survival" and "General", as well as any other provisions expressly stating that they are perpetual or survive this Agreement.
+
+(c) Termination for Insolvency. If either party is adjudged insolvent or bankrupt, or upon the institution of any proceedings by it seeking relief, reorganization or arrangement under any Laws relating to insolvency, or if an involuntary petition in bankruptcy is filed against a party and the petition is not discharged within sixty (60) days after filing, or upon any assignment for the benefit of a party's creditors, or upon the appointment of a receiver, liquidator or trustee of any of a party's assets, or upon the liquidation, dissolution or winding up of its business (each, an "Event of Bankruptcy"), then the party affected by any Event of Bankruptcy must immediately give notice of the Event of Bankruptcy to the other party, and the other party may terminate this Agreement by notice to the affected party.
+
+(d) Termination for Breach.  If either party breaches any provision contained in this Agreement, and the breach is not cured within thirty (30) days after the breaching party receives notice of the breach from the non-breaching party, the non-breaching party may then deliver a second notice to the breaching party immediately terminating this Agreement.
+
+9. FORCE MAJEURE.   Any failure or delay by a party in the performance of its obligations under this Agreement is not a default or breach of the Agreement or a ground for termination under this Agreement to the extent the failure or delay is due to elements of nature or acts of God, acts of war, terrorism, riots, revolutions, or strikes or other factor beyond the reasonable control of a party (each, a "Force Majeure Event"). The party failing or delaying due to a Force Majeure Event agrees to give notice to the other party which describes the Force Majeure Event and includes a good faith estimate as to the impact of the Force Majeure Event upon its responsibilities under this Agreement, including, but not limited to, any scheduling changes. However, should any failure to perform or delay in performance due to a Force Majeure Event last longer than thirty (30) days, or should three (3) Force Majeure Events apply to the performance of a party during any calendar year, the party not subject to the Force Majeure Event may terminate this Agreement by notice to the party subject to the Force Majeure Event.
+
+10. GENERAL. Entire Agreement and Amendments. This Agreement is the entire agreement between the parties and supersedes all earlier and simultaneous agreements regarding the subject matter, including, without limitation, any invoices, business forms, purchase orders, proposals or quotations. This Agreement may be amended only in a written document, signed by both parties. Independent Contractors, Third Party Beneficiaries, and Subcontractors. The parties acknowledge that they are independent contractors under this Agreement, and except if expressly stated otherwise, none of the parties, nor any of their employees or agents, has the power or authority to bind or obligate another party. Except if expressly stated, no third party is a beneficiary of this Agreement. Matt Bury may not subcontract any obligation under this Agreement without [[YOURORGANISATION]]'s prior written consent. [[YOURORGANISATION]] can subcontract without Matt Bury's consent. Each party is responsible for its subcontractors' compliance with and breach of this Agreement as if the subcontractors' acts and omissions were the party's own. Governing Law and Forum. All claims regarding this Agreement are governed by and construed in accordance with the Laws of [INSERT TEXT], applicable to contracts wholly made and performed in such jurisdiction, except for any choice or conflict of Law principles, and must be litigated in [INSERT TEXT], regardless of the inconvenience of the forum, except that a party may seek temporary injunctive relief in any venue of its choosing. The parties acknowledge and agree that the United Nations Convention on Contracts for the International Sale of Goods is specifically excluded from application to this Agreement. Assignment. This Agreement binds and inures to the benefit of the parties' successors and assigns. This Agreement is not assignable, delegable, sublicenseable or otherwise transferable by any party in whole or in part without the prior written consent of the other party (or parties). Any transfer, assignment, delegation or sublicense by a party without such prior written consent is invalid. However, any party may assign this Agreement to a third party purchasing: (a) majority control of the party's equity shares; or (b) all or substantially all of either (i) a party's assets or (ii) the assets of the party's relevant business unit under this Agreement. No Waivers, Cumulative Remedies. A party's failure to insist upon strict performance of any provision of this Agreement is not a waiver of any of its rights under this Agreement. Except if expressly stated otherwise, all remedies under this Agreement, at Law or in equity, are cumulative and nonexclusive. Severability. If any portion of this Agreement is held to be unenforceable, the unenforceable portion must be construed as nearly as possible to reflect the original intent of the parties, the remaining portions remain in full force and effect, and the unenforceable portion remains enforceable in all other contexts and jurisdictions. Notices. All notices, including notices of address changes, under this Agreement must be sent by registered or certified mail or by overnight commercial delivery to the address set forth in this Agreement by each party. Captions and Plural Terms. All captions are for purposes of convenience only and are not to be used in interpretation or enforcement of this Agreement. Terms defined in the singular have the same meaning in the plural and vice versa.
+
+
+
+IN WITNESS WHEREOF, the parties execute this Agreement as of the Effective Date. Each person who signs this Agreement below represents that such person is fully authorized to sign this Agreement on behalf of the applicable party.
+
+Matt Bury
+
+By: __________________________________
+Print Name: ___________________________
+Title: ________________________________
+
+[[YOURORGANISATION]]
+
+By: __________________________________
+Print Name: ___________________________
+Title: ________________________________
+
+
+
+
+
+
+######################################################################################################################################################################################
+
+SOFTWARE LICENSE AGREEMENT
+This Software License Agreement ("Agreement") is made as of October 09, 2011 (the "Effective Date") between Matt Bury, an individual with an address at 30 Manland Avenue, Harpenden, Hertfordshire AL5 4RF ("Party-1"), and yourorganisation, a company with an address at [STREET], [CITY] [POSTALCODE], [COUNTRY] ("Party-2").
+
+This Agreement describes Party-1's purchase of Deliverables from Party-2.
+
+Party-1 and Party-2 therefore agree as follows:
+
+1. DEFINITIONS
+(a) "Deliverables" means the deliverables Party-1 provides to Party-2 as described in this Agreement.
+(b) "Government Authority" means any governmental authority or court, tribunal, agency, department, commission, arbitrator, board, bureau, or instrumentality of the United States of America or any other country or territory, or domestic or foreign state, prefecture, province, commonwealth, city, county, municipality, territory, protectorate or possession.
+(c) "Law" means all laws, statutes, ordinances, codes, regulations and other pronouncements having the effect of law of any Government Authority.
+(d) "Software Deliverables" means the software described in this Agreement.
+2. DELIVERABLES
+Including the Software Deliverables described below, Party-1 agrees to provide the following Deliverables:
+
+Multimedia Interactive Learning Application Software:
+Avatar Camera
+Listen and select
+Look and describe
+Listen and write
+Tell the time
+Phonemic chart
+Quick typing
+C-Test
+Listen and read
+Hangman
+
+Multimedia Interactive Learning Application Learning Content Cartridges:
+Common Objects
+Numbers 0-100
+Animals 228
+
+3. SOFTWARE DELIVERABLES
+(a) License Grant.  Party-1 grants Party-2 a non-exclusive, worldwide, non-transferable, and non-sublicenseable license to use the Software Deliverables for Party-2's internal business purposes during the Term.
+(b) License Type.  All Party-2 employees may exercise the Software Deliverables license. 
+(c) Location.  Subject to any license grant requirements, Party-2 may install and use the Software Deliverables on any computer system(s) or central processing unit(s) selected by Party-2 from time to time. The Software Deliverables can only be deployed from the following internet domain and sub-domain names:
+http://127.0.0.1
+http://localhost
+http://yourorganisation.com/
+http://elearning.yourorganisation.com/
+https://yourorganisation.com/
+https://elearning.yourorganisation.com/
+etc.
+The location of the Software Deliverables on a web server must be in a directory that is not accessible to the public and is not indexable by internet search engines, i.e. in the “/home/sites/yourorganisation.com/moodledata/” subdirectories and not in the “/home/sites/yourorganisation.com/public_html/” or “/home/sites/yourorganisation.com/www/” subdirectories.
+(d) Copies.  Party-2 may make one (1) copy of each of the Software Deliverables for testing, backup or archival purposes and not for production use.  In making copies of the Software Deliverables, Party-2 may not remove any copyright or other proprietary rights notices contained in or placed upon the Software Deliverables by Party-1.
+(e) Restrictions.  Party-2 may not (except if expressly authorized to do so elsewhere in this Agreement): (a) reproduce, publicly display, publicly perform, distribute, or create derivative works from the Software Deliverables; (b) provide third parties with access to the Software Deliverables under a service bureau, time sharing, or other arrangement; or (c) reverse engineer, decompile, disassemble, or otherwise attempt to derive or access any of the Software Deliverables' source code and/or human readable embodiment.
+4. OWNERSHIP, TITLE AND RISK OF LOSS
+Ownership of, title to, and risk of loss for the Deliverables passes to Party-2 upon Party-1's delivery of the Deliverables to a nationally reputable carrier, fully insured with a nationally reputable insurer (such insurance may be invoiced to Party-2 at cost).  However, ownership, title and risk of loss for the Software Deliverables applies to the copy only and does not extend to the intellectual property and other proprietary rights in the Software Deliverables.  Additionally, if any Software Deliverables are downloaded, ownership of, title to, and risk of loss passes to Party-2 upon Party-2's complete download of the Software Deliverables.
+5. FEES
+Except as expressly stated in this Agreement, there are no additional fees, charges or expenses incurred.  In consideration for Party-1 performing all obligations under this Agreement, Party-2 agrees to pay Party-1 a flat fee of: €990   Party-1 shall invoice Party-2 for the entire overall flat fee in this Agreement on the date the Deliverables are accepted by Party-2.
+6. WARRANTIES
+(a) Mutual Warranties.  Each party represents, warrants and covenants to the other that:
+(i) General.  It: (a) is a company duly organized and validly existing and in good standing under the Laws of its jurisdiction of organization; (b) is qualified or licensed to do business and in good standing in every jurisdiction where qualification or licensing is required; and (c) has the corporate power and authority to negotiate, execute, deliver and perform its obligations under this Agreement.
+(ii) Law Compliance.  It complies with all applicable Laws.
+(b) Warranties by Party-1.  Party-1 represents, warrants and covenants to Party-2 that:
+(i) Warranty Length.  For a period of one (1) year after receipt, the Deliverables conform to the requirements of this Agreement, are free from any defect in material and workmanship, and are free of all liens, claims and encumbrances of any kind.
+(c) Disclaimer. EXCEPT AS EXPRESSLY STATED IN THIS AGREEMENT, PARTY-1 AND PARTY-2 EACH MAKE NO REPRESENTATIONS AND EXTEND NO WARRANTIES OR COVENANTS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+7. LIMITATION OF LIABILITY
+THIS LIMITATION OF LIABILITY PROVISION APPLIES IN THE AGGREGATE AND NOT ON A PER CLAIM BASIS, WHETHER ANY DAMAGES ARE CHARACTERIZED IN TORT, NEGLIGENCE, CONTRACT, OR OTHER THEORY OF LIABILITY, REGARDLESS OF WHETHER A PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF OR COULD HAVE FORESEEN ANY DAMAGES, AND IRRESPECTIVE OF ANY FAILURE OF ESSENTIAL PURPOSE OF A LIMITED REMEDY. THIS LIMITATION OF LIABILITY PROVISION DOES NOT LIMIT A PARTY'S LIABILITY FOR GROSS NEGLIGENCE, INDEMNIFICATION OBLIGATIONS, BREACH OF CONFIDENTIALITY REQUIREMENTS, INTENTIONAL MISCONDUCT, INTENTIONAL TORTS AND INTENTIONAL VIOLATIONS OF LAW. NEITHER PARTY IS LIABLE TO THE OTHER OR ANY THIRD PARTY UNDER THIS AGREEMENT FOR ANY INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RESULTING FROM THIS AGREEMENT.  EACH PARTY'S LIABILITY SHALL NOT EXCEED THE AMOUNTS PAID UNDER THIS AGREEMENT IN THE ONE (1) YEAR PERIOD PRIOR TO THE DATE THE CLAIM AROSE.
+8. TERM AND TERMINATION
+(a) Term. The term of this Agreement (together with any renewals, the "Term") begins on the Effective Date and expires 1 year later.  Any renewal term shall be mutually agreed to by the parties in writing.
+(b) Survival.  The following captioned sections survive any termination, expiration or non-renewal of this Agreement: "Disclaimer", "Limitation of Liability", "Survival" and "General", as well as any other provisions expressly stating that they are perpetual or survive this Agreement.
+(c) Termination for Insolvency. If either party is adjudged insolvent or bankrupt, or upon the institution of any proceedings by it seeking relief, reorganization or arrangement under any Laws relating to insolvency, or if an involuntary petition in bankruptcy is filed against a party and the petition is not discharged within sixty (60) days after filing, or upon any assignment for the benefit of a party's creditors, or upon the appointment of a receiver, liquidator or trustee of any of a party's assets, or upon the liquidation, dissolution or winding up of its business (each, an "Event of Bankruptcy"), then the party affected by any Event of Bankruptcy must immediately give notice of the Event of Bankruptcy to the other party, and the other party may terminate this Agreement by notice to the affected party.
+(d) Termination for Breach.  If either party breaches any provision contained in this Agreement, and the breach is not cured within thirty (30) days after the breaching party receives notice of the breach from the non-breaching party, the non-breaching party may then deliver a second notice to the breaching party immediately terminating this Agreement.
+9. FORCE MAJEURE
+Any failure or delay by a party in the performance of its obligations under this Agreement is not a default or breach of the Agreement or a ground for termination under this Agreement to the extent the failure or delay is due to elements of nature or acts of God, acts of war, terrorism, riots, revolutions, or strikes or other factor beyond the reasonable control of a party (each, a "Force Majeure Event"). The party failing or delaying due to a Force Majeure Event agrees to give notice to the other party which describes the Force Majeure Event and includes a good faith estimate as to the impact of the Force Majeure Event upon its responsibilities under this Agreement, including, but not limited to, any scheduling changes. However, should any failure to perform or delay in performance due to a Force Majeure Event last longer than thirty (30) days, or should three (3) Force Majeure Events apply to the performance of a party during any calendar year, the party not subject to the Force Majeure Event may terminate this Agreement by notice to the party subject to the Force Majeure Event.
+10. GENERAL
+Entire Agreement and Amendments
+This Agreement is the entire agreement between the parties and supersedes all earlier and simultaneous agreements regarding the subject matter, including, without limitation, any invoices, business forms, purchase orders, proposals or quotations. This Agreement may be amended only in a written document, signed by both parties.
+Independent Contractors, Third Party Beneficiaries, and Subcontractors
+The parties acknowledge that they are independent contractors under this Agreement, and except if expressly stated otherwise, none of the parties, nor any of their employees or agents, has the power or authority to bind or obligate another party. Except if expressly stated, no third party is a beneficiary of this Agreement. The parties may not subcontract any of their obligations under this Agreement.
+Governing Law and Forum
+All claims regarding this Agreement are governed by and construed in accordance with the Laws of The United Kingdom, applicable to contracts wholly made and performed in such jurisdiction, except for any choice or conflict of Law principles, and must be litigated in The United Kingdom, regardless of the inconvenience of the forum, except that a party may seek temporary injunctive relief in any venue of its choosing. The parties acknowledge and agree that the United Nations Convention on Contracts for the International Sale of Goods is specifically excluded from application to this Agreement.
+Assignment
+This Agreement binds and inures to the benefit of the parties' successors and assigns. This Agreement is not assignable, delegable, sublicenseable or otherwise transferable by either party in whole or in part without the prior written consent of the other party. Any transfer, assignment, delegation or sublicense by a party without the other party's prior written consent is invalid.
+No Waivers, Cumulative Remedies
+A party's failure to insist upon strict performance of any provision of this Agreement is not a waiver of any of its rights under this Agreement. Except if expressly stated otherwise, all remedies under this Agreement, at Law or in equity, are cumulative and nonexclusive.
+Severability
+If any portion of this Agreement is held to be unenforceable, the unenforceable portion must be construed as nearly as possible to reflect the original intent of the parties, the remaining portions remain in full force and effect, and the unenforceable portion remains enforceable in all other contexts and jurisdictions.
+Notices
+All notices, including notices of address changes, under this Agreement must be sent by registered or certified mail or by overnight commercial delivery to the address set forth in this Agreement by each party.
+Captions and Plural Terms
+All captions are for purposes of convenience only and are not to be used in interpretation or enforcement of this Agreement. Terms defined in the singular have the same meaning in the plural and vice versa.
+IN WITNESS WHEREOF, the parties execute this Agreement as of the Effective Date. Each person who signs this Agreement below represents that such person is fully authorized to sign this Agreement on behalf of the applicable party.
+
+PARTY-1
+
+By: __________________________________
+Print Name: ___________________________
+Title: ________________________________
+
+PARTY-2
+
+By: __________________________________
+Print Name: ___________________________
+Title: ________________________________
+
+
+A Free Contract From WhichDraft.com

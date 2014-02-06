@@ -50,6 +50,22 @@ function swf_get_namevaluepairs($swf) {
     return $swf_namevaluepairs;
 }
 
+function swf_check_customised_flashvars_names($swf) {
+    // Check that no null or empty values are in custom FlashVars names
+    if($swf->xmlurlname === '' || $swf->xmlurlname === NULL) {
+        $swf->xmlurlname = 'xmlurl';
+    }
+    if($swf->apikeyname === '' || $swf->apikeyname === NULL) {
+        $swf->apikeyname = 'apikey';
+    }
+    if($swf->configxmlname === '' && $swf->configxmlname === NULL) {
+        $swf->configxmlname = 'configxml';
+    }
+    if($swf->exiturlname !== '' && $swf->exiturlname !== NULL) {
+        $swf->exiturlname = 'exiturl';
+    }
+}
+
 /**
  * Gets an absolute URL to a file uploaded into Moodle filemanager
  * @global type $CFG
@@ -161,27 +177,27 @@ function swf_get_allowfullscreen($swf) {
  * @return type
  */
 function swf_get_navbar($swf) {
-    if($swf->shownavbar == 'true')
+    if($swf->shownavbar !== 'false')
     {
-    global $CFG, $COURSE, $USER;
-    $swf_usermodified = '';
-    
-    if(has_capability('mod/swf:addinstance',$swf->context,$USER->id,false)) {
-        $swf_usermodified = '('.get_string('usermodified','swf').' '.$USER->firstname.' '.$USER->lastname.' '.date('H:i Y-m-d',usertime($swf->timemodified)).')';
-    }
-    if($COURSE->showgrades == 1) {
-        $swf_right_links = '<div style="float:right; padding-right: 3px;">
-                <a href="index.php?id='.$COURSE->id.'" title="'.get_string('report','swf').'" >'.get_string('report','swf').'</a> | <a href="'.$CFG->wwwroot.'/grade/report/user/index.php?id='.$COURSE->id.'" title="'.get_string('gradebook_title','swf').'" >'.get_string('gradebook','swf').'</a> | <a href="http://docs.moodle.org/25/en/SWF_Activity_Module" title="'.get_string('swfhelp_title','swf').'" target="_blank" >'.get_string('swfhelp','swf').'</a>
-            </div>';
-    } else {
-        $swf_right_links = '<div style="float:right; padding-right: 3px;">
-                <a href="index.php?id='.$COURSE->id.'" title="'.get_string('report','swf').'" >'.get_string('report','swf').'</a> | <a href="http://docs.moodle.org/25/en/SWF_Activity_Module" title="'.get_string('swfhelp_title','swf').'" target="_blank" >'.get_string('swfhelp','swf').'</a>
-            </div>';
-    }
-    return '<div class="swfnavdiv">
-                <a href="'.$CFG->wwwroot.'/" title="'.get_string('home').'" >'.get_string('home').'</a> &gt;&gt; <a href="'.$CFG->wwwroot.'/course/view.php?id='.$COURSE->id.'" title="'.$COURSE->shortname.'" >'.$COURSE->shortname.'</a> &gt;&gt; <strong>'.$swf->name.'</strong> '.$swf_usermodified.'
-                '.$swf_right_links.'
-            </div>';
+        global $CFG, $COURSE, $USER;
+        $swf_usermodified = '';
+
+        if(has_capability('mod/swf:addinstance',$swf->context,$USER->id,false)) {
+            $swf_usermodified = '('.get_string('usermodified','swf').' '.$USER->firstname.' '.$USER->lastname.' '.date('H:i Y-m-d',usertime($swf->timemodified)).')';
+        }
+        if($COURSE->showgrades == 1) {
+            $swf_right_links = '<div style="float:right; padding-right: 3px;">
+                    <a href="index.php?id='.$COURSE->id.'" title="'.get_string('report','swf').'" >'.get_string('report','swf').'</a> | <a href="'.$CFG->wwwroot.'/grade/report/user/index.php?id='.$COURSE->id.'" title="'.get_string('gradebook_title','swf').'" >'.get_string('gradebook','swf').'</a> | <a href="http://docs.moodle.org/25/en/SWF_Activity_Module" title="'.get_string('swfhelp_title','swf').'" target="_blank" >'.get_string('swfhelp','swf').'</a>
+                </div>';
+        } else {
+            $swf_right_links = '<div style="float:right; padding-right: 3px;">
+                    <a href="index.php?id='.$COURSE->id.'" title="'.get_string('report','swf').'" >'.get_string('report','swf').'</a> | <a href="http://docs.moodle.org/25/en/SWF_Activity_Module" title="'.get_string('swfhelp_title','swf').'" target="_blank" >'.get_string('swfhelp','swf').'</a>
+                </div>';
+        }
+        return '<div class="swfnavdiv">
+                    <a href="'.$CFG->wwwroot.'/" title="'.get_string('home').'" >'.get_string('home').'</a> &gt;&gt; <a href="'.$CFG->wwwroot.'/course/view.php?id='.$COURSE->id.'" title="'.$COURSE->shortname.'" >'.$COURSE->shortname.'</a> &gt;&gt; <strong>'.$swf->name.'</strong> '.$swf_usermodified.'
+                    '.$swf_right_links.'
+                </div>';
     }
     return ''; // no nav bar
 }

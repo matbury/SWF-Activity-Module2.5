@@ -79,11 +79,6 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->addRule('swfurl', null, 'required', null, 'client');
         $mform->setType('swfurl', PARAM_TEXT);
         $mform->addHelpButton('swfurl', 'swffile', 'swf');
-        // Flash plugins (Strobe and JW Player)
-        $mform->addElement('select', 'plugin', get_string('plugin', 'swf'), swf_get_plugins(), '');
-        $mform->setDefault('plugin', '');
-        $mform->setType('plugin', PARAM_TEXT);
-        $mform->addHelpButton('plugin', 'plugin', 'swf');
         // Flash Player embed parameters
         $mform->addElement('text', 'width', get_string('width', 'swf'), array('size'=>5));
         $mform->addRule('width', null, 'required', null, 'client');
@@ -118,13 +113,40 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->setDefault('allowscriptaccess', 'sameDomain');
         $mform->addElement('select', 'allownetworking', get_string('allownetworking', 'swf'), swf_get_allownetworking());
         $mform->setDefault('allownetworking', 'all');
+        // Flash plugins (Strobe and JW Player)
+        $mform->addElement('select', 'plugin', get_string('plugin', 'swf'), swf_get_plugins(), '');
+        $mform->setDefault('plugin', '');
+        $mform->setType('plugin', PARAM_TEXT);
+        $mform->addHelpButton('plugin', 'plugin', 'swf');
+        
+        /*
+         * Video settings
+         */
+        $mform->addElement('header', 'videoheader', get_string('videoheader', 'swf'));
+        $mform->addHelpButton('videoheader', 'videoheader', 'swf');
+        // Search /moodledata/repository/swf/content/video for video, Flash, and playlist files
+        $mform->addElement('select', 'contentfile', get_string('contentfile', 'swf'), swf_get_contentfiles());
+        $mform->setType('contentfile', PARAM_TEXT);
+        $mform->addHelpButton('contentfile', 'contentfile', 'swf');
+        $mform->setDefault('contentfile', '');
+        // Video source URL
+        $mform->addElement('text', 'videourl', get_string('videourl', 'swf'), array('size'=>75));
+        $mform->setType('videourl', PARAM_TEXT); // remove whitespace
+        $mform->addHelpButton('videourl', 'videourl', 'swf');
+        $mform->setDefault('videourl', '');
         
         /*
          * Learning interaction data: FlashVars, XML files, uploaded SWFs, and external links
         */
         $mform->addElement('header', 'header_swf', get_string('header_swf', 'swf'));
+        // xmlurltype FlashVar name for xmlurl
+        $mform->addElement('select', 'xmlurltype', get_string('xmlurltype', 'swf'), swf_get_xmlurltypes());
+        $mform->setType('xmlurltype', PARAM_TEXT);
+        $mform->addRule('xmlurltype', null, 'required', null, 'client');
+        $mform->addHelpButton('xmlurltype', 'xmlurltype', 'swf');
+        $mform->setDefault('xmlurltype', 'xmlurl');
         // Search dataroot for XML and SMIL files
-        // xmlurl to moodledata/repository/swfcontent/*/*/xml/[filename].xml and .smil
+        // xmlurl to /moodledata/repository/swf/content/*/*/xml/[filename].*
         $mform->addElement('select', 'xmlurl', get_string('xmlurl', 'swf'), swf_get_xmlurls());
         $mform->setType('xmlurl', PARAM_TEXT);
         $mform->addHelpButton('xmlurl', 'xmlurl', 'swf');
@@ -136,11 +158,11 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->addHelpButton('xmlurlname', 'xmlurlname', 'swf');
         $mform->setDefault('xmlurlname', 'xmlurl');
         // Uploaded SMIL, XML or Flash file
-        $mform->addElement('filemanager', 'fileurl', get_string('fileurl', 'swf'), array('optional'=>true), swf_get_filemanager_options());   
-        $mform->addHelpButton('fileurl', 'fileurl', 'swf');
+        //$mform->addElement('filemanager', 'fileurl', get_string('fileurl', 'swf'), array('optional'=>true), swf_get_filemanager_options());   
+        //$mform->addHelpButton('fileurl', 'fileurl', 'swf');
         // Exit URL
         $mform->addElement('text', 'exiturl', get_string('exiturl', 'swf'), array('size'=>75));
-        $mform->setType('exiturl', PARAM_RAW_TRIMMED); // remove whitespace
+        $mform->setType('exiturl', PARAM_TEXT);
         $mform->addHelpButton('exiturl', 'exiturl', 'swf');
         $mform->setDefault('exiturl', '');
         // Exit URL FlashVar name for exiturl
@@ -211,17 +233,15 @@ class mod_swf_mod_form extends moodleform_mod {
     /**
      * Overrides method from moodleform_mod (moodleform_mod.php)
      * 
-     * TODO - If filemanager is empty, don't push anything to DB
-     * 
      * @param type $default_values
-     */
+     
     function data_preprocessing(&$default_values) {
         if ($this->current->instance) {
             $draftitemid = file_get_submitted_draft_itemid('fileurl');
             file_prepare_draft_area($draftitemid, $this->context->id, 'mod_swf', 'content', 0, swf_get_filemanager_options()); 
             $default_values['fileurl'] = $draftitemid;
         }
-    }
+    }*/
     
     /**
      * Overrides method from moodleform_mod (moodleform_mod.php)
@@ -229,7 +249,7 @@ class mod_swf_mod_form extends moodleform_mod {
      * @param type $data
      * @param type $files
      * @return type
-     */
+     
     public function validation($data, $files) {
         global $USER;
         //print_object($data); // Everything the form has sent
@@ -262,5 +282,5 @@ class mod_swf_mod_form extends moodleform_mod {
             }
         }
         return $errors;
-    }
+    }*/
 }

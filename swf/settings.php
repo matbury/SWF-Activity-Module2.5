@@ -27,11 +27,19 @@ defined('MOODLE_INTERNAL') || die;
 if ($ADMIN->fulltree) {
     require_once($CFG->dirroot.'/mod/swf/lib.php');
     
-    $settings->add(new admin_setting_configtext('swf_installed_apps_dir', get_string('installed_apps_dir', 'swf'), get_string('installed_apps_dir_explain', 'swf'), $CFG->dirroot.'/mod/swf/swfs', PARAM_RAW, 80));
+    $swf_width = 90;
     
-    $settings->add(new admin_setting_configtext('swf_content_dir', get_string('content_dir', 'swf'), get_string('content_dir_explain', 'swf'), '/repository/swfcontent', PARAM_RAW, 80));
+    // Move swf directory?
+    $swf_data_dir = '';
+    if(isset($CFG->swf_data_dir)) {
+        $swf_data_dir = swf_rename_swfdir();
+    }
     
-    $settings->add(new admin_setting_configtext('swf_saved_files_dir', get_string('saved_files_dir', 'swf'), get_string('saved_files_dir_explain', 'swf'), '/userfiles', PARAM_RAW, 80));
+    $settings->add(new admin_setting_configtext('swf_data_dir', get_string('data_dir', 'swf'), get_string('data_dir_explain', 'swf').' '.$swf_data_dir, $CFG->dataroot.'/repository/swf/', PARAM_RAW, $swf_width));
+    
+    $settings->add(new admin_setting_configtext('swf_data_url', get_string('data_url', 'swf'), get_string('data_url_explain', 'swf'), $CFG->wwwroot.'/mod/swf/content.php/', PARAM_RAW, $swf_width));
+    
+    $settings->add(new admin_setting_configtext('swf_data_structure', get_string('data_structure', 'swf'), get_string('data_structure_explain', 'swf'), '*/*/xml/*.*', PARAM_RAW, $swf_width));
     
 }
 

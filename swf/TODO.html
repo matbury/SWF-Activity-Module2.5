@@ -27,27 +27,35 @@
         
         <ol>
             
-            <li><strong>Include webcam capture in debugger app. Also make it movable and add "Take snapshot" button.</strong></li>
-            
             <li><strong>Error on course participation page; modulemissingcode. Need to complete code in mod/swf/lib.php for reports</strong></li>
 
             <li><strong>Several functions in mod/swf/lib.php are incomplete.</strong></li>
 
-            <li><strong>Hash file is being pushed into fileurl DB cell - Can you stop it? i.e. leave it blank?</strong></li>
+            <li><strong>Future dev: Add course completion support. By view and by grade. <a href="http://docs.moodle.org/dev/Activity_completion_API" target="_blank">http://docs.moodle.org/dev/Activity_completion_API</a></strong></li>
 
-            <li><strong>Large video files, 100MB+ put excessive load on server (PHP memory use). Possible to hand it over to Apache/server to manage?</strong></li>
+            <li><strong>Future dev: Add available from and to dates support. Simple enough to test for dates and change output. Or use Moodle core? Not implemented yet. Wait until Moodle 2.6+</strong></li>
+            
+            <li><strong>Future dev: Include webcam capture in debugger app. Also make it movable and add "Take snapshot" button.</strong></li>
 
-            <li><strong>Add course completion support. By view and by grade. <a href="http://docs.moodle.org/dev/Activity_completion_API" target="_blank">http://docs.moodle.org/dev/Activity_completion_API</a></strong></li>
-
-            <li><strong>Add available from and to dates support. Simple enough to test for dates and change output. Or use Moodle core? Not implemented yet. Wait until Moodle 2.6+</strong></li>
-
-            <li><strong>Develop captioning plugin for Strobe: <a href="http://sourceforge.net/apps/mediawiki/osmf.adobe/index.php?title=Captions">http://sourceforge.net/apps/mediawiki/osmf.adobe/index.php?title=Captions</a></strong></li>
+            <li><strong>Future dev: Develop captioning plugin for Strobe: <a href="http://sourceforge.net/apps/mediawiki/osmf.adobe/index.php?title=Captions">http://sourceforge.net/apps/mediawiki/osmf.adobe/index.php?title=Captions</a></strong></li>
 
         </ol>
         
         <h3>Done:</h3>
         
         <ol>
+            
+            <li>Add a dedicated section for video Player + Plugins + Source[moodledata or URL] (Youtube works with Strobe, not JW Player)</li>
+            
+            <li>Detect difference between apps directories for media players etc. on view.php</li>
+            
+            <li>Alternative HTML5 embed code not printing!</li>
+            
+            <li>Allow admins to define full root file path of content, app, and user directory.</li>
+            
+            <li>Include example XML only content file to show recommend directory structure.</li>
+            
+            <li>Add functions to create moodledata/repository/ subdirectories to make installation simpler and easier.</li>
             
             <li>Include source code for concept map</li>
             

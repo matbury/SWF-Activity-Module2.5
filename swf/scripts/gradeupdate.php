@@ -79,9 +79,9 @@ $grade->usermodified = $USER->id;
 
 // Get grade item for grademax and grademin values
 // If SWF mod instance gradetype is set to none, no grade item is created
-$conditions = array(iteminstance=>$grade->swfid, 'itemtype' => 'mod');
-if(!$record = $DB->get_records('grade_items',$conditions)) {
-    echo get_string('grade_update_no_item','swf');
+$conditions = array('iteminstance' => $grade->swfid, 'itemtype' => 'mod', 'itemmodule' => 'swf');
+if(!$record = $DB->get_record('grade_items', $conditions)) {
+    echo get_string('grade_update_no_item', 'swf');
     exit;
 }
 // Set grade min and max values

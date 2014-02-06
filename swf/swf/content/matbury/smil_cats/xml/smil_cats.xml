@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<smil>
+    <head></head>
+    <body>
+        
+        <seq>
+            <par id="answer">
+                <text>It's a cheetah.</text>
+                <img src="content/matbury/smil_cats/img/cheetah.jpg" />
+                <audio id="normal" src="content/matbury/smil_cats/audio/cheetah_its_a.mp3" />
+                <audio id="stretched" src="content/matbury/smil_cats/audio/cheetah_its_a_str.mp3" />
+            </par>
+        </seq>
+        
+        <seq>
+            <par id="answer">
+                <text>It's a leopard.</text>
+                <img src="content/matbury/smil_cats/img/leopard.jpg" />
+                <audio id="normal" src="content/matbury/smil_cats/audio/leopard_its_a.mp3" />
+                <audio id="stretched" src="content/matbury/smil_cats/audio/leopard_its_a_str.mp3" />
+            </par>
+        </seq>
+        
+        <seq>
+            <par id="answer">
+                <text>It's a lion.</text>
+                <img src="content/matbury/smil_cats/img/lion.jpg" />
+                <audio id="normal" src="content/matbury/smil_cats/audio/lion_its_a.mp3" />
+                <audio id="stretched" src="content/matbury/smil_cats/audio/lion_its_a_str.mp3" />
+            </par>
+        </seq>
+        
+        <seq>
+            <par id="answer">
+                <text>It's a lynx.</text>
+                <img src="content/matbury/smil_cats/img/lynx.jpg" />
+                <audio id="normal" src="content/matbury/smil_cats/audio/lynx_its_a.mp3" />
+                <audio id="stretched" src="content/matbury/smil_cats/audio/lynx_its_a_str.mp3" />
+            </par>
+        </seq>
+        
+        <seq>
+            <par id="answer">
+                <text>It's a tiger.</text>
+                <img src="content/matbury/smil_cats/img/tiger.jpg" />
+                <audio id="normal" src="content/matbury/smil_cats/audio/tiger_its_a.mp3" />
+                <audio id="stretched" src="content/matbury/smil_cats/audio/tiger_its_a_str.mp3" />
+            </par>
+        </seq>
+        
+    </body>
+</smil>
