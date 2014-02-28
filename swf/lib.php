@@ -633,6 +633,10 @@ function swf_rename_swfdir() {
     {
         return get_string('data_dir_exists', 'swf').$CFG->swf_data_dir;
     }
+    if(!file_exists($CFG->dataroot.'/repository/')) // repository dir is not created by Moodle by default
+    {
+        mkdir($CFG->dataroot.'/repository/');
+    }
     if(rename($CFG->dirroot.'/mod/swf/swf', $CFG->swf_data_dir)) {
         return get_string('data_dir_moved', 'swf').$CFG->dirroot.'/mod/swf/swf'.' - '.$CFG->swf_data_dir; // This never gets shown!
     }
