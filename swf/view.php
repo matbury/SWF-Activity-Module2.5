@@ -70,7 +70,7 @@ switch($swf->xmlurltype) {
         $swf_xmlurl = swf_get_fileurl($swf, $context);
         break;*/
     case 'fullurl':
-        // Use URL as is
+        // Use absolute URL
         $swf_xmlurl = $swf->fullurl;
         break;
     case 'content':
