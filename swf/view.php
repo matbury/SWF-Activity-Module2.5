@@ -71,7 +71,7 @@ switch($swf->xmlurltype) {
         break;*/
     case 'fullurl':
         // Use URL as is
-        $swf_xmlurl = $swf->xmlurl;
+        $swf_xmlurl = $swf->fullurl;
         break;
     case 'content':
         // Use content.php proxy
