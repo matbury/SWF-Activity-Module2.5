@@ -91,7 +91,7 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->addElement('text', 'version', get_string('version', 'swf'), array('size'=>5));
         $mform->addRule('version', null, 'required', null, 'client');
         $mform->setType('version', PARAM_TEXT);
-        $mform->setDefault('version', '11.4.0');
+        $mform->setDefault('version', '11.2.0');
         $mform->addElement('select', 'allowfullscreen', get_string('allowfullscreen', 'swf'), swf_get_fullscreen_options());
         $mform->setDefault('allowfullscreen', 'allowFullScreenInteractive');
         $mform->addElement('select', 'scale', get_string('scale', 'swf'), swf_get_scale());
@@ -151,6 +151,11 @@ class mod_swf_mod_form extends moodleform_mod {
         $mform->setType('xmlurl', PARAM_TEXT);
         $mform->addHelpButton('xmlurl', 'xmlurl', 'swf');
         $mform->setDefault('xmlurl', '');
+        // Absolute URL to learning interaction data file
+        $mform->addElement('text', 'fullurl', get_string('fullurl', 'swf'), array('size'=>75));
+        $mform->setType('fullurl', PARAM_TEXT);
+        $mform->addHelpButton('fullurl', 'fullurl', 'swf');
+        $mform->setDefault('fullurl', '');
         // xmlurlname FlashVar name for xmlurl
         $mform->addElement('text', 'xmlurlname', get_string('xmlurlname', 'swf'), array('size'=>12));
         $mform->setType('xmlurlname', PARAM_TEXT);

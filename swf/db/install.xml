@@ -14,11 +14,12 @@
         <FIELD NAME="swfurl" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="flash app" PREVIOUS="introformat" NEXT="plugin"/>
         <FIELD NAME="plugin" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" COMMENT="flash plugin" PREVIOUS="swfurl" NEXT="xmlurlname"/>
         <FIELD NAME="xmlurlname" TYPE="char" LENGTH="255" NOTNULL="true" DEFAULT="false" SEQUENCE="false" COMMENT="xml data flashvar name" PREVIOUS="plugin" NEXT="xmlurl"/>
-        <FIELD NAME="xmlurl" TYPE="char" LENGTH="255" NOTNULL="false" DEFAULT="false" SEQUENCE="false" COMMENT="xml data url" PREVIOUS="xmlurlname" NEXT="xmlurltype"/>
-        <FIELD NAME="xmlurltype" TYPE="char" LENGTH="255" NOTNULL="true" DEFAULT="false" SEQUENCE="false" COMMENT="xml data flashvar type" PREVIOUS="xmlurl" NEXT="contentfile"/>
+        <FIELD NAME="xmlurl" TYPE="char" LENGTH="255" NOTNULL="false" DEFAULT="false" SEQUENCE="false" COMMENT="relative xml data url" PREVIOUS="xmlurlname" NEXT="fullurl"/>
+        <FIELD NAME="fullurl" TYPE="char" LENGTH="255" NOTNULL="false" DEFAULT="false" SEQUENCE="false" COMMENT="absolute xml data url" PREVIOUS="xmlurl" NEXT="xmlurltype"/>
+        <FIELD NAME="xmlurltype" TYPE="char" LENGTH="255" NOTNULL="true" DEFAULT="false" SEQUENCE="false" COMMENT="xml data flashvar type" PREVIOUS="fullurl" NEXT="contentfile"/>
         <FIELD NAME="contentfile" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" DEFAULT="" COMMENT="uploaded files" PREVIOUS="xmlurltype" NEXT="videourl"/>
         <FIELD NAME="videourl" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" DEFAULT="" COMMENT="video source" PREVIOUS="contentfile" NEXT="version"/>
-	<FIELD NAME="version" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="11.4.0" SEQUENCE="false" COMMENT="Flash Player version" PREVIOUS="videourl" NEXT="apikeyname"/>
+	<FIELD NAME="version" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="11.2.0" SEQUENCE="false" COMMENT="Flash Player version" PREVIOUS="videourl" NEXT="apikeyname"/>
         <FIELD NAME="apikeyname" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="apikeyname" PREVIOUS="version" NEXT="apikey"/>
 	<FIELD NAME="apikey" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" COMMENT="apikey" PREVIOUS="apikeyname" NEXT="scale"/>
 	<FIELD NAME="scale" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="noscale" SEQUENCE="false" COMMENT="scale" PREVIOUS="apikey" NEXT="salign"/>

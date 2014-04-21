@@ -35,8 +35,8 @@ defined('MOODLE_INTERNAL') || die();
 function swf_get_swfs() {
     global $CFG;
     $swf_urls = array('' => get_string('selectfile', 'swf'),
-                    'apps/StrobeMediaPlayback.swf' => 'Strobe Media Player',
-                    'apps/player.swf' => 'JW Player',
+                    'apps/StrobeMediaPlayback.swf' => 'Video >> Strobe Media Player',
+                    'apps/player.swf' => 'Video >> JW Player',
                     'apps/preloader.swf' => 'SWF Preloader',
                     'apps/swf_activity_module_debugger.swf' => 'SWF Debugger');
     foreach (glob($CFG->swf_data_dir.'apps/*.swf') as $swf_filename) {
@@ -131,9 +131,9 @@ function swf_get_fullscreen_options(){
  * @return array
  */
 function swf_get_xmlurltypes() {
-    return array('content' => 'Content Library',
-        'fullurl' => 'Full URL http://...',
-        'false' => 'None');
+    return array('content' => get_string('xmlurl', 'swf'),
+        'fullurl' => get_string('fullurl', 'swf'),
+        'false' => get_string('nofile', 'swf'));
 }
 
 /**

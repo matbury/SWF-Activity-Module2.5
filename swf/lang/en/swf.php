@@ -93,6 +93,8 @@ $string['xmlurl'] = 'XML/SMIL Content';
 $string['xmlurl_help'] = 'This setting enables a URL for the content file to be specified, rather than choosing a file via the Moodle file manager (below). Files are automatically listed from all directories in moodledata/repository/swfcontent/*/*/xml/* (* = wildcard). Files can only be uploaded here with FTP access.';
 $string['xmlurlname'] = 'Content Name';
 $string['xmlurlname_help'] = 'The FlashVars name of the link to the XML or SMIL file to be loaded. Default is xmlurl.  Consult the Flash apps\'s documentation for details.';
+$string['fullurl'] = 'Absolute URL';
+$string['fullurl_help'] = 'Absolute URL to learning interaction data file, i.e. http://...';
 $string['nofile'] = 'None';
 $string['exiturl'] = 'Exit URL';
 $string['exiturl_help'] = 'Some Flash apps may use this setting to navigate to a new page when the activity has been completed/finished or to open a new browser page for further information, e.g. a help page.';

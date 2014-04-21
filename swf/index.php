@@ -69,8 +69,8 @@ if (! $swfs = get_all_instances_in_course('swf', $course))
 
 $swf_main_table = swf_init_main_table($course->format);
 $swf_itemid = 0; // Initialise this in case there are no grades
-$swf_heatmap_table = swf_init_heatmap_table();
-$swf_heatmap_weekdays_history = swf_init_heatmap_weekdays_history(); // Stores attempts for heatmap table
+//$swf_heatmap_table = swf_init_heatmap_table();
+//$swf_heatmap_weekdays_history = swf_init_heatmap_weekdays_history(); // Stores attempts for heatmap table
 
 // Iterate through all instances in course and print out info
 foreach($swfs as $swf_instance)
@@ -117,7 +117,7 @@ foreach($swfs as $swf_instance)
         array_push($swf_table_row, $swf_grade_feedback[1]);
         
         // Push grade history attempts into heatmap table array
-        $swf_heatmap_weekdays_history = swf_weekdays_history_push_item_grades($swf_heatmap_weekdays_history, $userid, $swf_itemid);
+        //$swf_heatmap_weekdays_history = swf_weekdays_history_push_item_grades($swf_heatmap_weekdays_history, $userid, $swf_itemid);
     } else {
         // No grade so leave table row blank
         array_push($swf_table_row, get_string('nograde', 'swf'));
@@ -140,8 +140,8 @@ if($CFG->disablegradehistory == 1)
 echo html_writer::table($swf_main_table);
 
 // Print out user's activity heatmap
-echo $OUTPUT->heading(get_string('heatmap', 'swf'), 3);
-echo html_writer::table(swf_print_heatmap_table($swf_heatmap_table, $swf_heatmap_weekdays_history));
+//echo $OUTPUT->heading(get_string('heatmap', 'swf'), 3);
+//echo html_writer::table(swf_print_heatmap_table($swf_heatmap_table, $swf_heatmap_weekdays_history));
 
 // Finish the page
 echo $OUTPUT->footer();
