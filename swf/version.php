@@ -24,9 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$module->version   = 2014090500;      // The current module version (Date: YYYYMMDDXX)
-$module->requires  = 2013051400;      // Requires this Moodle version (2.5) (20130514)
-$module->cron      = 0;               // Period for cron to check this module (secs)
-$module->component = 'mod_swf';       // To check on upgrade, that module sits in correct place
-$module->release   = 'v1.0.0';        // Human-readable version name
-$module->maturity = MATURITY_STABLE;      // How stable the plugin is MATURITY_ALPHA, MATURITY_BETA, MATURITY_RC, MATURITY_STABLE
+$plugin->version   = 2014090500;      // The current module version (Date: YYYYMMDDXX)
+$plugin->requires  = 2013051400;      // Requires this Moodle version (2.5) (20130514)
+$plugin->cron      = 0;               // Period for cron to check this module (secs)
+$plugin->component = 'mod_swf';       // To check on upgrade, that module sits in correct place
+$plugin->maturity = MATURITY_STABLE;      // How stable the plugin is MATURITY_ALPHA, MATURITY_BETA, MATURITY_RC, MATURITY_STABLE
+$plugin->release   = 'v1.0.0';        // Human-readable version name
