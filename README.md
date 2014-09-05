@@ -10,7 +10,8 @@ Requirements
     Moodle 2.5 or later
     PHP 5.3 or later
     
-Please note that the AMFPHP API doesn't work with PHP 5.4. A new version for PHP 5.4 and later is currently under development.
+Please note that the AMFPHP API doesn't work with PHP 5.4 and later. An alternative method to push grades to Moodle have been provided, using HTTP calls and URLVariables. Please see the file /swf/scripts/gradeupdate.php
+
 
 Installation
 
