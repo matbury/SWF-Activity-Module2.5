@@ -35,7 +35,7 @@ function xmldb_swf_upgrade($oldversion) {
 
     //$dbman = $DB->get_manager(); // loads ddl manager and xmldb classes
 
-    /*if ($oldversion < 2011011900) {
+    /*if ($oldversion < 2014090500) {
         $table = new xmldb_table('swf');
         /// Define lang field format to be added to swf
         $field = new xmldb_field('fieldname');
